@@ -69,9 +69,9 @@ Requirements for the software and player challenges to control
 
 ## List of Class And Sequence Diagram
 
-![classDiagram](https://github.com/HamzaKababji/Team-48-Shaimaa-Final-Project/blob/main/Shaimaa_Warriors_UML_Diagram.drawio.png?raw=true)
+![classDiagram](Shaimaa_Warriors_UML_Diagram.drawio.png)
 
-![sequenceDiagram](https://github.com/HamzaKababji/Team-48-Shaimaa-Final-Project/blob/main/Shaimaa_Warriors_Sequence_Diagram.drawio.png?raw=true)
+![sequenceDiagram](Shaimaa_Warriors_Sequence_Diagram.drawio.png)
 
 ## Authors
 
