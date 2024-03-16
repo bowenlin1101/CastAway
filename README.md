@@ -1,4 +1,4 @@
-# Cast ҭӃҭӅ
+# Cast ҭӃҭӅ (Cast Away)
 
 ## StoryLine
 
@@ -65,7 +65,7 @@ Requirements for the software and player challenges to control
 
 ![alienhospitol](https://files.oaiusercontent.com/file-shoyztAi38TzdnhUOp8RWgB5?se=2024-03-14T21%3A19%3A45Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3D455c0e9c-1734-4601-aa6f-cb98dd81ee24.webp&sig=B/chnzTxPD%2BVunxZhZHw%2BH325ynkpvVA4WGFl35at78%3D)
 
-![topdownview](https://files.oaiusercontent.com/file-3eBpf6lYFsatd3bqLHrQzlSU?se=2024-03-15T15%3A01%3A29Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Ddeb3a2be-cad9-4a11-8731-19f63a408d35.webp&sig=Ce9HhbI552T9yF9WdhJ15WSnwl2RynVaV1yEJn0cNsM%3D)
+![topdownview](https://files.oaiusercontent.com/file-3eBpf6lYFsatd3bqLHrQzlSU?se=2024-03-16T00%3A52%3A18Z&sp=r&sv=2021-08-06&sr=b&rscc=max-age%3D31536000%2C%20immutable&rscd=attachment%3B%20filename%3Ddeb3a2be-cad9-4a11-8731-19f63a408d35.webp&sig=7ynTq%2BbUBeERy0YqD97zVyhiOm8K52ZrUsO8zMh%2BbTM%3D)
 
 ## List of Class And Sequence Diagram
 
@@ -77,7 +77,7 @@ Requirements for the software and player challenges to control
 
 - **Hamza Elkababji** - _Cool Guy Tough Guy_ -
   [Hamza](https://github.com/HamzaKababji)
-- **Saad Al-Bayaty** - _Blood_ -
+- **Saad Al-Bayaty** - _Blud_ -
   [Saad](https://github.com/UWOSaadBayaty)
 - **Omar Ramadan** - _Crip_ -
   [Omar](https://github.com/Omar1Ramadan)
