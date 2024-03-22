@@ -63,13 +63,13 @@ Requirements for the software and player challenges to control
 
 ## Mock Up Image
 
-![topdownview](ReadMeAssets\InitialMapIdea.png)
+![topdownview](ReadMeAssets/InitialMapIdea.png)
 
 ## List of Class And Sequence Diagram
 
-![classDiagram](ReadMeAssets\Shaimaa_Warriors_UML_Diagram.drawio.png)
+![classDiagram](ReadMeAssets/Shaimaa_Warriors_UML_Diagram.drawio.png)
 
-![sequenceDiagram](ReadMeAssets\Shaimaa_Warriors_Sequence_Diagram.drawio.png)
+![sequenceDiagram](ReadMeAssets/Shaimaa_Warriors_Sequence_Diagram.drawio.png)
 
 ## Authors
 
