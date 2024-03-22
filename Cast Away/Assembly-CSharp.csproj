@@ -61,28 +61,29 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2023.2.5f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\beantowel\Aerosol\Scripts\Constants.cs" />
-    <Compile Include="Assets\beantowel\Aerosol\Scripts\Model.cs" />
-    <Compile Include="Assets\beantowel\Aerosol\Scripts\Aerosol.cs" />
-    <Compile Include="Assets\beantowel\Aerosol\Scripts\Config.cs" />
-    <Compile Include="Assets\beantowel\Aerosol\Scripts\Util.cs" />
+    <Compile Include="Assets\CombatBackground\Aerosol\Scripts\Aerosol.cs" />
+    <Compile Include="Assets\CombatBackground\Aerosol\Scripts\Config.cs" />
+    <Compile Include="Assets\CombatBackground\Aerosol\Scripts\Util.cs" />
+    <Compile Include="Assets\CombatBackground\Aerosol\Scripts\Model.cs" />
+    <Compile Include="Assets\CombatBackground\Aerosol\Scripts\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Modern GDR - Free icons pack\01_Demo\Font\Ibarra_OFL.txt" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\ComputeMultipleScattering.shader" />
-    <None Include="Assets\beantowel\Aerosol\LICENSE.txt" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\atmosphere.hlsl" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\ComputeScatteringDensity.shader" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\definitions.hlsl" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\ComputeDirectIrradiance.shader" />
-    <None Include="Assets\COPY SPRIGHT\Comic Battle Royale\2D Character - Astronaut\Documentation.txt" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\header.hlsl" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\ComputeSingleScattering.shader" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\ComputeTransmittance.shader" />
-    <None Include="Assets\Modern GDR - Free icons pack\01_Demo\Font\Jost_OFL.txt" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\ComputeIndirectIrradiance.shader" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\functions.hlsl" />
-    <None Include="Assets\beantowel\Aerosol\Shaders\Skybox.shader" />
+    <None Include="Assets\Icons\01_Demo\Font\Ibarra_OFL.txt" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\ComputeMultipleScattering.shader" />
+    <None Include="Assets\CombatBackground\Aerosol\LICENSE.txt" />
+    <None Include="Assets\AlienSprites\Comic Battle Royale\2D Character - Alien\Documentation.txt" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\atmosphere.hlsl" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\ComputeScatteringDensity.shader" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\definitions.hlsl" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\ComputeDirectIrradiance.shader" />
+    <None Include="Assets\CharacterSprite\Comic Battle Royale\2D Character - Astronaut\Documentation.txt" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\header.hlsl" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\ComputeSingleScattering.shader" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\ComputeTransmittance.shader" />
+    <None Include="Assets\Icons\01_Demo\Font\Jost_OFL.txt" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\ComputeIndirectIrradiance.shader" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\functions.hlsl" />
+    <None Include="Assets\CombatBackground\Aerosol\Shaders\Skybox.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
