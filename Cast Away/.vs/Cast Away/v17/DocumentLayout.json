@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\melvin_branch\\Cast Away\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{64B28078-A6CB-BFBC-C682-0785A58220E0}|Assembly-CSharp.csproj|c:\\melvin_branch\\cast away\\assets\\playermovementscripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64B28078-A6CB-BFBC-C682-0785A58220E0}|Assembly-CSharp.csproj|solutionrelative:assets\\playermovementscripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\melvin_branch\\Cast Away\\Assets\\PlayerMovementScripts\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerMovementScripts\\PlayerMovement.cs",
+              "ToolTip": "C:\\melvin_branch\\Cast Away\\Assets\\PlayerMovementScripts\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\PlayerMovementScripts\\PlayerMovement.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-23T00:03:43.916Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
