@@ -32,6 +32,7 @@ public class Interactable : MonoBehaviour
     public virtual void Interact()
     {
         // overwritten methods
+        Debug.Log("Interacting with  " + transform.name);
     }
 
     public void OnFocused(Transform playerTransform)
@@ -51,6 +52,8 @@ public class Interactable : MonoBehaviour
     // draw radius of interaction 
     void OnDrawGizmosSelected()
     {
+        if(interactionTransform == null) interactionTransform = transform;
+        
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(interactionTransform.position, radius);
     }

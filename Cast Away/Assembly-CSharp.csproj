@@ -67,6 +67,9 @@
     <Compile Include="Assets/CombatBackground/Aerosol/Scripts/Util.cs" />
     <Compile Include="Assets/CombatBackground/Aerosol/Scripts/Model.cs" />
     <Compile Include="Assets/CombatBackground/Aerosol/Scripts/Constants.cs" />
+    <Compile Include="Assets/Scripts/Inventory.cs" />
+    <Compile Include="Assets/Scripts/ItemPickup.cs" />
+    <Compile Include="Assets/Scripts/Item.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Icons/01_Demo/Font/Ibarra_OFL.txt" />
