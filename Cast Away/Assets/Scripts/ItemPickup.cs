@@ -22,8 +22,7 @@ public class ItemPickup : Interactable
 
         if (wasPickedUp)
         {
-
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

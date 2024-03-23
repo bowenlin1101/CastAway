@@ -9,8 +9,20 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     // these can be set based on the items implementation
-    new public string name = "New Item";
-    public Sprite icon = null;
-    public bool isDefaultItem = false;
-    
+    new public string name = "New Item"; // name of item
+    public Sprite icon = null; // icon of item
+    public bool isDefaultItem = false; // is the item defualt to the player
+
+
+    // Called when the Item is used from either inventory or picked up by player
+    public virtual void Use()
+    {
+
+        Debug.Log("Using " + name); 
+    }
+
+    public void RemoveFromItem()
+    {
+        Inventory.instance.Remove(this);
+    }
 }
