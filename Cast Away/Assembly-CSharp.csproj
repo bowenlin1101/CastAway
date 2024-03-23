@@ -61,8 +61,10 @@
     <Analyzer Include="/Applications/Unity/Hub/Editor/2023.2.5f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/CharacterStat.cs" />
     <Compile Include="Assets/CombatBackground/Aerosol/Scripts/Aerosol.cs" />
     <Compile Include="Assets/CombatBackground/Aerosol/Scripts/Config.cs" />
+    <Compile Include="Assets/Scripts/Stat.cs" />
     <Compile Include="Assets/Scripts/Interactable.cs" />
     <Compile Include="Assets/CombatBackground/Aerosol/Scripts/Util.cs" />
     <Compile Include="Assets/CombatBackground/Aerosol/Scripts/Model.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Assets/Scripts/Equipment.cs" />
     <Compile Include="Assets/Scripts/Item.cs" />
     <Compile Include="Assets/Scripts/EquipmentManager.cs" />
+    <Compile Include="Assets/Scripts/PlayerStats.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/Icons/01_Demo/Font/Ibarra_OFL.txt" />

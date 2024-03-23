@@ -24,6 +24,9 @@ public class EquipmentManager : MonoBehaviour
     // Array to hold current equipped items.
     Equipment[] currentEquipment;
 
+    public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
+    public OnEquipmentChanged onEquipmentChanged;
+
     // intialize the bound of the array to have a fixed number of slot 
     void Start()
     {
@@ -55,6 +58,12 @@ public class EquipmentManager : MonoBehaviour
             // Add the replaced item back to the inventory.
             inventory.Add(pastItem);
         }
+
+        if(onEquipmentChanged != null)
+        {
+            onEquipmentChanged.Invoke(newItem, pastItem);
+        }
+
         // Equip the new item in the specified slot.
         currentEquipment[slotIndex] = newItem;
     }
@@ -73,6 +82,11 @@ public class EquipmentManager : MonoBehaviour
 
             // Remove the item from the equipment slot.
             currentEquipment[slotIndex] = null;
+
+            if (onEquipmentChanged != null)
+            {
+                onEquipmentChanged.Invoke(null, pastItem);
+            }
         }
     }
 
