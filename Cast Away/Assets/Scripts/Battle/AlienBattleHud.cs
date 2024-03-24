@@ -23,6 +23,10 @@ public class AlienBattleHud : MonoBehaviour
         yield return hpBar.SetHPSmooth(alien.Health/ alien.baseHealth);
     }
 
+    public IEnumerator UpdateA(){
+        yield return aBar.SetASmooth(alien.Aggression/ alien.baseAggression);
+    }
+
     void Start()
     {
         

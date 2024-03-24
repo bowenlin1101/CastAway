@@ -86,6 +86,22 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    IEnumerator PerformPlayerAct() {
+        state = BattleState.Busy;
+
+        var act = alienUnit.alien.acts[currentAct];
+        yield return dialogBox.TypeDialog($"{playerUnit.player.Name} used {act.MoveName}");
+        yield return new WaitForSeconds(1f);
+
+        bool isPacified = alienUnit.alien.TakePacify(act);
+        yield return alienHud.UpdateA();
+        if (isPacified) {
+            yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} no longer wants to fight");
+        } else {
+            StartCoroutine(AlienAttack());
+        }
+    }
+
     IEnumerator AlienAttack() {
         state = BattleState.AlienMove;
 
@@ -163,6 +179,12 @@ public class BattleSystem : MonoBehaviour
         }
 
         dialogBox.UpdateActSelection(currentAct, alienUnit.alien.acts[currentAct]);
+
+        if (Input.GetKeyDown(ConfirmKey)) {
+            dialogBox.EnableActSelector(false);
+            dialogBox.EnableDialogText(true);
+            StartCoroutine(PerformPlayerAct());
+        }
     }
 
  
