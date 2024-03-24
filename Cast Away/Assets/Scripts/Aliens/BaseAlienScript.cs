@@ -10,6 +10,8 @@ public class BaseAlienScript
     public float Health;
     public float baseAggression;
     public float Aggression;
+    public List<Move> acts;
+    public List<Move> attacks;
     public Sprite sprite;
     // Start is called before the first frame update
 

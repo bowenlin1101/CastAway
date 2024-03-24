@@ -14,6 +14,13 @@ public class CitizenAlienScript : BaseAlienScript
         this.baseAggression = 100;
         this.attackDamage = 40;
         this.sprite = Resources.Load<Sprite>("AlienSprites/Comic Battle Royale/2D Character - Alien/Variant A/Sprites/Character/walk/side/01");
+        this.attacks = new List<Move>();
+        this.acts = new List<Move>();
+        attacks.Add(new Move("Punch", 30, "Physical"));
+        acts.Add(new Move("Insult", 40, "Emotional"));
+        acts.Add(new Move("Talk About Taxes", 50, "Emotional"));
+        acts.Add(new Move("Compliment", 40, "Emotional"));
+        acts.Add(new Move("Flatter", 40, "Emotional"));
     }
     
 
