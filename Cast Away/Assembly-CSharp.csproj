@@ -79,7 +79,9 @@
     <Compile Include="Assets/Scripts/Aliens/SuperiorAlienScript.cs" />
     <Compile Include="Assets/Scripts/Battle/PlayerBattleUnit.cs" />
     <Compile Include="Assets/Scripts/Battle/BattleSystem.cs" />
+    <Compile Include="Assets/Scripts/Moves/Move.cs" />
     <Compile Include="Assets/Scripts/Aliens/CitizenAlienScript.cs" />
+    <Compile Include="Assets/Scripts/Battle/BattleDialogBox.cs" />
     <Compile Include="Assets/Scripts/Battle/AlienBattleUnit.cs" />
     <Compile Include="Assets/Scripts/Aliens/DoctorAlienScript.cs" />
   </ItemGroup>
