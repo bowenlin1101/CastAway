@@ -18,8 +18,8 @@ public class Player
     public Player (string name, Sprite sprite) {
         this.Name = name;
         this.attackDamage = 10;
-        this.baseHealth = 10;
-        this.Health = 10;
+        this.baseHealth = 100;
+        this.Health = 100;
         this.attack = 1;
         this.defense = 1;
         this.sprite = sprite;
@@ -32,6 +32,15 @@ public class Player
         // for (int i = 0; i < attacks.Length; i++) {
         //     attacks[i] = new Move("Punch", attackDamage*attack, "Physical");
         // }
+    }
+
+    public bool TakeDamage(Move move ) {
+        Health -= move.Damage;
+        if (Health <= 0) {
+            Health = 0;
+            return true;
+        }
+        return false;
     }
 
  
