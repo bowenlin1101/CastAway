@@ -24,6 +24,15 @@ public class BaseAlienScript
         return false;
     }
 
+    public bool TakePacify(Move move ) {
+        Aggression -= move.Damage;
+        if (Aggression <= 0) {
+            Aggression = 0;
+            return true;
+        }
+        return false;
+    }
+
     public virtual Move generateMove() {
         int n = Random.Range(0, attacks.Count);
         return attacks[n];
