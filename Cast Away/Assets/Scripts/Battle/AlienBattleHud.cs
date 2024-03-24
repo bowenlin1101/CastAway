@@ -10,11 +10,19 @@ public class AlienBattleHud : MonoBehaviour
     [SerializeField] ABar aBar;
     // Start is called before the first frame update
 
+    BaseAlienScript alien;
+
     public void SetData(BaseAlienScript alien) {
+        this.alien = alien;
         nameText.text = alien.Species;
         hpBar.SetHP(alien.Health/ alien.baseHealth);
         aBar.SetAggression(alien.Aggression/alien.baseAggression);
     }
+
+    public IEnumerator UpdateHP(){
+        yield return hpBar.SetHPSmooth(alien.Health/ alien.baseHealth);
+    }
+
     void Start()
     {
         

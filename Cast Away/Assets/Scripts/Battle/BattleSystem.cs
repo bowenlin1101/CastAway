@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum BattleState {
-    Start, PlayerAction, PlayerAttack, PlayerAct, EnemyMove, Busy
+    Start, PlayerAction, PlayerAttack, PlayerAct, AlienMove, Busy
 }
 
 public class BattleSystem : MonoBehaviour
@@ -17,7 +17,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] PlayerBattleHud playerHud;
     [SerializeField] PlayerBattleUnit playerUnit;
     [SerializeField] AlienBattleHud alienHud;
-    [SerializeField] AlienBattleUnit alientUnit;
+    [SerializeField] AlienBattleUnit alienUnit;
     [SerializeField] BattleDialogBox dialogBox;
 
     BattleState state;
@@ -34,8 +34,8 @@ public class BattleSystem : MonoBehaviour
         playerUnit.Setup();
         playerHud.SetData(playerUnit.player);
         //Setup Alien
-        alientUnit.Setup();
-        alienHud.SetData(alientUnit.alien);
+        alienUnit.Setup();
+        alienHud.SetData(alienUnit.alien);
         dialogBox.EnableAttackSelector(false);
         dialogBox.EnableActSelector(false);
 
@@ -43,10 +43,10 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetAttackNames(playerUnit.player.attacks);
 
         //Setup Acts
-        dialogBox.SetActNames(alientUnit.alien.acts);
+        dialogBox.SetActNames(alienUnit.alien.acts);
 
         //Run dialog Text
-        yield return dialogBox.TypeDialog($"You were stopped by {alientUnit.alien.Species}!");
+        yield return dialogBox.TypeDialog($"You were stopped by {alienUnit.alien.Species}!");
         //Wait for a second
         yield return new WaitForSeconds(1f);
 
@@ -68,6 +68,38 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableDialogText(false);
         dialogBox.EnableAttackSelector(true);
         currentAttack = 0;
+    }
+
+    IEnumerator PerformPlayerAttack() {
+        state = BattleState.Busy;
+
+        var attack = playerUnit.player.attacks[currentAttack];
+        yield return dialogBox.TypeDialog($"{playerUnit.player.Name} used {attack.MoveName}");
+        yield return new WaitForSeconds(1f);
+
+        bool isDead = alienUnit.alien.TakeDamage(attack);
+        yield return alienHud.UpdateHP();
+        if (isDead) {
+            yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} is no longer moving...");
+        } else {
+            StartCoroutine(AlienAttack());
+        }
+    }
+
+    IEnumerator AlienAttack() {
+        state = BattleState.AlienMove;
+
+        var attack = alienUnit.alien.generateMove();
+        yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} used {attack.MoveName}");
+        yield return new WaitForSeconds(1f);
+
+        bool isDead = playerUnit.player.TakeDamage(attack);
+        yield return playerHud.UpdateHP();
+        if (isDead) {
+            yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
+        } else {
+            PlayerAction();
+        }
     }
 
     void PlayerAct() {
@@ -113,13 +145,13 @@ public class BattleSystem : MonoBehaviour
 
     void HandleActSelection() {
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
-            if (currentAct < alientUnit.alien.acts.Count - 1)
+            if (currentAct < alienUnit.alien.acts.Count - 1)
                 ++currentAct;
         } else if (Input.GetKeyDown(KeyCode.LeftArrow)){
             if (currentAct > 0)
                 --currentAct;
         } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            if (currentAct < alientUnit.alien.acts.Count -2)
+            if (currentAct < alienUnit.alien.acts.Count -2)
                 currentAct += 2;
         } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
             if (currentAct > 1)
@@ -130,7 +162,7 @@ public class BattleSystem : MonoBehaviour
             PlayerAction();
         }
 
-        dialogBox.UpdateActSelection(currentAct, alientUnit.alien.acts[currentAct]);
+        dialogBox.UpdateActSelection(currentAct, alienUnit.alien.acts[currentAct]);
     }
 
  
@@ -154,6 +186,12 @@ public class BattleSystem : MonoBehaviour
         }
 
         dialogBox.UpdateAttackSelection(currentAttack, playerUnit.player.attacks[currentAttack]);
+    
+        if (Input.GetKeyDown(ConfirmKey)) {
+            dialogBox.EnableAttackSelector(false);
+            dialogBox.EnableDialogText(true);
+            StartCoroutine(PerformPlayerAttack());
+        }
     }
 
 }

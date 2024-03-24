@@ -9,10 +9,18 @@ public class PlayerBattleHud : MonoBehaviour
     [SerializeField] HPBar hpBar;
     // Start is called before the first frame update
 
+    Player player;
+
     public void SetData(Player player) {
+        this.player = player;
         nameText.text = player.Name;
         hpBar.SetHP(player.Health/ player.baseHealth);
     }
+
+    public IEnumerator UpdateHP(){
+        yield return hpBar.SetHPSmooth(player.Health/ player.baseHealth);
+    }
+
     void Start()
     {
         
