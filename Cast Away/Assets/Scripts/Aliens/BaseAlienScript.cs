@@ -15,6 +15,20 @@ public class BaseAlienScript
     public Sprite sprite;
     // Start is called before the first frame update
 
+    public bool TakeDamage(Move move ) {
+        Health -= move.Damage;
+        if (Health <= 0) {
+            Health = 0;
+            return true;
+        }
+        return false;
+    }
+
+    public virtual Move generateMove() {
+        int n = Random.Range(0, attacks.Count);
+        return attacks[n];
+    }
+
     public virtual double Attack()
     {
         return 0;

@@ -18,7 +18,7 @@ public class CitizenAlienScript : BaseAlienScript
         this.acts = new List<Move>();
         attacks.Add(new Move("Punch", 30, "Physical"));
         acts.Add(new Move("Insult", 40, "Emotional"));
-        acts.Add(new Move("Talk About Taxes", 50, "Emotional"));
+        acts.Add(new Move("Discuss Taxes", 50, "Emotional"));
         acts.Add(new Move("Compliment", 40, "Emotional"));
         acts.Add(new Move("Flatter", 40, "Emotional"));
     }
