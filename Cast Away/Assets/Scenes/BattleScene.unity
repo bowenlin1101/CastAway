@@ -1833,7 +1833,7 @@ GameObject:
   - component: {fileID: 1076136227}
   - component: {fileID: 1076136229}
   m_Layer: 0
-  m_Name: EnemyImage
+  m_Name: AlienImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1959,7 +1959,7 @@ MonoBehaviour:
   playerHud: {fileID: 1429682712}
   playerUnit: {fileID: 1847524211}
   alienHud: {fileID: 1391230758}
-  alientUnit: {fileID: 1076136229}
+  alienUnit: {fileID: 1076136229}
   dialogBox: {fileID: 772741832}
 --- !u!1 &1158288862
 GameObject:
