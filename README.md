@@ -84,6 +84,16 @@ Requirements for the software and player challenges to control
 - **Melvin Roger** - _Man Behind The Computer_ -
   [Melvin](https://github.com/mroger58)
 
+**Demos**
+
+**Battle**
+https://github.com/ShaimaaAliECE/groupproject-team48/assets/35745650/165ab76d-d12d-4840-b079-442ff1825979
+
+**Movement**
+https://github.com/ShaimaaAliECE/groupproject-team48/assets/35745650/d46735b8-872b-45bd-beb8-a3f39cebc14d
+
+
+
 See also the list of
 [contributors]()
 who participated in this project.
