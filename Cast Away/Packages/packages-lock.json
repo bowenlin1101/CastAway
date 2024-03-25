@@ -57,7 +57,11 @@
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
+<<<<<<< HEAD
+      "depth": 0,
+=======
       "depth": 1,
+>>>>>>> 7766dbfe9d44144eb9541dbf6860d9ac9160bc87
       "source": "builtin",
       "dependencies": {}
     },

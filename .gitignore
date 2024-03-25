@@ -1,4 +1,7 @@
 .DS_store
+<<<<<<< HEAD
+/Cast Away/[Ll]ibrary
+=======
 /Cast Away/[Ll]ibrary
 /Cast Away/[Tt]emp/
 /Cast Away/[Oo]bj/
@@ -70,3 +73,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+>>>>>>> 7766dbfe9d44144eb9541dbf6860d9ac9160bc87
