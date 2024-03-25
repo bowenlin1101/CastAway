@@ -1,0 +1,116 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
+using UnityEngine.UI;
+
+public class BattleDialogBox : MonoBehaviour
+{
+    [SerializeField] Text dialogText;
+    [SerializeField] int lettersPerSecond;
+    [SerializeField] Color highlightedColor;
+
+    [SerializeField] GameObject actionSelector;
+    [SerializeField] GameObject attackSelector;
+    [SerializeField] GameObject attackDetails;
+    [SerializeField] GameObject actSelector;
+    [SerializeField] GameObject actDetails;
+
+    [SerializeField] List<Text> actionTexts;
+    [SerializeField] List<Text> attackTexts;
+    [SerializeField] List<Text> actTexts;
+
+    [SerializeField] Text attackDescriptionText;
+    [SerializeField] Text attackTypeText;
+    [SerializeField] Text actDescriptionText;
+    [SerializeField] Text actTypeText;
+
+
+
+
+    public void SetDialog(string dialog) {
+        dialogText.text = (dialog);
+    }
+
+    public IEnumerator TypeDialog(string dialog) {
+        dialogText.text = "";
+        foreach (var letter in dialog.ToCharArray()){
+            dialogText.text += letter;
+            yield return new WaitForSeconds(1f/lettersPerSecond);
+        }
+    }
+
+    public void EnableDialogText(bool enabled ){
+        dialogText.enabled = enabled;
+    }
+
+    public void EnableActionSelector(bool enabled ){
+        actionSelector.SetActive(enabled);
+    }
+
+    public void EnableAttackSelector(bool enabled ){
+        attackSelector.SetActive(enabled);
+        attackDetails.SetActive(enabled);
+    }
+
+    public void EnableActSelector(bool enabled ){
+        actSelector.SetActive(enabled);
+        actDetails.SetActive(enabled);
+    }
+
+    public void UpdateActionSelection(int selectedAction) {
+        for (int i = 0; i < actionTexts.Count; ++i) {
+            if (i == selectedAction) {
+                actionTexts[i].color = highlightedColor;
+            } else {
+                actionTexts[i].color = Color.black;
+            }
+        }
+    }
+
+    public void UpdateAttackSelection(int selectedAttack, Move move) {
+        for (int i = 0; i < attackTexts.Count; ++i) {
+            if (i == selectedAttack) {
+                attackTexts[i].color = highlightedColor;
+            } else {
+                attackTexts[i].color = Color.black;
+            }
+        }
+
+        attackDescriptionText.text = $"Damage: {move.Damage}";
+        attackTypeText.text = $"Type: {move.Type}";
+    }
+
+    public void UpdateActSelection(int selectedAct, Move move) {
+        for (int i = 0; i < actTexts.Count; ++i) {
+            if (i == selectedAct) {
+                actTexts[i].color = highlightedColor;
+            } else {
+                actTexts[i].color = Color.black;
+            }
+        }
+
+        actDescriptionText.text = $"Damage: {move.Damage}";
+        actTypeText.text = $"Type: {move.Type}";
+    }
+
+    public void SetAttackNames(List<Move> attacks) {
+        for (int i=0; i < attackTexts.Count; i++){
+            if (i < attacks.Count) {
+                attackTexts[i].text = attacks[i].MoveName;
+            } else {
+                attackTexts[i].text = "-";
+            }
+        }
+    }
+
+    public void SetActNames(List<Move> acts) {
+        for (int i=0; i < actTexts.Count; i++){
+            if (i < acts.Count) {
+                actTexts[i].text = acts[i].MoveName;
+            } else {
+                actTexts[i].text = "-";
+            }
+        }
+    }
+}

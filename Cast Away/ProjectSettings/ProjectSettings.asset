@@ -4,7 +4,11 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 27
+<<<<<<< HEAD
   productGUID: ef61c47d7d7c06746a100f963bf3e40d
+=======
+  productGUID: 2d183c1c4745bb480a909b50f9714ad0
+>>>>>>> 7766dbfe9d44144eb9541dbf6860d9ac9160bc87
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +17,11 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
+<<<<<<< HEAD
   productName: Cast Away
+=======
+  productName: My project (1)
+>>>>>>> 7766dbfe9d44144eb9541dbf6860d9ac9160bc87
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -639,14 +647,22 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
+<<<<<<< HEAD
   metroPackageName: Cast Away
+=======
+  metroPackageName: My project (1)
+>>>>>>> 7766dbfe9d44144eb9541dbf6860d9ac9160bc87
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
+<<<<<<< HEAD
   metroApplicationDescription: Cast Away
+=======
+  metroApplicationDescription: My project (1)
+>>>>>>> 7766dbfe9d44144eb9541dbf6860d9ac9160bc87
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -716,11 +732,19 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
+<<<<<<< HEAD
   cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: 
   organizationId: 
+=======
+  cloudProjectId: a0a14c3d-d414-4537-8169-03e2f2f063c0
+  framebufferDepthMemorylessMode: 0
+  qualitySettingsNames: []
+  projectName: My project (1)
+  organizationId: bowen_lin
+>>>>>>> 7766dbfe9d44144eb9541dbf6860d9ac9160bc87
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
