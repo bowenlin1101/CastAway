@@ -7,28 +7,20 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
-    public SpriteRenderer spriteRenderer; // Add this line to hold a reference to the SpriteRenderer
 
-    // Add a public Sprite field to assign the new sprite in the inspector
+    public SpriteRenderer spriteRenderer; 
     public Sprite playerSprite;
 
     Vector2 movement;
 
-    // Start is called before the first frame update
     void Start()
     {
-        // Set the sprite to the spriteRenderer component at the start
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>(); // Make sure to grab the reference if not set
-
-        if (playerSprite != null)
-            spriteRenderer.sprite = playerSprite; // Set the sprite on the SpriteRenderer
+        spriteRenderer.sprite = Resources.Load<Sprite>("C:\\Users\\hamza\\Final Project\\Cast_Away\\Assets\\Resources\\CharacterSprite\\Comic Battle Royale\\2D Character - Astronaut\\Variant A\\Sprites\\Character\\bomb_hold\\down");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
@@ -39,11 +31,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Movement
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
     }
 
-    // Call this method to change the player's sprite at runtime
     public void SetPlayerSprite(Sprite newSprite)
     {
         spriteRenderer.sprite = newSprite;
