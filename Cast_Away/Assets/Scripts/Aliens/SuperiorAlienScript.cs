@@ -13,14 +13,14 @@ public class SuperiorAlienScript : BaseAlienScript
         this.baseAggression = 150;
         this.attackDamage = 70;
         this.sprite = Resources.Load<Sprite>("AlienSprites/Comic Battle Royale/2D Character - Alien/Variant C/Sprites/Character/walk/side/01");
-        this.attacks = new List<Move>();
+        this.attacks = new List<Attack>();
         this.acts = new List<Move>();
-        attacks.Add(new Move("Hammer Spin", 100, "Physical"));
-        attacks.Add(new Move("Acid Rain", 150, "Chemical"));
-        acts.Add(new Move("Plead", 40, "Emotional"));
-        acts.Add(new Move("Appeal", 50, "Emotional"));
-        acts.Add(new Move("Flex Muscles", 40, "Emotional"));
-        acts.Add(new Move("Challenge Authority", 40, "Emotional"));
+        attacks.Add(new Attack("Hammer Spin", 100, "Physical", 20f, 3, 1f, "Hammer"));
+        attacks.Add(new Attack("Acid Rain", 150, "Chemical", 35f, 20, 0.25f, "Green ball"));
+        acts.Add(new Move("Plead", 10, "Emotional"));
+        acts.Add(new Move("Appeal", 10, "Emotional"));
+        acts.Add(new Move("Flex Muscles", 10, "Emotional"));
+        acts.Add(new Move("Challenge Authority", 20, "Emotional"));
     }
     public override double Attack()
     {

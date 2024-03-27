@@ -15,8 +15,8 @@ public class BaseAlienScript
     public Sprite sprite;
     // Start is called before the first frame update
 
-    public bool TakeDamage(Move move ) {
-        Health -= move.Damage;
+    public bool TakeDamage(Attack attack ) {
+        Health -= attack.Damage;
         if (Health <= 0) {
             Health = 0;
             return true;
@@ -24,13 +24,13 @@ public class BaseAlienScript
         return false;
     }
 
-    public bool TakePacify(Move move ) {
+    public virtual (bool, string) TakePacify(Move move ) {
         Aggression -= move.Damage;
         if (Aggression <= 0) {
             Aggression = 0;
-            return true;
+            return (true, move.posResponse);
         }
-        return false;
+        return (false, move.posResponse);
     }
 
     public virtual Move generateMove() {
