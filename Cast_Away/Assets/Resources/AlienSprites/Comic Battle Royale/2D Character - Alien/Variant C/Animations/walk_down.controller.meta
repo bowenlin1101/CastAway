@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e0705c2599d84beb9bf548a9d6340afb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 9100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 182799
+  packageName: 2D Character - Alien
+  packageVersion: 2.0
+  assetPath: Assets/COPY SPRIGHT/Comic Battle Royale/2D Character - Alien/Variant
+    C/Animations/walk_down.controller
+  uploadId: 624105
