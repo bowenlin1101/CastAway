@@ -11,7 +11,11 @@ public class BaseAlienScript
     public float baseAggression;
     public float Aggression;
     public List<Move> acts;
-    public List<Move> attacks;
+    public List<Attack> attacks;
+
+    public int stage;
+
+    public string[] order;
     public Sprite sprite;
     // Start is called before the first frame update
 
@@ -28,12 +32,12 @@ public class BaseAlienScript
         Aggression -= move.Damage;
         if (Aggression <= 0) {
             Aggression = 0;
-            return (true, move.posResponse);
+            return (true, move.PosResponse);
         }
-        return (false, move.posResponse);
+        return (false, move.PosResponse);
     }
 
-    public virtual Move generateMove() {
+    public virtual Attack generateAttack() {
         int n = Random.Range(0, attacks.Count);
         return attacks[n];
     }

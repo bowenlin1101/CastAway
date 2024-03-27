@@ -17,10 +17,10 @@ public class SuperiorAlienScript : BaseAlienScript
         this.acts = new List<Move>();
         attacks.Add(new Attack("Hammer Spin", 100, "Physical", 20f, 3, 1f, "Hammer"));
         attacks.Add(new Attack("Acid Rain", 150, "Chemical", 35f, 20, 0.25f, "Green ball"));
-        acts.Add(new Move("Plead", 10, "Emotional"));
-        acts.Add(new Move("Appeal", 10, "Emotional"));
-        acts.Add(new Move("Flex Muscles", 10, "Emotional"));
-        acts.Add(new Move("Challenge Authority", 20, "Emotional"));
+        acts.Add(new Move("Plead", 10, "Emotional", "", "", ""));
+        acts.Add(new Move("Appeal", 10, "Emotional", "", "", ""));
+        acts.Add(new Move("Flex Muscles", 10, "Emotional", "", "", ""));
+        acts.Add(new Move("Challenge Authority", 20, "Emotional", "", "", ""));
     }
     public override double Attack()
     {

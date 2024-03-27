@@ -26,7 +26,7 @@ public class DefendSystem : MonoBehaviour
     public int numberOfAttacks;
     public int numberThrown;
     public float speed;
-    public Move attack;
+    public Attack attack;
 
     public void Start() {
         rowPositions = new Vector3[3];
@@ -61,7 +61,7 @@ public class DefendSystem : MonoBehaviour
         Destroy(newProjectile, 5f);
     }
 
-    public void SetDifficulty(int numberOfAttacks, float speed, float frequency, Move attack) {
+    public void SetDifficulty(int numberOfAttacks, float speed, float frequency, Attack attack) {
         this.numberOfAttacks = numberOfAttacks;
         projectileMovement.speed = speed;
         this.attack = attack;

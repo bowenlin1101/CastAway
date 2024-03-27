@@ -11,9 +11,9 @@ public class Attack
     public float Speed {get; set;}
     public int NumberOfAttacks {get; set;}
     public float Interval {get; set;}
-    public Sprite Sprite {get; set;}
-    public Attack(string attackName, float damage, string type, float speed, int numberOfAttacks, float Interval, Sprite sprite) {
-        this.MoveName = attackName;
+    public string Sprite {get; set;}
+    public Attack(string attackName, float damage, string type, float speed, int numberOfAttacks, float Interval, string sprite) {
+        this.AttackName = attackName;
         this.Damage = damage;
         this.Type = type;
         this.Speed = speed;

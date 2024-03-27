@@ -85,7 +85,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.Busy;
 
         var attack = playerUnit.player.attacks[currentAttack];
-        yield return dialogBox.TypeDialog($"{playerUnit.player.Name} used {attack.MoveName}");
+        yield return dialogBox.TypeDialog($"{playerUnit.player.Name} used {attack.AttackName}");
         yield return new WaitForSeconds(1f);
 
         bool isDead = alienUnit.alien.TakeDamage(attack);
@@ -104,7 +104,7 @@ public class BattleSystem : MonoBehaviour
         yield return dialogBox.TypeDialog($"{playerUnit.player.Name} used {act.MoveName}");
         yield return new WaitForSeconds(1f);
 
-        bool isPacified = alienUnit.alien.TakePacify(act);
+        var (isPacified, message) = alienUnit.alien.TakePacify(act);
         yield return alienHud.UpdateA();
         if (isPacified) {
             yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} no longer wants to fight");
@@ -116,23 +116,15 @@ public class BattleSystem : MonoBehaviour
     IEnumerator AlienAttackPart1() {
         state = BattleState.AlienMove;
 
-        var attack = alienUnit.alien.generateMove();
-        yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} used {attack.MoveName}");
+        var attack = alienUnit.alien.generateAttack();
+        yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} used {attack.AttackName}");
         yield return new WaitForSeconds(1f);
 
         defendSystem.MoveToRow(1);
         playerCollider.hits =0;
         //depends on alien attack
-        defendSystem.SetDifficulty(10, 30f, 0.3f, attack);
+        defendSystem.SetDifficulty(attack.NumberOfAttacks, attack.Speed, attack.Interval, attack);
         PlayerDefend();
-
-        // bool isDead = playerUnit.player.TakeDamage(attack);
-        // yield return playerHud.UpdateHP();
-        // if (isDead) {
-        //     yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
-        // } else {
-        //     PlayerAction();
-        // }
     }
 
     IEnumerator AlienAttackPart2() {
@@ -145,7 +137,7 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(dialogBox.TypeDialog($"You dodged {defendSystem.numberOfAttacks - playerCollider.hits}/{defendSystem.numberOfAttacks} hits"));
         yield return new WaitForSeconds(2f);
 
-        Move attack = defendSystem.attack;
+        Attack attack = defendSystem.attack;
 
         int numberOfAttacks = defendSystem.numberOfAttacks;
         float damage = attack.Damage/numberOfAttacks * playerCollider.hits;

@@ -12,7 +12,7 @@ public class Player
     public float attack;
     public float defense;
 
-    public List<Move> attacks;
+    public List<Attack> attacks;
     // Start is called before the first frame update
 
     public Player (string name, Sprite sprite) {
@@ -23,15 +23,11 @@ public class Player
         this.attack = 1;
         this.defense = 1;
         this.sprite = sprite;
-        attacks = new List<Move>();
+        attacks = new List<Attack>();
 
-        attacks.Add(new Move("Punch", attackDamage*attack, "Physical"));
-        attacks.Add(new Move("Kick", attackDamage*attack*2, "Physical"));
-        attacks.Add(new Move("Kiss", attackDamage*attack*10, "Emotional"));
-
-        // for (int i = 0; i < attacks.Length; i++) {
-        //     attacks[i] = new Move("Punch", attackDamage*attack, "Physical");
-        // }
+        attacks.Add(new Attack("Punch", attackDamage*attack, "Physical", 0f, 0, 0f,""));
+        attacks.Add(new Attack("Kick", attackDamage*attack*2, "Physical", 0f, 0, 0f,""));
+        attacks.Add(new Attack("Kiss", attackDamage*attack*10, "Emotional", 0f, 0, 0f,""));
     }
 
     public bool TakeDamage(float damage ) {

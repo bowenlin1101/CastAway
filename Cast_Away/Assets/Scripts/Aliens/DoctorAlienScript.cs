@@ -34,14 +34,14 @@ public class DoctorAlienScript : BaseAlienScript
         if (move.MoveName == this.order[this.stage]) {
             this.Aggression -= move.Damage;
             if (this.stage == 3) {
-                return (true, move.posResponse);
+                return (true, move.PosResponse);
             } else {
-                return (false, move.posResponse);
+                return (false, move.PosResponse);
             }
         } else {
             this.stage = 0;
-            return (false, move.negResponse);
             this.Aggression = baseAggression;
+            return (false, move.NegResponse);
         }
     }
 

@@ -74,7 +74,7 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
-    public void UpdateAttackSelection(int selectedAttack, Move move) {
+    public void UpdateAttackSelection(int selectedAttack, Attack attack) {
         for (int i = 0; i < attackTexts.Count; ++i) {
             if (i == selectedAttack) {
                 attackTexts[i].color = highlightedColor;
@@ -83,8 +83,8 @@ public class BattleDialogBox : MonoBehaviour
             }
         }
 
-        attackDescriptionText.text = $"Damage: {move.Damage}";
-        attackTypeText.text = $"Type: {move.Type}";
+        attackDescriptionText.text = $"Damage: {attack.Damage}";
+        attackTypeText.text = $"Type: {attack.Type}";
     }
 
     public void UpdateActSelection(int selectedAct, Move move) {
@@ -100,10 +100,10 @@ public class BattleDialogBox : MonoBehaviour
         actTypeText.text = $"Type: {move.Type}";
     }
 
-    public void SetAttackNames(List<Move> attacks) {
+    public void SetAttackNames(List<Attack> attacks) {
         for (int i=0; i < attackTexts.Count; i++){
             if (i < attacks.Count) {
-                attackTexts[i].text = attacks[i].MoveName;
+                attackTexts[i].text = attacks[i].AttackName;
             } else {
                 attackTexts[i].text = "-";
             }

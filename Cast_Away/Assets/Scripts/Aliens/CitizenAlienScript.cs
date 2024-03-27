@@ -14,7 +14,7 @@ public class CitizenAlienScript : BaseAlienScript
         this.baseAggression = 100;
         this.attackDamage = 40;
         this.sprite = Resources.Load<Sprite>("AlienSprites/Comic Battle Royale/2D Character - Alien/Variant A/Sprites/Character/walk/side/01");
-        this.attacks = new List<Move>();
+        this.attacks = new List<Attack>();
         this.acts = new List<Move>();
         attacks.Add(new Attack("Punch", 30, "Physical", 5f, 5, 2f, "Fist"));
         attacks.Add(new Attack("Throw Pennies", 50, "Physical", 10f, 10, 1f, "Penny"));
@@ -33,15 +33,15 @@ public class CitizenAlienScript : BaseAlienScript
         if (move.MoveName == this.order[this.stage]) {
             this.Aggression -= move.Damage;
             if (this.stage == 3) {
-                return (true, move.posResponse);
+                return (true, move.PosResponse);
             } else {
-                return (false, move.posResponse);
+                return (false, move.PosResponse);
             }
 
         } else {
             this.stage = 0;
-            return (false, move.negResponse);
             this.Aggression = baseAggression;
+            return (false, move.NegResponse);
         }
     }
     
