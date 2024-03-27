@@ -6,6 +6,7 @@ using UnityEngine;
 public class DetectHit : MonoBehaviour
 
 {
+    public int hits = 0;
     private void OnTriggerEnter2D(Collider2D collider) 
     {
         Debug.Log("hit something");
@@ -14,7 +15,8 @@ public class DetectHit : MonoBehaviour
         {
             // Handle player being hit by the projectile
             Debug.Log("Player hit by projectile!");
-            Destroy(collider.gameObject,0.1f);
+            Destroy(collider.gameObject,0f);
+            hits++;
             // Add any necessary logic here (e.g., reduce player health, play hit animation, etc.)
         }
     }

@@ -34,8 +34,8 @@ public class Player
         // }
     }
 
-    public bool TakeDamage(Move move ) {
-        Health -= move.Damage;
+    public bool TakeDamage(float damage ) {
+        Health -= damage;
         if (Health <= 0) {
             Health = 0;
             return true;

@@ -493,12 +493,16 @@ MonoBehaviour:
   avatar: {fileID: 1209154451}
   spawnInterval: 2
   projectilePrefab: {fileID: 1112848669047819421, guid: ee2c27a8bc00048f2870eb8ad3b48d4a, type: 3}
+  projectileMovement: {fileID: 8812062198773429350, guid: ee2c27a8bc00048f2870eb8ad3b48d4a, type: 3}
   rowPositions: []
   spawnPositions: []
   spawnTimer: 0
   currentRowIndex: 1
   switchCooldown: 0.1
   switchTimer: 0
+  numberOfAttacks: 0
+  numberThrown: 0
+  speed: 0
 --- !u!1 &112652032
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +772,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e5c33b1f53060313ba92ab7dc1f88b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hits: 0
 --- !u!50 &127876816
 Rigidbody2D:
   serializedVersion: 4
@@ -2491,6 +2496,7 @@ MonoBehaviour:
   alienUnit: {fileID: 1076136229}
   dialogBox: {fileID: 772741832}
   defendSystem: {fileID: 109052334}
+  playerCollider: {fileID: 127876815}
 --- !u!1 &1158288862
 GameObject:
   m_ObjectHideFlags: 0

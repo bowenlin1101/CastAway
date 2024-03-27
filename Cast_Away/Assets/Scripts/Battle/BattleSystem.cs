@@ -20,7 +20,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] AlienBattleUnit alienUnit;
     [SerializeField] BattleDialogBox dialogBox;
     [SerializeField] DefendSystem defendSystem;
-
+    [SerializeField] DetectHit playerCollider;
     BattleState state;
     int currentAction;
     int currentAttack;
@@ -93,7 +93,7 @@ public class BattleSystem : MonoBehaviour
         if (isDead) {
             yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} is no longer moving...");
         } else {
-            StartCoroutine(AlienAttack());
+            StartCoroutine(AlienAttackPart1());
         }
     }
 
@@ -109,19 +109,21 @@ public class BattleSystem : MonoBehaviour
         if (isPacified) {
             yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} no longer wants to fight");
         } else {
-            StartCoroutine(AlienAttack());
+            StartCoroutine(AlienAttackPart1());
         }
     }
 
-    IEnumerator AlienAttack() {
+    IEnumerator AlienAttackPart1() {
         state = BattleState.AlienMove;
 
         var attack = alienUnit.alien.generateMove();
         yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} used {attack.MoveName}");
         yield return new WaitForSeconds(1f);
 
-        defendSystem.Start();
         defendSystem.MoveToRow(1);
+        playerCollider.hits =0;
+        //depends on alien attack
+        defendSystem.SetDifficulty(10, 30f, 0.3f, attack);
         PlayerDefend();
 
         // bool isDead = playerUnit.player.TakeDamage(attack);
@@ -131,6 +133,30 @@ public class BattleSystem : MonoBehaviour
         // } else {
         //     PlayerAction();
         // }
+    }
+
+    IEnumerator AlienAttackPart2() {
+        yield return new WaitForSeconds(2.5f);
+
+        state = BattleState.AlienMove;
+        dialogBox.EnableDefendSystem(false);
+        dialogBox.EnableDialogText(true);
+
+        StartCoroutine(dialogBox.TypeDialog($"You dodged {defendSystem.numberOfAttacks - playerCollider.hits}/{defendSystem.numberOfAttacks} hits"));
+        yield return new WaitForSeconds(2f);
+
+        Move attack = defendSystem.attack;
+
+        int numberOfAttacks = defendSystem.numberOfAttacks;
+        float damage = attack.Damage/numberOfAttacks * playerCollider.hits;
+
+        bool isDead = playerUnit.player.TakeDamage(damage);
+        yield return playerHud.UpdateHP();
+        if (isDead) {
+            yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
+        } else {
+            PlayerAction();
+        }
     }
 
     void PlayerAct() {
@@ -240,7 +266,7 @@ public class BattleSystem : MonoBehaviour
         var switchCooldown = defendSystem.switchCooldown;
         var spawnInterval = defendSystem.spawnInterval;
         var spawnTimer = defendSystem.spawnTimer;
-
+        //Moving the avatar
         defendSystem.switchTimer += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.DownArrow) && currentRowIndex < rows.Length - 1 && switchTimer >= switchCooldown)
         {
@@ -251,11 +277,17 @@ public class BattleSystem : MonoBehaviour
             defendSystem.MoveToRow(currentRowIndex - 1);
         }
 
+        //Spawn projectiles
         defendSystem.spawnTimer += Time.deltaTime;
-        if (spawnTimer >= spawnInterval)
-        {
-            defendSystem.SpawnProjectile();
-            defendSystem.spawnTimer = 0;
+        if (defendSystem.numberThrown != defendSystem.numberOfAttacks){
+            if (spawnTimer >= spawnInterval && defendSystem.numberThrown < defendSystem.numberOfAttacks)
+            {
+                defendSystem.SpawnProjectile();
+                defendSystem.spawnTimer = 0;
+            }
+        } else {
+            defendSystem.numberThrown++;
+            StartCoroutine(AlienAttackPart2());
         }
     }
 }

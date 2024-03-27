@@ -13,6 +13,7 @@ public class DefendSystem : MonoBehaviour
 
     [SerializeField] public float spawnInterval = 2f;
     [SerializeField] public GameObject projectilePrefab;
+    [SerializeField] public ProjectileMovement projectileMovement;
 
     public Vector3[] rowPositions;
     public Vector3[] spawnPositions;
@@ -22,6 +23,10 @@ public class DefendSystem : MonoBehaviour
     public int currentRowIndex = 1; // Start from the middle row
     public float switchCooldown = 0.1f; // Time player must wait before switching rows again
     public float switchTimer; // Tracks time since last row switch
+    public int numberOfAttacks;
+    public int numberThrown;
+    public float speed;
+    public Move attack;
 
     public void Start() {
         rowPositions = new Vector3[3];
@@ -48,11 +53,19 @@ public class DefendSystem : MonoBehaviour
 
     public void SpawnProjectile()
     {
+        numberThrown++;
         // Choose a random row for spawning
         int rowIndex = UnityEngine.Random.Range(0, rows.Length);
         Vector3 spawnPosition = spawnPositions[rowIndex]; // Adjust Y value as needed
-        // spawnPosition.x = 350;
         GameObject newProjectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
         Destroy(newProjectile, 5f);
+    }
+
+    public void SetDifficulty(int numberOfAttacks, float speed, float frequency, Move attack) {
+        this.numberOfAttacks = numberOfAttacks;
+        projectileMovement.speed = speed;
+        this.attack = attack;
+        this.numberThrown = 0;
+        spawnInterval = frequency;
     }
 }
