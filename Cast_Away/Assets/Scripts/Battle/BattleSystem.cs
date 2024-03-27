@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum BattleState {
-    Start, PlayerAction, PlayerAttack, PlayerAct, AlienMove, Busy
+    Start, PlayerAction, PlayerAttack, PlayerAct, AlienMove, Busy, PlayerDefend
 }
 
 public class BattleSystem : MonoBehaviour
@@ -19,6 +19,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] AlienBattleHud alienHud;
     [SerializeField] AlienBattleUnit alienUnit;
     [SerializeField] BattleDialogBox dialogBox;
+    [SerializeField] DefendSystem defendSystem;
 
     BattleState state;
     int currentAction;
@@ -36,8 +37,11 @@ public class BattleSystem : MonoBehaviour
         //Setup Alien
         alienUnit.Setup();
         alienHud.SetData(alienUnit.alien);
+        dialogBox.EnableDialogText(true);
+        dialogBox.EnableActionSelector(true);
         dialogBox.EnableAttackSelector(false);
         dialogBox.EnableActSelector(false);
+        dialogBox.EnableDefendSystem(false);
 
         //Setup Moves
         dialogBox.SetAttackNames(playerUnit.player.attacks);
@@ -68,6 +72,13 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableDialogText(false);
         dialogBox.EnableAttackSelector(true);
         currentAttack = 0;
+    }
+
+    void PlayerDefend() {
+        state = BattleState.PlayerDefend;
+        dialogBox.EnableActionSelector(false);
+        dialogBox.EnableDialogText(false);
+        dialogBox.EnableDefendSystem(true);
     }
 
     IEnumerator PerformPlayerAttack() {
@@ -109,13 +120,17 @@ public class BattleSystem : MonoBehaviour
         yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} used {attack.MoveName}");
         yield return new WaitForSeconds(1f);
 
-        bool isDead = playerUnit.player.TakeDamage(attack);
-        yield return playerHud.UpdateHP();
-        if (isDead) {
-            yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
-        } else {
-            PlayerAction();
-        }
+        defendSystem.Start();
+        defendSystem.MoveToRow(1);
+        PlayerDefend();
+
+        // bool isDead = playerUnit.player.TakeDamage(attack);
+        // yield return playerHud.UpdateHP();
+        // if (isDead) {
+        //     yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
+        // } else {
+        //     PlayerAction();
+        // }
     }
 
     void PlayerAct() {
@@ -133,6 +148,8 @@ public class BattleSystem : MonoBehaviour
             HandleAttackSelection();
         } else if (state == BattleState.PlayerAct) {
             HandleActSelection();
+        } else if (state == BattleState.PlayerDefend) {
+            HandleDefend();
         }
     }
 
@@ -216,6 +233,31 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    void HandleDefend() {
+        var rows = defendSystem.rows;
+        var currentRowIndex = defendSystem.currentRowIndex;
+        var switchTimer = defendSystem.switchTimer;
+        var switchCooldown = defendSystem.switchCooldown;
+        var spawnInterval = defendSystem.spawnInterval;
+        var spawnTimer = defendSystem.spawnTimer;
+
+        defendSystem.switchTimer += Time.deltaTime;
+        if (Input.GetKeyDown(KeyCode.DownArrow) && currentRowIndex < rows.Length - 1 && switchTimer >= switchCooldown)
+        {
+            defendSystem.MoveToRow(currentRowIndex + 1);
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow) && currentRowIndex > 0 && switchTimer >= switchCooldown)
+        {
+            defendSystem.MoveToRow(currentRowIndex - 1);
+        }
+
+        defendSystem.spawnTimer += Time.deltaTime;
+        if (spawnTimer >= spawnInterval)
+        {
+            defendSystem.SpawnProjectile();
+            defendSystem.spawnTimer = 0;
+        }
+    }
 }
 
 

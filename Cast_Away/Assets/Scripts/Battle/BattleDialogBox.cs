@@ -25,6 +25,8 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] Text actDescriptionText;
     [SerializeField] Text actTypeText;
 
+    [SerializeField] GameObject defendSystem;
+
 
 
 
@@ -56,6 +58,10 @@ public class BattleDialogBox : MonoBehaviour
     public void EnableActSelector(bool enabled ){
         actSelector.SetActive(enabled);
         actDetails.SetActive(enabled);
+    }
+
+    public void EnableDefendSystem(bool enabled ){
+        defendSystem.SetActive(enabled);
     }
 
     public void UpdateActionSelection(int selectedAction) {
