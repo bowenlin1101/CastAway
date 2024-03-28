@@ -25,9 +25,9 @@ public class Player
         this.sprite = sprite;
         attacks = new List<Attack>();
 
-        attacks.Add(new Attack("Punch", attackDamage*attack, "Physical", 0f, 0, 0f,"", false));
-        attacks.Add(new Attack("Kick", attackDamage*attack*2, "Physical", 0f, 0, 0f,"", false));
-        attacks.Add(new Attack("Kiss", attackDamage*attack*10, "Emotional", 0f, 0, 0f,"", false));
+        attacks.Add(new Attack("Punch", attackDamage*attack, "Physical"));
+        attacks.Add(new Attack("Kick", attackDamage*attack*2, "Physical"));
+        attacks.Add(new Attack("Kiss", attackDamage*attack*10, "Emotional"));
     }
 
     public bool TakeDamage(float damage ) {

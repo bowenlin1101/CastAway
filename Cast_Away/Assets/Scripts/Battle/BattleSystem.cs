@@ -129,7 +129,7 @@ public class BattleSystem : MonoBehaviour
         defendSystem.MoveToRow(1);
         playerCollider.hits =0;
         //depends on alien attack
-        defendSystem.SetDifficulty(attack.NumberOfAttacks, attack.Speed, attack.Interval, attack);
+        defendSystem.SetDifficulty(attack.NumberOfAttacks, attack.Speed, attack.Interval.Item1, attack);
         PlayerDefend();
     }
 
@@ -140,7 +140,7 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableDefendSystem(false);
         dialogBox.EnableDialogText(true);
 
-        StartCoroutine(dialogBox.TypeDialog($"You dodged {defendSystem.numberOfAttacks - playerCollider.hits}/{defendSystem.numberOfAttacks} hits"));
+        StartCoroutine(dialogBox.TypeDialog($"You dodged {defendSystem.numberOfAttacks* (defendSystem.attackPattern + 1) - playerCollider.hits}/{defendSystem.numberOfAttacks* (defendSystem.attackPattern + 1)} hits"));
         yield return new WaitForSeconds(2f);
 
         Attack attack = defendSystem.attack;
@@ -280,10 +280,12 @@ public class BattleSystem : MonoBehaviour
         if (defendSystem.numberThrown != defendSystem.numberOfAttacks){
             if (spawnTimer >= spawnInterval && defendSystem.numberThrown < defendSystem.numberOfAttacks)
             {
-                if (defendSystem.doubleUp) {
+                if (defendSystem.attackPattern == 0) {
+                    defendSystem.SpawnSingleProjectile();
+                } else if (defendSystem.attackPattern == 1) {
                     defendSystem.SpawnDoubleProjectile();
                 } else {
-                    defendSystem.SpawnSingleProjectile();
+                    StartCoroutine(defendSystem.SpawnBurstProjectile());
                 }
                 defendSystem.spawnTimer = 0;
             }

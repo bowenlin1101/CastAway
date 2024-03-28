@@ -26,7 +26,7 @@ public class DefendSystem : MonoBehaviour
     public int numberOfAttacks;
     public int numberThrown;
     public float speed;
-    public bool doubleUp;
+    public int attackPattern;
     public Attack attack;
 
     public void Start() {
@@ -79,12 +79,39 @@ public class DefendSystem : MonoBehaviour
         Destroy(newProjectile2, 5f);
     }
 
-    public void SetDifficulty(int numberOfAttacks, float speed, float frequency, Attack attack) {
+    public IEnumerator SpawnBurstProjectile()
+    {
+        numberThrown++;
+        // Choose a random row for spawning
+        int rowIndex1 = UnityEngine.Random.Range(0, rows.Length);
+        int rowIndex2 = rowIndex1;
+        while (rowIndex2 == rowIndex1) {
+            rowIndex2 = UnityEngine.Random.Range(0, rows.Length);
+        }
+        int rowIndex3 = rowIndex2;
+        while (rowIndex3 == rowIndex2 || rowIndex3 == rowIndex1) {
+            rowIndex3 = UnityEngine.Random.Range(0, rows.Length);
+        }
+
+        Vector3 spawnPosition1 = spawnPositions[rowIndex1]; // Adjust Y value as needed
+        Vector3 spawnPosition2 = spawnPositions[rowIndex2]; // Adjust Y value as needed
+        Vector3 spawnPosition3 = spawnPositions[rowIndex3]; // Adjust Y value as needed
+        GameObject newProjectile1 = Instantiate(projectilePrefab, spawnPosition1, Quaternion.identity);
+        yield return new WaitForSeconds(0.1f);
+        GameObject newProjectile2 = Instantiate(projectilePrefab, spawnPosition2, Quaternion.identity);
+        yield return new WaitForSeconds(0.1f);
+        GameObject newProjectile3 = Instantiate(projectilePrefab, spawnPosition3, Quaternion.identity);
+        Destroy(newProjectile1, 5f);
+        Destroy(newProjectile2, 5f);
+        Destroy(newProjectile3, 5f);
+    }
+
+    public void SetDifficulty(int numberOfAttacks, float speed, float frequency, EnemyAttack attack) {
         this.numberOfAttacks = numberOfAttacks;
         projectileMovement.speed = speed;
         this.attack = attack;
         this.numberThrown = 0;
         spawnInterval = frequency;
-        this.doubleUp = attack.DoubleUp;
+        this.attackPattern = attack.AttackPattern;
     }
 }

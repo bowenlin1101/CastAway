@@ -11,7 +11,7 @@ public class BaseAlienScript
     public float baseAggression;
     public float Aggression;
     public List<Move> acts;
-    public List<Attack> attacks;
+    public List<EnemyAttack> attacks;
 
     public int stage;
 
@@ -37,7 +37,7 @@ public class BaseAlienScript
         return (false, move.PosResponse);
     }
 
-    public virtual Attack generateAttack() {
+    public virtual EnemyAttack generateAttack() {
         int n = Random.Range(0, attacks.Count);
         return attacks[n];
     }
