@@ -26,6 +26,7 @@ public class DefendSystem : MonoBehaviour
     public int numberOfAttacks;
     public int numberThrown;
     public float speed;
+    public bool doubleUp;
     public Attack attack;
 
     public void Start() {
@@ -51,7 +52,7 @@ public class DefendSystem : MonoBehaviour
         switchTimer = 0; // Reset cooldown timer
     }
 
-    public void SpawnProjectile()
+    public void SpawnSingleProjectile()
     {
         numberThrown++;
         // Choose a random row for spawning
@@ -61,11 +62,29 @@ public class DefendSystem : MonoBehaviour
         Destroy(newProjectile, 5f);
     }
 
+    public void SpawnDoubleProjectile()
+    {
+        numberThrown++;
+        // Choose a random row for spawning
+        int rowIndex1 = UnityEngine.Random.Range(0, rows.Length);
+        int rowIndex2 = rowIndex1;
+        while (rowIndex2 == rowIndex1) {
+            rowIndex2 = UnityEngine.Random.Range(0, rows.Length);
+        }
+        Vector3 spawnPosition1 = spawnPositions[rowIndex1]; // Adjust Y value as needed
+        Vector3 spawnPosition2 = spawnPositions[rowIndex2]; // Adjust Y value as needed
+        GameObject newProjectile1 = Instantiate(projectilePrefab, spawnPosition1, Quaternion.identity);
+        GameObject newProjectile2 = Instantiate(projectilePrefab, spawnPosition2, Quaternion.identity);
+        Destroy(newProjectile1, 5f);
+        Destroy(newProjectile2, 5f);
+    }
+
     public void SetDifficulty(int numberOfAttacks, float speed, float frequency, Attack attack) {
         this.numberOfAttacks = numberOfAttacks;
         projectileMovement.speed = speed;
         this.attack = attack;
         this.numberThrown = 0;
         spawnInterval = frequency;
+        this.doubleUp = attack.DoubleUp;
     }
 }

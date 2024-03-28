@@ -280,7 +280,11 @@ public class BattleSystem : MonoBehaviour
         if (defendSystem.numberThrown != defendSystem.numberOfAttacks){
             if (spawnTimer >= spawnInterval && defendSystem.numberThrown < defendSystem.numberOfAttacks)
             {
-                defendSystem.SpawnProjectile();
+                if (defendSystem.doubleUp) {
+                    defendSystem.SpawnDoubleProjectile();
+                } else {
+                    defendSystem.SpawnSingleProjectile();
+                }
                 defendSystem.spawnTimer = 0;
             }
         } else {

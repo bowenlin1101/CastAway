@@ -16,8 +16,8 @@ public class CitizenAlienScript : BaseAlienScript
         this.sprite = Resources.Load<Sprite>("AlienSprites/Comic Battle Royale/2D Character - Alien/Variant A/Sprites/Character/walk/side/01");
         this.attacks = new List<Attack>();
         this.acts = new List<Move>();
-        attacks.Add(new Attack("Punch", 30, "Physical", 5f, 5, 2f, "Fist"));
-        attacks.Add(new Attack("Throw Pennies", 50, "Physical", 10f, 10, 1f, "Penny"));
+        attacks.Add(new Attack("Punch", 30, "Physical", 5f, 5, 2f, "Fist", true));
+        attacks.Add(new Attack("Throw Pennies", 50, "Physical", 10f, 10, 1f, "Penny", false));
         acts.Add(new Move("Insult", 40, "Emotional", $"You tell {Species} he has no friends.", $"{Species}: Thanks I really needed some honesty. I've been trying to tell myself that for weeks :)", $"{Species}: Well YOU have no friends either"));
         acts.Add(new Move("Discuss Taxes", 50, "Emotional", $"You complain to {Species} about the increasing tax rates", $"{Species}: FINALLY, someone who understands where I'm coming from", $"{Species}: Yeah, well it's not like you pay taxes"));
         acts.Add(new Move("Compliment", 40, "Emotional", $"You tell {Species} you like his hat", "...", $"{Species}: I'm not wearing a hat... >:("));

@@ -12,7 +12,8 @@ public class Attack
     public int NumberOfAttacks {get; set;}
     public float Interval {get; set;}
     public string Sprite {get; set;}
-    public Attack(string attackName, float damage, string type, float speed, int numberOfAttacks, float Interval, string sprite) {
+    public bool DoubleUp {get; set;}
+    public Attack(string attackName, float damage, string type, float speed, int numberOfAttacks, float Interval, string sprite, bool doubleUp) {
         this.AttackName = attackName;
         this.Damage = damage;
         this.Type = type;
@@ -20,5 +21,6 @@ public class Attack
         this.NumberOfAttacks = numberOfAttacks;
         this.Interval = Interval;
         this.Sprite = sprite;
+        this.DoubleUp = doubleUp;
     }
 }

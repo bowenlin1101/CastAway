@@ -15,8 +15,8 @@ public class SuperiorAlienScript : BaseAlienScript
         this.sprite = Resources.Load<Sprite>("AlienSprites/Comic Battle Royale/2D Character - Alien/Variant C/Sprites/Character/walk/side/01");
         this.attacks = new List<Attack>();
         this.acts = new List<Move>();
-        attacks.Add(new Attack("Hammer Spin", 100, "Physical", 20f, 3, 1f, "Hammer"));
-        attacks.Add(new Attack("Acid Rain", 150, "Chemical", 35f, 20, 0.25f, "Green ball"));
+        attacks.Add(new Attack("Hammer Spin", 100, "Physical", 20f, 3, 1f, "Hammer", true));
+        attacks.Add(new Attack("Acid Rain", 150, "Chemical", 35f, 20, 0.25f, "Green ball", true));
         acts.Add(new Move("Plead", 10, "Emotional", "", "", ""));
         acts.Add(new Move("Appeal", 10, "Emotional", "", "", ""));
         acts.Add(new Move("Flex Muscles", 10, "Emotional", "", "", ""));
