@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,12 +14,6 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
-    void Start()
-    {
-        spriteRenderer.sprite = Resources.Load<Sprite>("C:\\Users\\hamza\\Final Project\\Cast_Away\\Assets\\Resources\\CharacterSprite\\Comic Battle Royale\\2D Character - Astronaut\\Variant A\\Sprites\\Character\\bomb_hold\\down");
-    }
-
-    // Update is called once per frame
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -43,5 +38,29 @@ public class PlayerMovement : MonoBehaviour
     public void SetPlayerSprite(Sprite newSprite)
     {
         spriteRenderer.sprite = newSprite;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "TeleportSpawn")
+        {
+            SceneManager.LoadScene("Spawn");
+        }
+        else if (collision.tag == "TeleportLevel1")
+        {
+            SceneManager.LoadScene("Level 1");
+        }
+        else if (collision.tag == "TeleportLevel2")
+        {
+            SceneManager.LoadScene("Level 2");
+        }
+        else if (collision.tag == "TeleportLevel3")
+        {
+            SceneManager.LoadScene("Level 3");
+        }
+        else if (collision.tag == "TeleportBattle")
+        {
+            SceneManager.LoadScene("BattleScene");
+        }
     }
 }
