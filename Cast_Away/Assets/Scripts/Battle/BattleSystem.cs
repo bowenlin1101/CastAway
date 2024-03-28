@@ -103,8 +103,13 @@ public class BattleSystem : MonoBehaviour
         var act = alienUnit.alien.acts[currentAct];
         yield return dialogBox.TypeDialog($"{playerUnit.player.Name} used {act.MoveName}");
         yield return new WaitForSeconds(1f);
+        yield return dialogBox.TypeDialog(act.Description);
+        yield return new WaitForSeconds(1f);
 
         var (isPacified, message) = alienUnit.alien.TakePacify(act);
+        yield return dialogBox.TypeDialog(message);
+        yield return new WaitForSeconds(1f);
+
         yield return alienHud.UpdateA();
         if (isPacified) {
             yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} no longer wants to fight");
@@ -120,6 +125,7 @@ public class BattleSystem : MonoBehaviour
         yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} used {attack.AttackName}");
         yield return new WaitForSeconds(1f);
 
+        defendSystem.Start();
         defendSystem.MoveToRow(1);
         playerCollider.hits =0;
         //depends on alien attack
