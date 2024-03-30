@@ -939,7 +939,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.22539479}
+  m_Offset: {x: 0.6517971, y: -0.027548552}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -949,7 +949,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.23, y: 2.5592108}
+  m_Size: {x: 3.9264054, y: 2.9549031}
   m_EdgeRadius: 0
 --- !u!212 &426414115
 SpriteRenderer:
@@ -1013,13 +1013,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426414113}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7065148, w: 0.7076983}
   m_LocalPosition: {x: -12.62, y: -11.6, z: 0}
   m_LocalScale: {x: 0.34007862, y: 0.62990946, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.904}
 --- !u!1 &446876918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1107,7 +1107,7 @@ Transform:
   m_GameObject: {fileID: 446876918}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.36, y: 0.48, z: -10}
+  m_LocalPosition: {x: -3.08, y: -9.06, z: -10}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2553,7 +2553,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.22539479}
+  m_Offset: {x: 0.6114786, y: -0.005823493}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2563,7 +2563,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.23, y: 2.5592108}
+  m_Size: {x: 4.0070434, y: 2.9983532}
   m_EdgeRadius: 0
 --- !u!212 &1310026341
 SpriteRenderer:
@@ -2627,13 +2627,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310026339}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7037922, w: 0.71040595}
   m_LocalPosition: {x: 6.64, y: -11.64, z: 0}
   m_LocalScale: {x: 0.34007862, y: 0.62990946, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -89.464}
 --- !u!1 &1318858515
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,7 +2686,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.22539479}
+  m_Offset: {x: 0.71292245, y: 0.005672455}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2696,7 +2696,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.23, y: 2.5592108}
+  m_Size: {x: 3.8041546, y: 3.0213451}
   m_EdgeRadius: 0
 --- !u!212 &1318858517
 SpriteRenderer:
@@ -2760,13 +2760,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318858515}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.70859486, w: 0.7056156}
   m_LocalPosition: {x: -3.1, y: -11.6, z: 0}
   m_LocalScale: {x: 0.34007862, y: 0.62990946, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90.241}
 --- !u!1001 &1347145348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3271,11 +3271,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7013830981777148961, guid: 4693d421c8685a04a81e41b5383971bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.36
+      value: -3.08
       objectReference: {fileID: 0}
     - target: {fileID: 7013830981777148961, guid: 4693d421c8685a04a81e41b5383971bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.48
+      value: -9.06
       objectReference: {fileID: 0}
     - target: {fileID: 7013830981777148961, guid: 4693d421c8685a04a81e41b5383971bb, type: 3}
       propertyPath: m_LocalPosition.z
