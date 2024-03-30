@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum BattleState {
@@ -92,8 +93,13 @@ public class BattleSystem : MonoBehaviour
         yield return alienHud.UpdateHP();
         if (isDead) {
             yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} is no longer moving...");
-        } else {
-            StartCoroutine(AlienAttackPart1());
+            Debug.Log(GameManager.Instance.movementLocked);
+            GameManager.Instance.movementLocked = false;
+            Debug.Log(GameManager.Instance.movementLocked);
+            SceneManager.LoadScene("Level 1");
+        }
+        else {
+            StartCoroutine(AlienAttack());
         }
     }
 
