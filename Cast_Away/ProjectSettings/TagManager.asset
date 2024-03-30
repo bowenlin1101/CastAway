@@ -4,15 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-<<<<<<< HEAD
   - Projectile
-=======
   - TeleportSpawn
   - TeleportLevel1
   - TeleportLevel2
   - TeleportLevel3
   - TeleportBattle
->>>>>>> 05a8aad043f82a6d0f04e240018ab221fe99c333
+
   layers:
   - Default
   - TransparentFX
