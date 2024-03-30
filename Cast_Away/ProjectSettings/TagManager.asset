@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - TeleportSpawn
+  - TeleportLevel1
+  - TeleportLevel2
+  - TeleportLevel3
+  - TeleportBattle
   layers:
   - Default
   - TransparentFX
