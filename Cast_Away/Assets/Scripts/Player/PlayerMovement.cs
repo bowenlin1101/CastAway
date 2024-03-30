@@ -8,12 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
-
-    public SpriteRenderer spriteRenderer; 
-    public Sprite playerSprite;
-
-    [SerializeField]
-    private GameObject player;
+    private Vector2 checkPoint;
+    public SpriteRenderer spriteRenderer;
 
     private Vector2 level1Entry = new Vector2(-8.35f,0.62f);
     private Vector2 level1Exit = new Vector2(11.57f, -5.95f);
@@ -24,25 +20,52 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
+    public static PlayerMovement instance;
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (!GameManager.Instance.movementLocked)
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
-        if (movement.x > 0) {
-            spriteRenderer.flipX = true;
-        } else if (movement.x < 0) {
-            spriteRenderer.flipX = false;
+            if (movement.x > 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (movement.x < 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+
+            animator.SetFloat("Horizontal", movement.x);
+            animator.SetFloat("Vertical", movement.y);
+            animator.SetFloat("Speed", movement.sqrMagnitude);
         }
-
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed", movement.sqrMagnitude);
+        else
+        {
+            movement = Vector2.zero;
+        }
     }
 
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement.normalized * moveSpeed * Time.fixedDeltaTime);
+        DontDestroyOnLoad(this);
     }
 
     public void SetPlayerSprite(Sprite newSprite)
@@ -50,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer.sprite = newSprite;
     }
 
-    private IEnumerator OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "TeleportSpawn")
         {
@@ -67,11 +90,6 @@ public class PlayerMovement : MonoBehaviour
                 transform.position = level3Entry;
             }
             SceneManager.LoadScene("Spawn");
-            while (true)
-            {
-                Debug.Log(transform.position);
-                yield return new WaitForSeconds(2f);
-            }
         }
         else if (collision.tag == "TeleportLevel1")
         {
@@ -90,7 +108,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.tag == "TeleportBattle")
         {
-            SceneManager.LoadScene("BattleScene");
+            if (!GameManager.Instance.firstAlienTouched)
+            {
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.firstAlienTouched = true;
+            }
+            GameManager.Instance.movementLocked = true;
         }
     }
 }
