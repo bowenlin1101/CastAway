@@ -10,7 +10,6 @@ TagManager:
   - TeleportLevel2
   - TeleportLevel3
   - TeleportBattle
-
   layers:
   - Default
   - TransparentFX
@@ -18,8 +17,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Player
-  - Background
+  - 
+  - 
   - 
   - 
   - 
@@ -46,11 +45,14 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 2636233127
+    uniqueID: 3235040095
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Projectile
+    uniqueID: 341450735
+    locked: 0
   - name: Player
-    uniqueID: 4129464867
+    uniqueID: 1300303789
     locked: 0

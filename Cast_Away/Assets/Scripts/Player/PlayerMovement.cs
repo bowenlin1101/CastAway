@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!GameManager.Instance.movementLocked)
         {
+            Debug.Log("Moving");
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
 
@@ -112,8 +113,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.firstAlienTouched = true;
+                GameManager.Instance.movementLocked = true;
             }
-            GameManager.Instance.movementLocked = true;
         }
     }
 }
