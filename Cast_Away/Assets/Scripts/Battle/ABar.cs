@@ -16,11 +16,21 @@ public class ABar : MonoBehaviour
     public IEnumerator SetASmooth(float newHp) {
         float curHp = aggression.transform.localScale.x;
         float changeAmt = curHp - newHp;
-        while (curHp-newHp > Mathf.Epsilon) {
-            curHp -= changeAmt * Time.deltaTime;
-            aggression.transform.localScale = new Vector3(curHp, 1f);
-            yield return null;
+        if (changeAmt < 0) {
+            while ((newHp)-curHp > Mathf.Epsilon) {
+                curHp += (-changeAmt) * Time.deltaTime;
+                aggression.transform.localScale = new Vector3(curHp, 1f);
+                yield return null;
+            }
+            aggression.transform.localScale = new Vector3(newHp, 1f);
+        } else {
+            while (curHp-newHp > Mathf.Epsilon) {
+                curHp -= changeAmt * Time.deltaTime;
+                aggression.transform.localScale = new Vector3(curHp, 1f);
+                yield return null;
+            }
+            aggression.transform.localScale = new Vector3(newHp, 1f);
         }
-        aggression.transform.localScale = new Vector3(newHp, 1f);
+        
     }
 }

@@ -11,12 +11,16 @@ public class BaseAlienScript
     public float baseAggression;
     public float Aggression;
     public List<Move> acts;
-    public List<Move> attacks;
+    public List<EnemyAttack> attacks;
+
+    public int stage;
+
+    public string[] order;
     public Sprite sprite;
     // Start is called before the first frame update
 
-    public bool TakeDamage(Move move ) {
-        Health -= move.Damage;
+    public bool TakeDamage(Attack attack ) {
+        Health -= attack.Damage;
         if (Health <= 0) {
             Health = 0;
             return true;
@@ -24,16 +28,16 @@ public class BaseAlienScript
         return false;
     }
 
-    public bool TakePacify(Move move ) {
+    public virtual (bool, string) TakePacify(Move move ) {
         Aggression -= move.Damage;
         if (Aggression <= 0) {
             Aggression = 0;
-            return true;
+            return (true, move.PosResponse);
         }
-        return false;
+        return (false, move.PosResponse);
     }
 
-    public virtual Move generateMove() {
+    public virtual EnemyAttack generateAttack() {
         int n = Random.Range(0, attacks.Count);
         return attacks[n];
     }
