@@ -99,7 +99,7 @@ public class BattleSystem : MonoBehaviour
             SceneManager.LoadScene("Level 1");
         }
         else {
-            StartCoroutine(AlienAttack());
+            StartCoroutine(AlienAttackPart1());
         }
     }
 
