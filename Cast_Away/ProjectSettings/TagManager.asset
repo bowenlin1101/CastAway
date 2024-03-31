@@ -10,6 +10,8 @@ TagManager:
   - TeleportLevel2
   - TeleportLevel3
   - TeleportBattle
+  - EmptyBox
+  - BoxText
   layers:
   - Default
   - TransparentFX

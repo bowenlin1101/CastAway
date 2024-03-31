@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8fa9ff3fb91803f4b85f0c92abd1eb38
+guid: 9e7e9d5fee90f2e429084cefec11404b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5030418086133383335
-    second: Level2Staircase_0
+      213: -3278095283257332159
+    second: ClosedBoxNoBG_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level2Staircase_0
+      name: ClosedBoxNoBG_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 523
-        height: 301
+        x: 11
+        y: 5
+        width: 319
+        height: 305
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 95fb158276d503ab0800000000000000
-      internalID: -5030418086133383335
+      spriteID: 14e209d35bdd182d0800000000000000
+      internalID: -3278095283257332159
       vertices: []
       indices: 
       edges: []
@@ -130,8 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Level2Staircase_0: -5030418086133383335
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
