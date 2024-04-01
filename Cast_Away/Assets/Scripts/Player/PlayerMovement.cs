@@ -116,5 +116,6 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.Instance.movementLocked = true;
             }
         }
+
     }
 }
