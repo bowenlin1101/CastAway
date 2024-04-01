@@ -1,16 +1,15 @@
 .DS_store
-<<<<<<< HEAD
-/Cast Away/[Ll]ibrary
-=======
-/Cast Away/[Ll]ibrary
-/Cast Away/[Tt]emp/
-/Cast Away/[Oo]bj/
-/Cast Away/[Bb]uild/
-/Cast Away/[Bb]uilds/
-/Cast Away/[Ll]ogs/
-/Cast Away/[Uu]ser[Ss]ettings/
-/Cast Away/Assets/CharacterSprite/
-/Cast Away/Assets/AlienSprites/
+
+/Cast_Away/[Ll]ibrary
+/Cast_Away/[Ll]ibrary
+/Cast_Away/[Tt]emp/
+/Cast_Away/[Oo]bj/
+/Cast_Away/[Bb]uild/
+/Cast_Away/[Bb]uilds/
+/Cast_Away/[Ll]ogs/
+/Cast_Away/[Uu]ser[Ss]ettings/
+/Cast_Away/Assets/CharacterSprite/
+/Cast_Away/Assets/AlienSprites/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -73,4 +72,3 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
->>>>>>> 7766dbfe9d44144eb9541dbf6860d9ac9160bc87
