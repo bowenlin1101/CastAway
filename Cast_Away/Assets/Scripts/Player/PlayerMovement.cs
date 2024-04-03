@@ -178,19 +178,10 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.Instance.gotKeyFromAliens();
                 GameManager.Instance.counter.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
             }
-            if (collision.gameObject.name == "SuperiorAlien" && !GameManager.Instance.Doctor3Touched)
-            {
-                GameManager.Instance.alienToFight = new DoctorAlienScript();
-                SceneManager.LoadScene("BattleScene");
-                GameManager.Instance.Doctor3Touched = true;
-                GameManager.Instance.movementLocked = true;
-                GameManager.Instance.aliensInteracted++;
-            }
-
             if (collision.gameObject.name == "SuperiorAlien" && !GameManager.Instance.SuperiorTouched) {
                 GameManager.Instance.alienToFight = new SuperiorAlienScript();
                 SceneManager.LoadScene("BattleScene");
-                GameManager.Instance.Doctor1Touched = true;
+                GameManager.Instance.SuperiorTouched = true;
                 GameManager.Instance.movementLocked = true; 
             }
         }
