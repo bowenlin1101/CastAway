@@ -13,6 +13,7 @@ TagManager:
   - EmptyBox
   - BoxText
   - KeyBox
+  - RedSuit
   layers:
   - Default
   - TransparentFX
