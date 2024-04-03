@@ -9,6 +9,7 @@ public class AlienBattleUnit : MonoBehaviour
 
     public void Setup() {
         alien = GameManager.Instance.alienToFight;
+        // alien = new DoctorAlienScript();
         GetComponent<Image>().sprite = alien.sprite;
     }
 }
