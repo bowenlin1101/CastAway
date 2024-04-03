@@ -8,10 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
-    private Vector2 checkPoint;
     public SpriteRenderer spriteRenderer;
 
-    private Vector2 level1Entry = new Vector2(-8.35f,0.62f);
+    private Vector2 level1Entry = new Vector2(-8.35f, 0.62f);
     private Vector2 level1Exit = new Vector2(11.57f, -5.95f);
     private Vector2 level2Entry = new Vector2(0.04f, 9.09f);
     private Vector2 level2Exit = new Vector2(-27.71f, -25.54f);
@@ -116,6 +115,5 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.Instance.movementLocked = true;
             }
         }
-
     }
 }
