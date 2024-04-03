@@ -17,8 +17,6 @@ public class EmptyBoxScript : MonoBehaviour
             BoxText.text = "That box was empty!";
             StartCoroutine(ClearTextAfterDelay(1));
         }
-        
-
     }
     private IEnumerator ClearTextAfterDelay(float delay)
     {
