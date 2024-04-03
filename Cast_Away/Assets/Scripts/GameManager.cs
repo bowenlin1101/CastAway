@@ -1,7 +1,9 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class GameManager : MonoBehaviour
     public bool Citizen3Touched = false;
     public bool movementLocked = false;
     public int keyStatus = 0;
+
 
     public int aliensInteracted = 0;
 
