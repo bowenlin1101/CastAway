@@ -8,9 +8,7 @@ public class AlienBattleUnit : MonoBehaviour
     public BaseAlienScript alien {get; set;}
 
     public void Setup() {
-        alien = new CitizenAlienScript();
-        // alien = new DoctorAlienScript();
-        // alien = new SuperiorAlienScript();
+        alien = GameManager.Instance.alienToFight;
         GetComponent<Image>().sprite = alien.sprite;
     }
 }
