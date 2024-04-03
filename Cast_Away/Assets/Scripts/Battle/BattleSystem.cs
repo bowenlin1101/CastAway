@@ -135,7 +135,7 @@ public class BattleSystem : MonoBehaviour
         defendSystem.MoveToRow(1);
         playerCollider.hits =0;
         //depends on alien attack
-        defendSystem.SetDifficulty(attack.NumberOfAttacks, attack.Speed, attack.Interval.Item1, attack);
+        defendSystem.SetDifficulty(attack.NumberOfAttacks, attack.Speed, attack.Interval, attack);
         PlayerDefend();
     }
 
@@ -268,8 +268,11 @@ public class BattleSystem : MonoBehaviour
         var currentRowIndex = defendSystem.currentRowIndex;
         var switchTimer = defendSystem.switchTimer;
         var switchCooldown = defendSystem.switchCooldown;
-        var spawnInterval = defendSystem.spawnInterval;
-        var spawnTimer = defendSystem.spawnTimer;
+        var macroSpawnInterval = defendSystem.macroSpawnInterval;
+        var microSpawnInterval = defendSystem.microSpawnInterval;
+        var numberPerMicroInterval = defendSystem.numberPerMicroInterval;
+        var macroSpawnTimer = defendSystem.macroSpawnTimer;
+        var microSpawnTimer = defendSystem.microSpawnTimer;
         //Moving the avatar
         defendSystem.switchTimer += Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.DownArrow) && currentRowIndex < rows.Length - 1 && switchTimer >= switchCooldown)
@@ -282,18 +285,30 @@ public class BattleSystem : MonoBehaviour
         }
 
         //Spawn projectiles
-        defendSystem.spawnTimer += Time.deltaTime;
+        defendSystem.macroSpawnTimer += Time.deltaTime;
         if (defendSystem.numberThrown != defendSystem.numberOfAttacks){
-            if (spawnTimer >= spawnInterval && defendSystem.numberThrown < defendSystem.numberOfAttacks)
+            if (macroSpawnTimer >= macroSpawnInterval && defendSystem.numberThrown < defendSystem.numberOfAttacks)
             {
-                if (defendSystem.attackPattern == 0) {
-                    defendSystem.SpawnSingleProjectile();
-                } else if (defendSystem.attackPattern == 1) {
-                    defendSystem.SpawnDoubleProjectile();
-                } else {
-                    StartCoroutine(defendSystem.SpawnBurstProjectile());
+                defendSystem.microSpawnTimer += Time.deltaTime;
+                if (microSpawnTimer >= microSpawnInterval && defendSystem.numberMicroThrown < defendSystem.numberPerMicroInterval) {
+                    
+                    if (defendSystem.attackPattern == 0) {
+                        defendSystem.SpawnSingleProjectile();
+                    } else if (defendSystem.attackPattern == 1) {
+                        defendSystem.SpawnDoubleProjectile();
+                    } else {
+                        StartCoroutine(defendSystem.SpawnBurstProjectile());
+                    }
+                    defendSystem.microSpawnTimer = 0;
+                    defendSystem.numberMicroThrown++;
+                    // defendSystem.numberThrown++;
+
+                } else if (defendSystem.numberMicroThrown == defendSystem.numberPerMicroInterval) {
+                    Debug.Log("new interval");
+                    defendSystem.macroSpawnTimer = 0;
+                    defendSystem.numberMicroThrown = 0;
+                    defendSystem.microSpawnTimer = 0;
                 }
-                defendSystem.spawnTimer = 0;
             }
         } else {
             defendSystem.numberThrown++;

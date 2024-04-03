@@ -116,5 +116,18 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.Instance.movementLocked = true;
             }
         }
+
+        if (collision.gameObject.name == "1stChat") {
+            Debug.Log("start");
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "You're the the hospital obviously"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "But what happened? Why am I here?"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "Keep playing to find out ;)"));
+        } else if (collision.gameObject.name == "2ndChat") {
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "What the heck do you mean??? You're in my home you idiot. Stop playing dumb. I'll end you home boy"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "lmao my bad dude."));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "fuck you"));
+        }
     }
 }
