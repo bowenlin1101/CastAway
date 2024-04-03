@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum BattleState {
-    Start, PlayerAction, PlayerAttack, PlayerAct, AlienMove, Busy, PlayerDefend
+    Start, PlayerAction, PlayerAttack, PlayerAct, AlienMove, Busy, PlayerDefend, PlayerSpare, PlayerItem
 }
 
 public class BattleSystem : MonoBehaviour
@@ -32,6 +32,7 @@ public class BattleSystem : MonoBehaviour
     BattleState state;
     int currentAction;
     int currentAttack;
+    int currentItem;
     int currentAct;
 
     private void Start() {
@@ -50,12 +51,16 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableAttackSelector(false);
         dialogBox.EnableActSelector(false);
         dialogBox.EnableDefendSystem(false);
+        dialogBox.EnableItemSelector(false);
 
         //Setup Moves
         dialogBox.SetAttackNames(playerUnit.player.attacks);
 
         //Setup Acts
         dialogBox.SetActNames(alienUnit.alien.acts);
+
+        //Setup items
+        dialogBox.SetItemNames(playerUnit.player.items);
 
         //Run dialog Text
         yield return dialogBox.TypeDialog($"You were stopped by {alienUnit.alien.Species}!");
@@ -72,6 +77,7 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableDialogText(true);
         dialogBox.EnableAttackSelector(false);
         dialogBox.EnableActSelector(false);
+        dialogBox.EnableItemSelector(false);
     }
 
     void PlayerAttack() {
@@ -82,6 +88,14 @@ public class BattleSystem : MonoBehaviour
         currentAttack = 0;
     }
 
+      void PlayerSpare() {
+        state = BattleState.PlayerSpare;
+        dialogBox.EnableActionSelector(false);
+        dialogBox.EnableDialogText(true);
+        dialogBox.EnableAttackSelector(false);
+        currentAttack = 0;
+    }
+
     void PlayerDefend() {
         state = BattleState.PlayerDefend;
         dialogBox.EnableActionSelector(false);
@@ -89,14 +103,47 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableDefendSystem(true);
     }
 
+    void PlayerItem() {
+        state = BattleState.PlayerItem;
+        dialogBox.EnableActionSelector(false);
+        dialogBox.EnableDialogText(false);
+        dialogBox.EnableItemSelector(true);
+    }
+
+    IEnumerator PerformPlayerSpare() {
+        state = BattleState.Busy;
+
+        yield return dialogBox.TypeDialog($"{playerUnit.player.Name} tries to Spare {alienUnit.alien.Species}");
+        yield return new WaitForSeconds(1f);
+
+        bool isPacified = alienUnit.alien.Aggression == 0;
+
+        if (isPacified) {
+            yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} has been Spared!");
+            
+            HandleAlienDefeat();
+        }
+        else {
+            yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} is currently too Aggressive to be Spared!");
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(AlienAttackPart1());
+        }
+    }
+
     IEnumerator PerformPlayerAttack() {
         state = BattleState.Busy;
 
         var attack = playerUnit.player.attacks[currentAttack];
+
         yield return dialogBox.TypeDialog($"{playerUnit.player.Name} used {attack.AttackName}");
         yield return new WaitForSeconds(1f);
+        bool isDead;
+        if (alienUnit.alien.Aggression == 0) {
+            isDead = alienUnit.alien.TakeDamage(new Attack("Insta-Kill", 1000,"Detrimental"));
+        } else {
+            isDead = alienUnit.alien.TakeDamage(attack);
+        }
 
-        bool isDead = alienUnit.alien.TakeDamage(attack);
         yield return alienHud.UpdateHP();
         if (isDead) {
             yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} is no longer moving...");
@@ -123,9 +170,34 @@ public class BattleSystem : MonoBehaviour
 
         yield return alienHud.UpdateA();
         if (isPacified) {
-            yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} no longer wants to fight");
+            yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} no longer wants to fight and is ready to be spared");
+            yield return new WaitForSeconds(1f);
+
             //TODO
-            HandleAlienDefeat();
+            PlayerAction();
+        } else {
+            StartCoroutine(AlienAttackPart1());
+        }
+    }
+
+    IEnumerator PerformPlayerItem() {
+        state = BattleState.Busy;
+
+        var item = playerUnit.player.items[currentAct];
+        yield return dialogBox.TypeDialog($"{playerUnit.player.Name} used {item.name}");
+        yield return new WaitForSeconds(1f);
+        yield return dialogBox.TypeDialog($"{playerUnit.player.Name} healed {((HealthPotion) item).hpHealed}");
+
+        playerUnit.player.TakeDamage(-((HealthPotion) item).hpHealed);
+        yield return new WaitForSeconds(1f);
+
+        yield return playerHud.UpdateHP();
+        if (alienUnit.alien.Aggression == 0) {
+            yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} no longer wants to fight and is ready to be spared");
+            yield return new WaitForSeconds(1f);
+
+            //TODO
+            PlayerAction();
         } else {
             StartCoroutine(AlienAttackPart1());
         }
@@ -211,16 +283,26 @@ public class BattleSystem : MonoBehaviour
             HandleActSelection();
         } else if (state == BattleState.PlayerDefend) {
             HandleDefend();
+        } else if (state == BattleState.PlayerSpare) {
+            StartCoroutine(PerformPlayerSpare());
+        } else if (state == BattleState.PlayerItem) {
+            HandleItemSelection();
         }
     }
 
        void HandleActionSelection() {
-        if (Input.GetKeyDown(KeyCode.DownArrow)) {
-            if (currentAction < 1)
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            if (currentAction < 4 - 1)
                 ++currentAction;
-        } else if (Input.GetKeyDown(KeyCode.UpArrow)){
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow)){
             if (currentAction > 0)
                 --currentAction;
+        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            if (currentAction < 4 - 2)
+                currentAction += 2;
+        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            if (currentAction > 1)
+                currentAction -= 2;
         }
 
         dialogBox.UpdateActionSelection(currentAction);
@@ -232,6 +314,12 @@ public class BattleSystem : MonoBehaviour
             } else if (currentAction == 1) {
                 //Act
                 PlayerAct();
+            } else if (currentAction == 2) {
+                //Item
+                PlayerItem();
+            } else if (currentAction == 3){
+                //Spare
+                PlayerSpare();
             }
         }
     }
@@ -291,6 +379,34 @@ public class BattleSystem : MonoBehaviour
             dialogBox.EnableAttackSelector(false);
             dialogBox.EnableDialogText(true);
             StartCoroutine(PerformPlayerAttack());
+        }
+    }
+
+    void HandleItemSelection() {
+        if (Input.GetKeyDown(KeyCode.RightArrow)) {
+            if (currentItem < playerUnit.player.items.Count - 1)
+                ++currentItem;
+        } else if (Input.GetKeyDown(KeyCode.LeftArrow)){
+            if (currentItem > 0)
+                --currentItem;
+        } else if (Input.GetKeyDown(KeyCode.DownArrow)) {
+            if (currentItem < playerUnit.player.items.Count -2)
+                currentItem += 2;
+        } else if (Input.GetKeyDown(KeyCode.UpArrow)) {
+            if (currentItem > 1)
+                currentItem -= 2;
+        }
+
+        if (Input.GetKeyDown(RejectKey)) {
+            PlayerAction();
+        }
+
+        dialogBox.UpdateItemSelection(currentItem, playerUnit.player.items[currentItem]);
+    
+        if (Input.GetKeyDown(ConfirmKey)) {
+            dialogBox.EnableItemSelector(false);
+            dialogBox.EnableDialogText(true);
+            StartCoroutine(PerformPlayerItem());
         }
     }
 
