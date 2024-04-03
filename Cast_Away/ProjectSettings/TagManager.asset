@@ -12,6 +12,7 @@ TagManager:
   - TeleportBattle
   - EmptyBox
   - BoxText
+  - KeyBox
   layers:
   - Default
   - TransparentFX

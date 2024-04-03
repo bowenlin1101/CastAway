@@ -6,8 +6,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public bool firstAlienTouched = false;
+    public bool Citizen1Touched = false;
+    public bool Doctor1Touched = false;
+    public bool Citizen2Touched = false;
+    public bool Citizen3Touched = false;
     public bool movementLocked = false;
+    public int keyStatus = 0;
+
+    public int aliensInteracted = 0;
+
+    public BaseAlienScript alienToFight;
 
     public static GameManager Instance;
 
@@ -22,5 +30,16 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+
+    void Update()
+    {
+        
+    }
+
+    public void gotKey()
+    {
+        keyStatus++;
     }
 }

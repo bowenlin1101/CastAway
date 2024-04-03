@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     public static PlayerMovement instance;
 
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -96,23 +97,29 @@ public class PlayerMovement : MonoBehaviour
             transform.position = level1Exit;
             SceneManager.LoadScene("Level 1");
         }
-        else if (collision.tag == "TeleportLevel2")
+        else if (collision.tag == "TeleportLevel2" && GameManager.Instance.keyStatus == 1)
         {
             transform.position = level2Exit;
             SceneManager.LoadScene("Level 2");
         }
-        else if (collision.tag == "TeleportLevel3")
+        else if (collision.tag == "TeleportLevel3" && GameManager.Instance.keyStatus == 2)
         {
             transform.position = level3Exit;
             SceneManager.LoadScene("Level 3");
         }
         else if (collision.tag == "TeleportBattle")
         {
-            if (!GameManager.Instance.firstAlienTouched)
-            {
+
+            if (collision.gameObject.name == "CitizenAlien1" && !GameManager.Instance.Citizen1Touched) {
+                GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
-                GameManager.Instance.firstAlienTouched = true;
+                GameManager.Instance.Citizen1Touched = true;
                 GameManager.Instance.movementLocked = true;
+            } else if (collision.gameObject.name == "DoctorAlien1" && !GameManager.Instance.Doctor1Touched) {
+                GameManager.Instance.alienToFight = new DoctorAlienScript();
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.Doctor1Touched = true;
+                GameManager.Instance.movementLocked = true; 
             }
         }
 

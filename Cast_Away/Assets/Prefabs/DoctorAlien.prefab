@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2755145942336227766}
   - component: {fileID: 7153439010655180078}
-  - component: {fileID: 4164573650578018672}
+  - component: {fileID: -669434520286233385}
   m_Layer: 0
   m_Name: DoctorAlien
-  m_TagString: Untagged
+  m_TagString: TeleportBattle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1300303789
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: bf64720ebd52422a9f091851bde85a2b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -87,7 +87,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
 --- !u!61 &4164573650578018672
+=======
+--- !u!61 &-669434520286233385
+>>>>>>> 0a809b152425a54aa94fbf1c3c4fc633fa9edbde
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
