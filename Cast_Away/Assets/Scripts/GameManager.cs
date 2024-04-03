@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public int aliensInteracted = 0;
 
     public BaseAlienScript alienToFight;
+    public string currentScene;
 
     public static GameManager Instance;
 

@@ -107,9 +107,10 @@ public class PlayerMovement : MonoBehaviour
             transform.position = level3Exit;
             SceneManager.LoadScene("Level 3");
         }
-        else if (collision.tag == "TeleportBattle")
+        else if (collision.CompareTag("TeleportBattle"))
         {
-
+            GameManager.Instance.currentScene = SceneManager.GetActiveScene().name;
+            Debug.Log(GameManager.Instance.currentScene);
             if (collision.gameObject.name == "CitizenAlien1" && !GameManager.Instance.Citizen1Touched) {
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");

@@ -93,10 +93,8 @@ public class BattleSystem : MonoBehaviour
         yield return alienHud.UpdateHP();
         if (isDead) {
             yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} is no longer moving...");
-            Debug.Log(GameManager.Instance.movementLocked);
-            GameManager.Instance.movementLocked = false;
-            Debug.Log(GameManager.Instance.movementLocked);
-            SceneManager.LoadScene("Level 1");
+            //
+            HandleAlienDefeat();
         }
         else {
             StartCoroutine(AlienAttackPart1());
@@ -119,6 +117,8 @@ public class BattleSystem : MonoBehaviour
         yield return alienHud.UpdateA();
         if (isPacified) {
             yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} no longer wants to fight");
+            //TODO
+            HandleAlienDefeat();
         } else {
             StartCoroutine(AlienAttackPart1());
         }
@@ -158,6 +158,9 @@ public class BattleSystem : MonoBehaviour
         yield return playerHud.UpdateHP();
         if (isDead) {
             yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
+
+            //TODO game over
+
         } else {
             PlayerAction();
         }
@@ -301,7 +304,6 @@ public class BattleSystem : MonoBehaviour
                     }
                     defendSystem.microSpawnTimer = 0;
                     defendSystem.numberMicroThrown++;
-                    // defendSystem.numberThrown++;
 
                 } else if (defendSystem.numberMicroThrown == defendSystem.numberPerMicroInterval) {
                     Debug.Log("new interval");
@@ -314,6 +316,11 @@ public class BattleSystem : MonoBehaviour
             defendSystem.numberThrown++;
             StartCoroutine(AlienAttackPart2());
         }
+    }
+
+    public void HandleAlienDefeat() {
+        GameManager.Instance.movementLocked = false;
+        SceneManager.LoadScene(GameManager.Instance.currentScene);
     }
 }
 
