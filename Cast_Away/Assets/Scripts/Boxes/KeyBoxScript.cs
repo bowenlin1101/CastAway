@@ -17,7 +17,11 @@ public class KeyBoxScript : MonoBehaviour
             BoxText.text = "You have found the key! Go back to spawn and proceed to level 2.";
 
         }
+
+        GameManager.Instance.gotKey();
+        Debug.Log(GameManager.Instance.keyStatus);
         Destroy(gameObject);
 
     }
+
 }

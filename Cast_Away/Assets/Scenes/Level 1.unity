@@ -3646,6 +3646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KeyBox
       objectReference: {fileID: 0}
+    - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_TagString
+      value: KeyBox
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -2874352038673354358, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
     m_RemovedGameObjects: []

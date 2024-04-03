@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public bool firstAlienTouched = false;
     public bool movementLocked = false;
+    public int keyStatus = 0;
 
     public static GameManager Instance;
 
@@ -23,8 +24,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
     void Update()
     {
         
+    }
+
+    public void gotKey()
+    {
+        keyStatus++;
     }
 }
