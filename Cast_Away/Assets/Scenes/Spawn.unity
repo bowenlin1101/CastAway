@@ -517,8 +517,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd24f95f2298564a9bf29872b902b01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstAlienTouched: 0
+  Citizen1Touched: 0
+  Citizen2Touched: 0
+  Citizen3Touched: 0
+  Citizen4Touched: 0
+  Doctor1Touched: 0
+  Doctor2Touched: 0
+  Doctor3Touched: 0
   movementLocked: 0
+  keyStatus: 0
+  counter: {fileID: 0}
+  aliensInteracted: 0
+  currentScene: 
 --- !u!4 &196056425
 Transform:
   m_ObjectHideFlags: 0
@@ -832,7 +842,7 @@ SpriteRenderer:
   m_Size: {x: 5.23, y: 3.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &342685403
@@ -948,7 +958,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.010498166, y: -2.323062}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -958,7 +968,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.0813406, y: 6.702635}
   m_EdgeRadius: 0
 --- !u!50 &450336566
 Rigidbody2D:
@@ -1432,7 +1442,7 @@ SpriteRenderer:
   m_Size: {x: 5.23, y: 3.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &690363963
@@ -1705,7 +1715,7 @@ SpriteRenderer:
   m_Size: {x: 5.23, y: 3.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &753178756

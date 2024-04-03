@@ -40,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!GameManager.Instance.movementLocked)
         {
-            Debug.Log("Moving");
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
 
@@ -101,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = level2Exit;
             SceneManager.LoadScene("Level 2");
+            Debug.Log(GameManager.Instance.aliensInteracted);
         }
         else if (collision.tag == "TeleportLevel3" && GameManager.Instance.keyStatus == 2)
         {
@@ -110,22 +110,85 @@ public class PlayerMovement : MonoBehaviour
         else if (collision.CompareTag("TeleportBattle"))
         {
             GameManager.Instance.currentScene = SceneManager.GetActiveScene().name;
-            Debug.Log(GameManager.Instance.currentScene);
+
             if (collision.gameObject.name == "CitizenAlien1" && !GameManager.Instance.Citizen1Touched) {
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen1Touched = true;
                 GameManager.Instance.movementLocked = true;
-            } else if (collision.gameObject.name == "DoctorAlien1" && !GameManager.Instance.Doctor1Touched) {
+                GameManager.Instance.aliensInteracted++;
+                GameManager.Instance.gotKeyFromAliens();
+            }
+            if (collision.gameObject.name == "CitizenAlien2" && !GameManager.Instance.Citizen2Touched)
+            {
+                GameManager.Instance.alienToFight = new CitizenAlienScript();
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.Citizen2Touched = true;
+                GameManager.Instance.movementLocked = true;
+                GameManager.Instance.aliensInteracted++;
+                GameManager.Instance.gotKeyFromAliens();
+            }
+            if (collision.gameObject.name == "CitizenAlien3" && !GameManager.Instance.Citizen3Touched)
+            {
+                GameManager.Instance.alienToFight = new CitizenAlienScript();
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.Citizen3Touched = true;
+                GameManager.Instance.movementLocked = true;
+                GameManager.Instance.aliensInteracted++;
+                GameManager.Instance.gotKeyFromAliens();
+                GameManager.Instance.counter.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
+            }
+            if (collision.gameObject.name == "CitizenAlien4" && !GameManager.Instance.Citizen4Touched)
+            {
+                GameManager.Instance.alienToFight = new CitizenAlienScript();
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.Citizen4Touched = true;
+                GameManager.Instance.movementLocked = true;
+                GameManager.Instance.aliensInteracted++;
+                GameManager.Instance.gotKeyFromAliens();
+                GameManager.Instance.counter.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
+            }
+
+            if (collision.gameObject.name == "DoctorAlien1" && !GameManager.Instance.Doctor1Touched) {
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Doctor1Touched = true;
-                GameManager.Instance.movementLocked = true; 
+                GameManager.Instance.movementLocked = true;
+                GameManager.Instance.aliensInteracted++;
+                GameManager.Instance.gotKeyFromAliens();
+                GameManager.Instance.counter.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
+            }
+            if (collision.gameObject.name == "DoctorAlien2" && !GameManager.Instance.Doctor2Touched)
+            {
+                GameManager.Instance.alienToFight = new DoctorAlienScript();
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.Doctor2Touched = true;
+                GameManager.Instance.movementLocked = true;
+                GameManager.Instance.aliensInteracted++;
+                GameManager.Instance.gotKeyFromAliens();
+                GameManager.Instance.counter.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
+            }
+            if (collision.gameObject.name == "DoctorAlien3" && !GameManager.Instance.Doctor3Touched)
+            {
+                GameManager.Instance.alienToFight = new DoctorAlienScript();
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.Doctor3Touched = true;
+                GameManager.Instance.movementLocked = true;
+                GameManager.Instance.aliensInteracted++;
+                GameManager.Instance.gotKeyFromAliens();
+                GameManager.Instance.counter.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
+            }
+            if (collision.gameObject.name == "SuperiorAlien" && !GameManager.Instance.Doctor3Touched)
+            {
+                GameManager.Instance.alienToFight = new DoctorAlienScript();
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.Doctor3Touched = true;
+                GameManager.Instance.movementLocked = true;
+                GameManager.Instance.aliensInteracted++;
             }
         }
 
         if (collision.gameObject.name == "1stChat") {
-            Debug.Log("start");
             ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
             ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "You're the the hospital obviously"));
             ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "But what happened? Why am I here?"));
