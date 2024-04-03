@@ -116,8 +116,16 @@ public class PlayerMovement : MonoBehaviour
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen1Touched = true;
                 GameManager.Instance.movementLocked = true;
-            } else if (collision.gameObject.name == "DoctorAlien1" && !GameManager.Instance.Doctor1Touched) {
+            } 
+            if (collision.gameObject.name == "DoctorAlien1" && !GameManager.Instance.Doctor1Touched) {
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.Doctor1Touched = true;
+                GameManager.Instance.movementLocked = true; 
+            }
+
+            if (collision.gameObject.name == "SuperiorAlien" && !GameManager.Instance.SuperiorTouched) {
+                GameManager.Instance.alienToFight = new SuperiorAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Doctor1Touched = true;
                 GameManager.Instance.movementLocked = true; 

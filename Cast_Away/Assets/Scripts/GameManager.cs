@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public bool Doctor1Touched = false;
     public bool Citizen2Touched = false;
     public bool Citizen3Touched = false;
+    public bool SuperiorTouched = false;
     public bool movementLocked = false;
     public int keyStatus = 0;
 
@@ -17,6 +18,9 @@ public class GameManager : MonoBehaviour
 
     public BaseAlienScript alienToFight;
     public string currentScene;
+
+    public GameObject projectile;
+    public float projectileSpeed;
 
     public static GameManager Instance;
 

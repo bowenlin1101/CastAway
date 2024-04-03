@@ -22,6 +22,13 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleDialogBox dialogBox;
     [SerializeField] DefendSystem defendSystem;
     [SerializeField] DetectHit playerCollider;
+    [SerializeField] GameObject fist;
+    [SerializeField] GameObject acid;
+    [SerializeField] GameObject wall;
+    [SerializeField] GameObject penny;
+    [SerializeField] GameObject needle;
+    [SerializeField] GameObject badnews;
+    [SerializeField] GameObject sword;
     BattleState state;
     int currentAction;
     int currentAttack;
@@ -128,6 +135,27 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.AlienMove;
 
         var attack = alienUnit.alien.generateAttack();
+        switch(attack.Sprite) {
+            case "Fist":
+                GameManager.Instance.projectile = fist;
+                break;
+            case "Acid":
+                GameManager.Instance.projectile = acid;
+                break;
+            case "Wall":
+                GameManager.Instance.projectile = wall;
+                break;
+            case "Needle":
+                GameManager.Instance.projectile = needle;
+                break;
+            case "BadNews":
+                GameManager.Instance.projectile = badnews;
+                break;
+            case "Penny":
+                GameManager.Instance.projectile = penny;
+                break;
+
+        }
         yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} used {attack.AttackName}");
         yield return new WaitForSeconds(1f);
 

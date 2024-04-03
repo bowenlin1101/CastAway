@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
-
-    public float speed;
     void Update()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+            transform.Translate(Vector3.left * GameManager.Instance.projectileSpeed * Time.deltaTime, Space.World);
     }
 }
 

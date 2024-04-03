@@ -17,8 +17,8 @@ public class DefendSystem : MonoBehaviour
     [SerializeField] public GameObject projectilePrefab;
     [SerializeField] public ProjectileMovement projectileMovement;
 
-    public Vector3[] rowPositions;
-    public Vector3[] spawnPositions;
+    private Vector3[] rowPositions;
+    private Vector3[] spawnPositions;
 
     public float macroSpawnTimer = 0;
     public float microSpawnTimer = 0;
@@ -45,6 +45,9 @@ public class DefendSystem : MonoBehaviour
         Console.WriteLine("initialized");
     }
 
+        // 632.67, 26.33; 632.69, 25.273; 24.225
+
+
     public void MoveToRow(int rowIndex)
     {
         currentRowIndex = rowIndex;
@@ -62,7 +65,7 @@ public class DefendSystem : MonoBehaviour
         // Choose a random row for spawning
         int rowIndex = UnityEngine.Random.Range(0, rows.Length);
         Vector3 spawnPosition = spawnPositions[rowIndex]; // Adjust Y value as needed
-        GameObject newProjectile = Instantiate(projectilePrefab, spawnPosition, Quaternion.identity);
+        GameObject newProjectile = InstantiateProjectile(spawnPosition);
         Destroy(newProjectile, 5f);
     }
 
@@ -77,8 +80,8 @@ public class DefendSystem : MonoBehaviour
         }
         Vector3 spawnPosition1 = spawnPositions[rowIndex1]; // Adjust Y value as needed
         Vector3 spawnPosition2 = spawnPositions[rowIndex2]; // Adjust Y value as needed
-        GameObject newProjectile1 = Instantiate(projectilePrefab, spawnPosition1, Quaternion.identity);
-        GameObject newProjectile2 = Instantiate(projectilePrefab, spawnPosition2, Quaternion.identity);
+        GameObject newProjectile1 = InstantiateProjectile(spawnPosition1);
+        GameObject newProjectile2 = InstantiateProjectile(spawnPosition2);
         Destroy(newProjectile1, 5f);
         Destroy(newProjectile2, 5f);
     }
@@ -100,11 +103,11 @@ public class DefendSystem : MonoBehaviour
         Vector3 spawnPosition1 = spawnPositions[rowIndex1]; // Adjust Y value as needed
         Vector3 spawnPosition2 = spawnPositions[rowIndex2]; // Adjust Y value as needed
         Vector3 spawnPosition3 = spawnPositions[rowIndex3]; // Adjust Y value as needed
-        GameObject newProjectile1 = Instantiate(projectilePrefab, spawnPosition1, Quaternion.identity);
+        GameObject newProjectile1 = InstantiateProjectile(spawnPosition1);
         yield return new WaitForSeconds(0.1f);
-        GameObject newProjectile2 = Instantiate(projectilePrefab, spawnPosition2, Quaternion.identity);
+        GameObject newProjectile2 = InstantiateProjectile(spawnPosition2);
         yield return new WaitForSeconds(0.1f);
-        GameObject newProjectile3 = Instantiate(projectilePrefab, spawnPosition3, Quaternion.identity);
+        GameObject newProjectile3 = InstantiateProjectile(spawnPosition3);
         Destroy(newProjectile1, 5f);
         Destroy(newProjectile2, 5f);
         Destroy(newProjectile3, 5f);
@@ -112,7 +115,7 @@ public class DefendSystem : MonoBehaviour
 
     public void SetDifficulty(int numberOfAttacks, float speed, (float,float,int) frequency, EnemyAttack attack) {
         this.numberOfAttacks = numberOfAttacks;
-        projectileMovement.speed = speed;
+        GameManager.Instance.projectileSpeed = speed;
         this.attack = attack;
         this.numberThrown = 0;
         this.numberMicroThrown = 0;
@@ -120,5 +123,9 @@ public class DefendSystem : MonoBehaviour
         this.microSpawnInterval = frequency.Item2;
         this.numberPerMicroInterval = frequency.Item3;
         this.attackPattern = attack.AttackPattern;
+    }
+
+    private GameObject InstantiateProjectile(Vector3 spawnPosition) {
+        return Instantiate(GameManager.Instance.projectile, spawnPosition, GameManager.Instance.projectile.transform.rotation);
     }
 }
