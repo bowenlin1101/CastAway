@@ -18,7 +18,7 @@ public class KeyBoxScript : MonoBehaviour
 
         }
 
-        GameManager.Instance.gotKey();
+        GameManager.Instance.gotKeyFromBox();
         Debug.Log(GameManager.Instance.keyStatus);
         Destroy(gameObject);
 
