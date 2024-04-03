@@ -11,14 +11,18 @@ public class DefendSystem : MonoBehaviour
     [SerializeField] public GameObject[] spawns;
     [SerializeField] public Image avatar; // Reference to the UI Image component of the avatar
 
-    [SerializeField] public float spawnInterval = 2f;
+    [SerializeField] public float macroSpawnInterval = 2f;
+    public float microSpawnInterval = 2f;
+    public int numberPerMicroInterval;
     [SerializeField] public GameObject projectilePrefab;
     [SerializeField] public ProjectileMovement projectileMovement;
 
     public Vector3[] rowPositions;
     public Vector3[] spawnPositions;
 
-    public float spawnTimer;
+    public float macroSpawnTimer = 0;
+    public float microSpawnTimer = 0;
+    public int numberMicroThrown;
 
     public int currentRowIndex = 1; // Start from the middle row
     public float switchCooldown = 0.1f; // Time player must wait before switching rows again
@@ -106,12 +110,15 @@ public class DefendSystem : MonoBehaviour
         Destroy(newProjectile3, 5f);
     }
 
-    public void SetDifficulty(int numberOfAttacks, float speed, float frequency, EnemyAttack attack) {
+    public void SetDifficulty(int numberOfAttacks, float speed, (float,float,int) frequency, EnemyAttack attack) {
         this.numberOfAttacks = numberOfAttacks;
         projectileMovement.speed = speed;
         this.attack = attack;
         this.numberThrown = 0;
-        spawnInterval = frequency;
+        this.numberMicroThrown = 0;
+        this.macroSpawnInterval = frequency.Item1;
+        this.microSpawnInterval = frequency.Item2;
+        this.numberPerMicroInterval = frequency.Item3;
         this.attackPattern = attack.AttackPattern;
     }
 }

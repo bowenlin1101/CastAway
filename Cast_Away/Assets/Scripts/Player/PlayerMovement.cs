@@ -8,10 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 5f;
     public Rigidbody2D rb;
     public Animator animator;
-    private Vector2 checkPoint;
     public SpriteRenderer spriteRenderer;
 
-    private Vector2 level1Entry = new Vector2(-8.35f,0.62f);
+    private Vector2 level1Entry = new Vector2(-8.35f, 0.62f);
     private Vector2 level1Exit = new Vector2(11.57f, -5.95f);
     private Vector2 level2Entry = new Vector2(0.04f, 9.09f);
     private Vector2 level2Exit = new Vector2(-27.71f, -25.54f);
@@ -21,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 movement;
 
     public static PlayerMovement instance;
+
 
     void Awake()
     {
@@ -109,13 +109,31 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.tag == "TeleportBattle")
         {
-            if (!GameManager.Instance.firstAlienTouched)
-            {
+
+            if (collision.gameObject.name == "CitizenAlien1" && !GameManager.Instance.Citizen1Touched) {
+                GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
-                GameManager.Instance.firstAlienTouched = true;
+                GameManager.Instance.Citizen1Touched = true;
                 GameManager.Instance.movementLocked = true;
+            } else if (collision.gameObject.name == "DoctorAlien1" && !GameManager.Instance.Doctor1Touched) {
+                GameManager.Instance.alienToFight = new DoctorAlienScript();
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.Doctor1Touched = true;
+                GameManager.Instance.movementLocked = true; 
             }
         }
 
+        if (collision.gameObject.name == "1stChat") {
+            Debug.Log("start");
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "You're the the hospital obviously"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "But what happened? Why am I here?"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "Keep playing to find out ;)"));
+        } else if (collision.gameObject.name == "2ndChat") {
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "What the heck do you mean??? You're in my home you idiot. Stop playing dumb. I'll end you home boy"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "lmao my bad dude."));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "fuck you"));
+        }
     }
 }

@@ -17,9 +17,9 @@ public class DoctorAlienScript : BaseAlienScript
         this.sprite = Resources.Load<Sprite>("AlienSprites/Comic Battle Royale/2D Character - Alien/Variant B/Sprites/Character/walk/side/01");
         this.attacks = new List<EnemyAttack>();
         this.acts = new List<Move>();
-        attacks.Add(new EnemyAttack("Punch", 30, "Physical", 10f, 10, (0.75f, 0.75f, 1), "Fist", 1));
-        attacks.Add(new EnemyAttack("Needle Poke", 50, "Physical", 25f, 5, (0.5f, 0.5f, 1), "Sword", 1));
-        attacks.Add(new EnemyAttack("Give Bad News", 50, "Physical", 5f, 20, (0.75f, 0.75f, 1), "Sword", 1));
+        attacks.Add(new EnemyAttack("Punch", 30, "Physical", 10f, 10, (0.75f, 0.75f, 10), "Fist", 1));
+        attacks.Add(new EnemyAttack("Needle Poke", 50, "Physical", 25f, 5, (0.5f, 0.5f, 5), "Sword", 1));
+        attacks.Add(new EnemyAttack("Give Bad News", 50, "Physical", 5f, 18, (1.5f, 0.5f, 3), "Sword", 1));
         acts.Add(new Move("Show Veins", 40, "Emotional", $"You pull your sleeves up against your arms to reveal your killer veins", $"{Species}: Sheeeeesh. What's your workout plan?", $"{Species}: Pshhh, you call those veins? My GRADMA got more veins than that!"));
         acts.Add(new Move("Nurse", 50, "Emotional", $"In a terrible falsetto, you say: \"Oh doctor, the patient is ready\"", "...", $"{Species}: ExCUSe ME??? Do you think this is a joke??"));
         acts.Add(new Move("Do Pushups", 40, "Emotional", $"You drop down and give the cleanest 10 pushups anyone has seen", $"{Species}: So THAT'S how you got those veins. I need to take notes", $"{Species}: Wow, what a show off >:("));
