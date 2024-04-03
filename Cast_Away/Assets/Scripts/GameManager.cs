@@ -1,7 +1,9 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -40,12 +42,21 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
     }
 
 
     void Update()
     {
-        
+        if (keyStatus != 0)
+        {
+            foreach (GameObject box in GameObject.FindGameObjectsWithTag("EmptyBox"))
+            {
+                Destroy(box);
+            }
+            Destroy(GameObject.FindWithTag("KeyBox"));
+        }
     }
 
     public void gotKeyFromBox()
