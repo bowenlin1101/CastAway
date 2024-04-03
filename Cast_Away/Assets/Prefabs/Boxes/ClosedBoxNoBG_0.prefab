@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3295010601490795971}
   - component: {fileID: 3125658831073768271}
   - component: {fileID: -2874352038673354358}
-  - component: {fileID: 5137367126316158682}
-  - component: {fileID: 2299305208604966224}
+  - component: {fileID: 3531206345563758768}
+  - component: {fileID: 1875736965452926149}
   m_Layer: 0
   m_Name: ClosedBoxNoBG_0
   m_TagString: EmptyBox
@@ -101,7 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf1b52ffac986b4993da85a1156bc7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &5137367126316158682
+  BoxText: {fileID: 0}
+--- !u!50 &3531206345563758768
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -128,7 +129,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &2299305208604966224
+--- !u!61 &1875736965452926149
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

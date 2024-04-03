@@ -97,12 +97,12 @@ public class PlayerMovement : MonoBehaviour
             transform.position = level1Exit;
             SceneManager.LoadScene("Level 1");
         }
-        else if (collision.tag == "TeleportLevel2")
+        else if (collision.tag == "TeleportLevel2" && GameManager.Instance.keyStatus == 1)
         {
             transform.position = level2Exit;
             SceneManager.LoadScene("Level 2");
         }
-        else if (collision.tag == "TeleportLevel3")
+        else if (collision.tag == "TeleportLevel3" && GameManager.Instance.keyStatus == 2)
         {
             transform.position = level3Exit;
             SceneManager.LoadScene("Level 3");

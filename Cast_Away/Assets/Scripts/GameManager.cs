@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public bool Citizen2Touched = false;
     public bool Citizen3Touched = false;
     public bool movementLocked = false;
+    public int keyStatus = 0;
 
     public int aliensInteracted = 0;
 
@@ -30,5 +31,16 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+
+    void Update()
+    {
+        
+    }
+
+    public void gotKey()
+    {
+        keyStatus++;
     }
 }
