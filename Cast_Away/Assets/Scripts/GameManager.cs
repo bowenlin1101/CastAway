@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     public bool Doctor1Touched = false;
     public bool Doctor2Touched = false;
     public bool Doctor3Touched = false;
+    public bool SuperiorTouched = false;
     public bool movementLocked = false;
-    public bool superiorAlienTouched = false;
     public int keyStatus = 0;
 
     public TextMeshProUGUI counter;
@@ -23,6 +23,9 @@ public class GameManager : MonoBehaviour
 
     public BaseAlienScript alienToFight;
     public string currentScene;
+
+    public GameObject projectile;
+    public float projectileSpeed;
 
     public static GameManager Instance;
 

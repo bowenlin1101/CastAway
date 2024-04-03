@@ -15,10 +15,13 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] GameObject attackDetails;
     [SerializeField] GameObject actSelector;
     [SerializeField] GameObject actDetails;
+    [SerializeField] GameObject itemSelector;
+    [SerializeField] GameObject itemDetails;
 
     [SerializeField] List<Text> actionTexts;
     [SerializeField] List<Text> attackTexts;
     [SerializeField] List<Text> actTexts;
+    [SerializeField] List<Text> itemTexts;
 
     [SerializeField] Text attackDescriptionText;
     [SerializeField] Text attackTypeText;
@@ -58,6 +61,11 @@ public class BattleDialogBox : MonoBehaviour
     public void EnableActSelector(bool enabled ){
         actSelector.SetActive(enabled);
         actDetails.SetActive(enabled);
+    }
+
+    public void EnableItemSelector(bool enabled ){
+        itemSelector.SetActive(enabled);
+        itemDetails.SetActive(enabled);
     }
 
     public void EnableDefendSystem(bool enabled ){
@@ -100,6 +108,19 @@ public class BattleDialogBox : MonoBehaviour
         actTypeText.text = $"Type: {move.Type}";
     }
 
+    public void UpdateItemSelection(int selectedItem, Item item) {
+        for (int i = 0; i < itemTexts.Count; ++i) {
+            if (i == selectedItem) {
+                itemTexts[i].color = highlightedColor;
+            } else {
+                itemTexts[i].color = Color.black;
+            }
+        }
+
+        actDescriptionText.text = $"{((HealthPotion)item).description}";
+        actTypeText.text = $"Heal: {((HealthPotion)item).hpHealed}";
+    }
+
     public void SetAttackNames(List<Attack> attacks) {
         for (int i=0; i < attackTexts.Count; i++){
             if (i < attacks.Count) {
@@ -116,6 +137,16 @@ public class BattleDialogBox : MonoBehaviour
                 actTexts[i].text = acts[i].MoveName;
             } else {
                 actTexts[i].text = "-";
+            }
+        }
+    }
+
+    public void SetItemNames(List<Item> items) {
+        for (int i=0; i < itemTexts.Count; i++){
+            if (i < items.Count) {
+                itemTexts[i].text = items[i].name;
+            } else {
+                itemTexts[i].text = "-";
             }
         }
     }

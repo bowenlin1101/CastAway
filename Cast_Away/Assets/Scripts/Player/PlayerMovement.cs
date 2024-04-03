@@ -186,6 +186,13 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.Instance.movementLocked = true;
                 GameManager.Instance.aliensInteracted++;
             }
+
+            if (collision.gameObject.name == "SuperiorAlien" && !GameManager.Instance.SuperiorTouched) {
+                GameManager.Instance.alienToFight = new SuperiorAlienScript();
+                SceneManager.LoadScene("BattleScene");
+                GameManager.Instance.Doctor1Touched = true;
+                GameManager.Instance.movementLocked = true; 
+            }
         }
 
         if (collision.gameObject.name == "1stChat") {

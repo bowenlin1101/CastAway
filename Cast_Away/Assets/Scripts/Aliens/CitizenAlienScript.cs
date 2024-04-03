@@ -30,7 +30,7 @@ public class CitizenAlienScript : BaseAlienScript
     }
 
     public override (bool, string) TakePacify(Move move) {
-        if (move.MoveName == this.order[this.stage]) {
+        if (this.stage <= this.order.Length && move.MoveName == this.order[this.stage]) {
             this.Aggression -= move.Damage;
             if (this.Aggression < 0) {
                 this.Aggression = 0;
