@@ -38,12 +38,21 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        
     }
 
 
     void Update()
     {
-        
+        if (keyStatus != 0)
+        {
+            foreach (GameObject box in GameObject.FindGameObjectsWithTag("EmptyBox"))
+            {
+                Destroy(box);
+            }
+            Destroy(GameObject.FindWithTag("KeyBox"));
+        }
     }
 
     public void gotKey()
