@@ -1144,7 +1144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5257950478676271149, guid: ecae896282dc98048a934c5b3d5aa9bc, type: 3}
       propertyPath: m_Name
-      value: CitizenAlien5
+      value: CitizenAlien1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

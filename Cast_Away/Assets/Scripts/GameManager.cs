@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public int keyStatus = 0;
 
     public int aliensInteracted = 0;
+    public string alienName;
 
     public BaseAlienScript alienToFight;
     public string currentScene;

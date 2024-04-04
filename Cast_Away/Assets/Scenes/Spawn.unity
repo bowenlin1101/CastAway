@@ -704,6 +704,7 @@ MonoBehaviour:
   movementLocked: 0
   keyStatus: 0
   aliensInteracted: 0
+  alienName: 
   currentScene: 
   projectile: {fileID: 0}
   projectileSpeed: 0

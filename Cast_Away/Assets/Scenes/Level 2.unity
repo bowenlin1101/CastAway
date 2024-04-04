@@ -3493,7 +3493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5257950478676271149, guid: f48ea6cf3c7758c769b227d07d6975c5, type: 3}
       propertyPath: m_Name
-      value: CitizenAlien1
+      value: CitizenAlien2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3620,7 +3620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5257950478676271149, guid: f48ea6cf3c7758c769b227d07d6975c5, type: 3}
       propertyPath: m_Name
-      value: CitizenAlien3
+      value: CitizenAlien4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4307,7 +4307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5257950478676271149, guid: f48ea6cf3c7758c769b227d07d6975c5, type: 3}
       propertyPath: m_Name
-      value: CitizenAlien2
+      value: CitizenAlien3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

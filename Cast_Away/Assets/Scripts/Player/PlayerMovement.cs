@@ -120,6 +120,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (collision.gameObject.name == "CitizenAlien1" && !GameManager.Instance.Citizen1Touched)
             {
+                GameManager.Instance.alienName = "CitizenAlien1";
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen1Touched = true;
@@ -130,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "CitizenAlien2" && !GameManager.Instance.Citizen2Touched)
             {
+                GameManager.Instance.alienName = "CitizenAlien2";
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen2Touched = true;
@@ -140,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "CitizenAlien3" && !GameManager.Instance.Citizen3Touched)
             {
+                GameManager.Instance.alienName = "CitizenAlien3";
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen3Touched = true;
@@ -150,6 +153,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "CitizenAlien4" && !GameManager.Instance.Citizen4Touched)
             {
+                GameManager.Instance.alienName = "CitizenAlien4";
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen4Touched = true;
@@ -160,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "CitizenAlien5" && !GameManager.Instance.Citizen5Touched)
             {
+                GameManager.Instance.alienName = "CitizenAlien5";
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen5Touched = true;
@@ -168,6 +173,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (collision.gameObject.name == "DoctorAlien1" && !GameManager.Instance.Doctor1Touched)
             {
+                GameManager.Instance.alienName = "DoctorAlien1";
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Doctor1Touched = true;
@@ -178,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "DoctorAlien2" && !GameManager.Instance.Doctor2Touched)
             {
+                GameManager.Instance.alienName = "DoctorAlien2";
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Doctor2Touched = true;
@@ -188,6 +195,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "DoctorAlien3" && !GameManager.Instance.Doctor3Touched)
             {
+                GameManager.Instance.alienName = "DoctorAlien3";
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Doctor3Touched = true;
@@ -198,6 +206,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "DoctorAlien4" && !GameManager.Instance.Doctor4Touched)
             {
+                GameManager.Instance.alienName = "DoctorAlien4";
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Doctor4Touched = true;
@@ -206,6 +215,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "DoctorAlien5" && !GameManager.Instance.Doctor5Touched)
             {
+                GameManager.Instance.alienName = "DoctorAlien5";
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Doctor5Touched = true;
@@ -214,6 +224,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "SuperiorAlien" && !GameManager.Instance.SuperiorTouched)
             {
+                GameManager.Instance.alienName = "SuperiorAlien";
                 GameManager.Instance.SuperiorTouched = true;
                 GameManager.Instance.movementLocked = true;
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Well well. Look who it is..."));
