@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     public GameObject projectile;
     public float projectileSpeed;
 
+    [SerializeField] public Canvas instructionCanvas;
+    [SerializeField] public Text instructionText;
+
     public static GameManager Instance;
 
     private void Awake()

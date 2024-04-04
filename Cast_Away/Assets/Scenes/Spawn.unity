@@ -707,6 +707,8 @@ MonoBehaviour:
   currentScene: 
   projectile: {fileID: 0}
   projectileSpeed: 0
+  instructionCanvas: {fileID: 28231364}
+  instructionText: {fileID: 1437341707}
 --- !u!4 &196056425
 Transform:
   m_ObjectHideFlags: 0

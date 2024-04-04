@@ -6,16 +6,18 @@ using UnityEngine.UI;
 
 public class EmptyBoxScript : MonoBehaviour
 {
-    [SerializeField] Text BoxText;
     public void Start()
     {
-        BoxText.text = "";
+        GameManager.Instance.instructionText.text = "";
+        if (GameManager.Instance.keyStatus > 0) {
+            Destroy(this.gameObject);
+        }
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (BoxText != null)
+        if (GameManager.Instance.instructionText != null)
         {
-            BoxText.text = "That box was empty!";
+            GameManager.Instance.instructionText.text = "That box was empty!";
             StartCoroutine(ClearTextAfterDelay(1));
         }
         
@@ -30,7 +32,7 @@ public class EmptyBoxScript : MonoBehaviour
             renderer.enabled = false; // Make the object invisible
         }
         yield return new WaitForSeconds(delay); // Wait for the specified delay
-        BoxText.text = ""; // Clear the text
+        GameManager.Instance.instructionText.text = ""; // Clear the text
         Destroy(gameObject);
 
     }

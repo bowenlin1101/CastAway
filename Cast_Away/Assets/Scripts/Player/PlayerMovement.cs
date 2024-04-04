@@ -98,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.tag == "TeleportLevel1")
         {
+            instructionCanvas.gameObject.SetActive(true);
             transform.position = level1Exit;
             SceneManager.LoadScene("Level 1");
         }
