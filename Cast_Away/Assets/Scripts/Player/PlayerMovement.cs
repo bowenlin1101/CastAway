@@ -243,6 +243,19 @@ public class PlayerMovement : MonoBehaviour
                     ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "And... you managed to respect each and every alien you encountered and to befriend them."));
                     ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "*chuckles*"));
                     ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "I gotta hand it to you. You have surprised me and earned my respect"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "The reason that you are here is because your rocket ship got caught in our planet's gravity"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "You fell out of the sky and you managed to eject from your ship just in time to save yourself"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We have encountered humans before, and our experiences have been.... mixed"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Some are outright evil: Killing everything they see in their path"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Some are kind and helpful: Being patient and working through difficulties peacefully "));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Some are kind and helpful: Being patient and working through difficulties peacefully "));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We are glad you fall into the latter group, but we had our doubts when we discovered your battered body"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We decided to take a chance on you. The doctors on our planet nursed you and took care of you"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "But we did not expect you to get well so fast. You have been asleep for almost FIVE YEARS"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Your awakening has definitely startled us, but I'm glad no blood has been shed"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Now, it is time to say our fair wells"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We have a rocket outside that has been reserved to take you off our planet and back home"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Take care human. Stay patient and kind :)"));
                     StartCoroutine(UnlockMovementWhenReady());
 
                 }
