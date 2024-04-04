@@ -299,19 +299,53 @@ public class PlayerMovement : MonoBehaviour
             if (collision.gameObject.name == "1stChat")
             {
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "You're the the hospital obviously"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "But what happened? Why am I here?"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "Keep playing to find out ;)"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "I should go look around..."));
             }
-            else if (collision.gameObject.name == "2ndChat")
-            {
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "What the heck do you mean??? You're in my home you idiot. Stop playing dumb. I'll end you home boy"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "lmao my bad dude."));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "fuck you"));
-            }
+
+        } else if (collision.CompareTag("GameEnd")) {
+            SceneManager.LoadScene("EndScene"); 
+            StartCoroutine(EndGame());
         }
     }
+
+    IEnumerator EndGame()
+    {
+        // Wait for 1 second
+        yield return new WaitForSeconds(2);
+
+        // Code to execute after the wait
+        ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "I guess this is it"));
+        
+        yield return new WaitForSeconds(2);
+        if (GameManager.Instance.aliensKilled == 0) {
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "I befriended an alien civilization, by exuding patience, understanding, and respect"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "I did the right thing"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "..."));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "No..."));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "You, Player"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Did the right thing"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Keep up the good work chief"));
+
+        } else if (GameManager.Instance.aliensKilled < 3) {
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", $"I've killed {GameManager.Instance.aliensKilled} by mistake, and I've learned nothing about my past"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "I have innocent blood on my hands..."));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "If I could go back and undo my mistake, I would"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "..."));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Well, Player"));;
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "What are you waiting for?"));
+        } else {
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "I caused chaos in an alien civilization, and learned nothing about my past"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", $"I have the blood of {GameManager.Instance.aliensKilled} innocent creatures on my hands..."));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Why did I do this...??? *sobs* *sobs*"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "..."));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "No..."));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "You, Player"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", " ... No... You're no player"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "You, MONSTER"));
+            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Why did YOU do this?"));
+        }
+    }
+
     IEnumerator StartBattleWhenReady()
     {
         // Loop until the condition is met
