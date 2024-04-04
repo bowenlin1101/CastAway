@@ -125,9 +125,7 @@ public class PlayerMovement : MonoBehaviour
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen1Touched = true;
                 GameManager.Instance.movementLocked = true;
-                GameManager.Instance.aliensInteracted++;
-                GameManager.Instance.gotKeyFromAliens();
-                instructionText.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
+
             }
             if (collision.gameObject.name == "CitizenAlien2" && !GameManager.Instance.Citizen2Touched)
             {
@@ -169,6 +167,9 @@ public class PlayerMovement : MonoBehaviour
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen5Touched = true;
                 GameManager.Instance.movementLocked = true;
+                GameManager.Instance.aliensInteracted++;
+                GameManager.Instance.gotKeyFromAliens();
+                instructionText.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
             }
 
             if (collision.gameObject.name == "DoctorAlien1" && !GameManager.Instance.Doctor1Touched)
