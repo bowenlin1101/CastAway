@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public bool triggeredStartDialogue = false;
     public int aliensKilled = 0;
     public bool Citizen1Touched = false;
     public bool Citizen2Touched = false;
@@ -26,10 +27,8 @@ public class GameManager : MonoBehaviour
 
     public BaseAlienScript alienToFight;
     public string currentScene;
-
     public GameObject projectile;
     public float projectileSpeed;
-
     [SerializeField] public Canvas instructionCanvas;
     [SerializeField] public Text instructionText;
 

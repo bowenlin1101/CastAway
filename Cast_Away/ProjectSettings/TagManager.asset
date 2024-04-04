@@ -15,6 +15,7 @@ TagManager:
   - KeyBox
   - Costume
   - GameEnd
+  - Chat
   layers:
   - Default
   - TransparentFX

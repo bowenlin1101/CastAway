@@ -307,14 +307,20 @@ public class PlayerMovement : MonoBehaviour
                         break;
                 }
                 animator.runtimeAnimatorController = ac;
-            
+        } else if (collision.CompareTag("Chat")) {
+                        
 
-            if (collision.gameObject.name == "1stChat")
+            if (collision.gameObject.name == "1stChat" && !GameManager.Instance.triggeredStartDialogue)
             {
+                GameManager.Instance.triggeredStartDialogue = true;
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "I should go look around..."));
-            }
-
+                
+            } else if (collision.gameObject.name == "Level 2 Door" && GameManager.Instance.keyStatus <1) {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "This door is locked and needs a key"));
+            } else if (collision.gameObject.name == "Level 3 Door" && GameManager.Instance.keyStatus < 2) {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "This door is locked and requires a condition to be fulfilled"));
+            } 
         } else if (collision.CompareTag("GameEnd")) {
             SceneManager.LoadScene("EndScene"); 
             StartCoroutine(EndGame());
