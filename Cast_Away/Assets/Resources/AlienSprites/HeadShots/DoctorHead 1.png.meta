@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7083e67fc598fed4eab946834b96fc0b
+guid: 62342ec662e00ccc1881533973a896f2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2490917857759203812
-    second: Level3Staircase_0
+      213: 6604443319644064381
+    second: DoctorHead 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level3Staircase_0
+      name: DoctorHead 1_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 0
-        width: 523
-        height: 301
+        width: 115
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1ee593e76b7e6dd0800000000000000
-      internalID: -2490917857759203812
+      spriteID: d7a06961532b7ab50800000000000000
+      internalID: 6604443319644064381
       vertices: []
       indices: 
       edges: []
@@ -130,8 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Level3Staircase_0: -2490917857759203812
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -15,7 +15,7 @@ public class AlienBattleUnit : MonoBehaviour
         }
         else
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(1.5f, 1.5f, 1);
         }
         GetComponent<Image>().sprite = alien.sprite;
     }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 77b3282a1a691f4c9ae5a8155be7ebef
+guid: 301745c7e5230112a95720c4030e1e3b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 141893073332109768
-    second: 06_0
+      213: 6432689001270287488
+    second: CitizenHead 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 06_0
+      name: CitizenHead 1_0
       rect:
         serializedVersion: 2
         x: 3
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8c18c089ffa18f100800000000000000
-      internalID: 141893073332109768
+      spriteID: 08c17479090854950800000000000000
+      internalID: 6432689001270287488
       vertices: []
       indices: 
       edges: []
@@ -130,8 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      06_0: 141893073332109768
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
