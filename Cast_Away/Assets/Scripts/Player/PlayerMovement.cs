@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         instructionText.text = "";
-        DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
             instance = this;
@@ -39,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+ 
     void Update()
     {
         if (!GameManager.Instance.movementLocked)

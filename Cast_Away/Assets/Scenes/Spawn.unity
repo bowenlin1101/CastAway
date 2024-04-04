@@ -704,7 +704,7 @@ MonoBehaviour:
   Doctor5Touched: 0
   SuperiorTouched: 0
   movementLocked: 0
-  keyStatus: 0
+  keyStatus: 1
   aliensInteracted: 0
   alienName: 
   currentScene: 

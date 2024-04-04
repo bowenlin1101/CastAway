@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3544439391898865597}
   - component: {fileID: 8464698881674901762}
   - component: {fileID: 971353172337131343}
+  - component: {fileID: -4942843964094206298}
   m_Layer: 0
   m_Name: CitizenAlien
   m_TagString: TeleportBattle
@@ -133,3 +134,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.6, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &-4942843964094206298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5257950478676271149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc7f525b35bccfa4e9b2f65aa50e05cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newMaterial: {fileID: 2100000, guid: e983c32746e8ca846811bcc11a0f4fb4, type: 2}
