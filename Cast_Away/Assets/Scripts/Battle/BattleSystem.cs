@@ -589,6 +589,7 @@ public class BattleSystem : MonoBehaviour
 
     public void HandleAlienDefeat()
     {
+        alienUnit.transform.eulerAngles = new Vector3(0, 0, 90);
         GameManager.Instance.movementLocked = false;
         SceneManager.LoadScene(GameManager.Instance.currentScene);
     }

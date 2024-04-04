@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+ 
     void Update()
     {
         if (!GameManager.Instance.movementLocked)
@@ -126,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.Instance.aliensInteracted++;
                 GameManager.Instance.gotKeyFromAliens();
                 instructionText.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
+
             }
             if (collision.gameObject.name == "CitizenAlien2" && !GameManager.Instance.Citizen2Touched)
             {
