@@ -33,5 +33,16 @@ public class EmptyBoxScript : MonoBehaviour
         Destroy(gameObject);
 
     }
+    void Update()
+    {
+        if (GameManager.Instance.keyStatus != 0)
+        {
+            foreach (GameObject box in GameObject.FindGameObjectsWithTag("EmptyBox"))
+            {
+                Destroy(box);
+            }
+            Destroy(GameObject.FindWithTag("KeyBox"));
+        }
+    }
 
 }
