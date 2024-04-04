@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         instructionText.text = "";
-        DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
             instance = this;
@@ -39,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+ 
     void Update()
     {
         if (!GameManager.Instance.movementLocked)
@@ -126,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.Instance.aliensInteracted++;
                 GameManager.Instance.gotKeyFromAliens();
                 instructionText.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
+
             }
             if (collision.gameObject.name == "CitizenAlien2" && !GameManager.Instance.Citizen2Touched)
             {
@@ -252,8 +252,7 @@ public class PlayerMovement : MonoBehaviour
                     StartCoroutine(StartBattleWhenReady());
                 }
             }
-        }
-        else if (collision.CompareTag("Costume"))
+        } else if (collision.CompareTag("Costume"))
         {
             string name = collision.gameObject.name;
             Debug.Log("hello");
