@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public bool triggeredStartDialogue = false;
+    public string currentColor = "blue";
     public int aliensKilled = 0;
     public bool Citizen1Touched = false;
     public bool Citizen2Touched = false;

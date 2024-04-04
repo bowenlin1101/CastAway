@@ -288,22 +288,30 @@ public class PlayerMovement : MonoBehaviour
                 {
                     case "Blue Costume":
                         ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Blue/BlueController");
+                        GameManager.Instance.currentColor = "blue";
                         break;
                     case "Red Costume":
-                        Debug.Log("Hello");
                         ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Red/RedController");
+                        GameManager.Instance.currentColor = "red";
+
                         break;
                     case "Green Costume":
                         ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Green/GreenController");
+                        GameManager.Instance.currentColor = "green";
+
                         break;
                     case "Yellow Costume":
                         ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Yellow/YellowController");
+                        GameManager.Instance.currentColor = "yellow";
                         break;
                     case "Pink Costume":
                         ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Pink/PinkController");
+                        GameManager.Instance.currentColor = "pink";
+
                         break;
                     default:
                         ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Blue/BlueController");
+                        GameManager.Instance.currentColor = "blue";
                         break;
                 }
                 animator.runtimeAnimatorController = ac;

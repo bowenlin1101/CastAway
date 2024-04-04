@@ -690,6 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggeredStartDialogue: 0
+  currentColor: blue
   aliensKilled: 5
   Citizen1Touched: 0
   Citizen2Touched: 0
@@ -3382,7 +3383,11 @@ MonoBehaviour:
   chatImage: {fileID: 22703849}
   chatText: {fileID: 330973589}
   chatBox: {fileID: 798982278}
-  playerImage: {fileID: 2300485746096226668, guid: d1fecda82854537fa9ced128a20dd911, type: 3}
+  blueImage: {fileID: 2300485746096226668, guid: d1fecda82854537fa9ced128a20dd911, type: 3}
+  redImage: {fileID: 6286595657586805340, guid: 1af19b4cec9c274a78834236539bf275, type: 3}
+  greenImage: {fileID: -4987337320017983735, guid: 2089469c6db0bdda39df1e333d28e74c, type: 3}
+  yellowImage: {fileID: 6358040702757662528, guid: 660e76b5d7e696967938bcb2a8177010, type: 3}
+  pinkImage: {fileID: -7381184880430962403, guid: 6d6b7392d9d87cc53bce4f064629ca05, type: 3}
   citizenAlienImage: {fileID: 6432689001270287488, guid: 301745c7e5230112a95720c4030e1e3b, type: 3}
   doctorAlienImage: {fileID: 6604443319644064381, guid: 62342ec662e00ccc1881533973a896f2, type: 3}
   bossAlienImage: {fileID: -8111519445168394581, guid: 1f55bd99be77b26249a4b0f2c0f5be9c, type: 3}

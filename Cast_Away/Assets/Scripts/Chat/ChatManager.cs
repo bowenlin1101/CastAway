@@ -11,7 +11,12 @@ public class ChatManager : MonoBehaviour
     [SerializeField] Image chatImage;
     [SerializeField] Text chatText;
     [SerializeField] Image chatBox;
-    [SerializeField] Sprite playerImage;
+    private Sprite playerImage;
+    [SerializeField] Sprite blueImage;
+    [SerializeField] Sprite redImage;
+    [SerializeField] Sprite greenImage;
+    [SerializeField] Sprite yellowImage;
+    [SerializeField] Sprite pinkImage;
     [SerializeField] Sprite citizenAlienImage;
     [SerializeField] Sprite doctorAlienImage;
     [SerializeField] Sprite bossAlienImage;
@@ -81,6 +86,29 @@ public class ChatManager : MonoBehaviour
         } else if (imageName == "boss") {
                     chatImage.sprite = bossAlienImage;
         } else {
+            string currentColor = GameManager.Instance.currentColor;
+
+            switch (currentColor) {
+                case "blue":
+                    playerImage = blueImage;
+                    break;
+                case "red":
+                    playerImage = redImage;
+                    break;
+                case "green":
+                    playerImage = greenImage;
+                    break;
+                case "yellow":
+                    playerImage = yellowImage;
+                    break;
+                case "pink":
+                    playerImage = pinkImage;
+                    break;
+                default:
+                    playerImage = blueImage;
+                    break;
+            }
+
             chatImage.sprite = playerImage;
         }
     }
