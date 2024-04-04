@@ -1124,7 +1124,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5030418086133383335, guid: 8fa9ff3fb91803f4b85f0c92abd1eb38, type: 3}
+  m_Sprite: {fileID: 6982752654560475622, guid: ee2f05f0e164bd6bbbb04b22b38f2065, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1747,7 +1747,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5030418086133383335, guid: 8fa9ff3fb91803f4b85f0c92abd1eb38, type: 3}
+  m_Sprite: {fileID: 6982752654560475622, guid: ee2f05f0e164bd6bbbb04b22b38f2065, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2329,7 +2329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5257950478676271149, guid: f48ea6cf3c7758c769b227d07d6975c5, type: 3}
       propertyPath: m_Name
-      value: CitizenAlien4
+      value: CitizenAlien5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3497,7 +3497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5257950478676271149, guid: f48ea6cf3c7758c769b227d07d6975c5, type: 3}
       propertyPath: m_Name
-      value: CitizenAlien1
+      value: CitizenAlien2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3624,7 +3624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5257950478676271149, guid: f48ea6cf3c7758c769b227d07d6975c5, type: 3}
       propertyPath: m_Name
-      value: CitizenAlien3
+      value: CitizenAlien4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4311,7 +4311,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5257950478676271149, guid: f48ea6cf3c7758c769b227d07d6975c5, type: 3}
       propertyPath: m_Name
-      value: CitizenAlien2
+      value: CitizenAlien3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6544,7 +6544,7 @@ SceneRoots:
   - {fileID: 1039344860}
   - {fileID: 1353179984}
   - {fileID: 1076079805}
-  - {fileID: 1407594094}
   - {fileID: 488510700}
+  - {fileID: 1407594094}
   - {fileID: 2022507322}
   - {fileID: 1030080097}

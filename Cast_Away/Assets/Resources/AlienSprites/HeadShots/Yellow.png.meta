@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 77d313f35e8ac9649b3b0914a7afc6dc
+guid: 660e76b5d7e696967938bcb2a8177010
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7837817613237197357
-    second: Level1Staircase_0
+      213: 6358040702757662528
+    second: Yellow_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Level1Staircase_0
+      name: Yellow_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 523
-        height: 301
+        width: 116
+        height: 110
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d2a9d4bb79585cc60800000000000000
-      internalID: 7837817613237197357
+      spriteID: 04f6853355c4c3850800000000000000
+      internalID: 6358040702757662528
       vertices: []
       indices: 
       edges: []
@@ -130,8 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Level1Staircase_0: 7837817613237197357
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

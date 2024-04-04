@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4a19f53bb1fe7dfa7966b11b92fad05d
+guid: 3b58eb50c07448a9f88c26d4079b34fd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5176094851854288273
-    second: 06(1)_0
+      213: -6525221031943943859
+    second: ClosedBoxNoBG 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 06(1)_0
+      name: ClosedBoxNoBG 1_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 115
-        height: 108
+        x: 11
+        y: 5
+        width: 319
+        height: 305
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 195c088f7de25d740800000000000000
-      internalID: 5176094851854288273
+      spriteID: d49c2162b02c175a0800000000000000
+      internalID: -6525221031943943859
       vertices: []
       indices: 
       edges: []
@@ -130,8 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      06(1)_0: 5176094851854288273
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 37640b21507c796b8807240e8d452b64
+guid: cbce3f786ad9e9716975c023d264ddef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1378427622693833608
-    second: BossHeadshot_0
+      213: 4737513148898858201
+    second: Victory_Image_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BossHeadshot_0
+      name: Victory_Image_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 114
-        height: 109
+        width: 874
+        height: 598
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8747fb06167dedce0800000000000000
-      internalID: -1378427622693833608
+      spriteID: 9d4dbd6cb170fb140800000000000000
+      internalID: 4737513148898858201
       vertices: []
       indices: 
       edges: []
@@ -130,8 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      BossHeadshot_0: -1378427622693833608
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

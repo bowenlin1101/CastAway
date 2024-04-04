@@ -5,16 +5,15 @@ using UnityEngine;
 
 public class KeyBoxScript : MonoBehaviour
 {
-    public TextMeshProUGUI BoxText;
     public void Start()
     {
-        BoxText.text = "";
+        GameManager.Instance.instructionText.text = "";
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (BoxText != null)
+        if (GameManager.Instance.instructionText != null)
         {
-            BoxText.text = "You have found the key! Go back to spawn and proceed to level 2.";
+            GameManager.Instance.instructionText.text = "Key found! Go back to spawn!";
 
         }
 

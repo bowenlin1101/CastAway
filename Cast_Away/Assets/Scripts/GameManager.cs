@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public bool triggeredStartDialogue = false;
+    public string currentColor = "blue";
     public int aliensKilled = 0;
     public bool Citizen1Touched = false;
     public bool Citizen2Touched = false;
@@ -22,12 +24,14 @@ public class GameManager : MonoBehaviour
     public int keyStatus = 0;
 
     public int aliensInteracted = 0;
+    public string alienName;
 
     public BaseAlienScript alienToFight;
     public string currentScene;
-
     public GameObject projectile;
     public float projectileSpeed;
+    [SerializeField] public Canvas instructionCanvas;
+    [SerializeField] public Text instructionText;
 
     public static GameManager Instance;
 
