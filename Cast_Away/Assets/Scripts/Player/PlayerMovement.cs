@@ -28,7 +28,6 @@ public class PlayerMovement : MonoBehaviour
     void Awake()
     {
         instructionText.text = "";
-        DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
             instance = this;
@@ -253,8 +252,7 @@ public class PlayerMovement : MonoBehaviour
                     StartCoroutine(StartBattleWhenReady());
                 }
             }
-        }
-        else if (collision.CompareTag("Costume"))
+        } else if (collision.CompareTag("Costume"))
         {
             string name = collision.gameObject.name;
             Debug.Log("hello");
