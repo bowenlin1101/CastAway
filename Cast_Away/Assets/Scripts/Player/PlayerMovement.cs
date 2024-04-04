@@ -252,52 +252,51 @@ public class PlayerMovement : MonoBehaviour
                     StartCoroutine(StartBattleWhenReady());
                 }
             }
-        }
-        else if (collision.CompareTag("Costume"))
-        {
-            string name = collision.gameObject.name;
-            Debug.Log("hello");
-            Animator animator = GetComponent<Animator>();
-            RuntimeAnimatorController ac;
+        } else if (collision.CompareTag("Costume")) {
+                string name = collision.gameObject.name;
+                Debug.Log("hello");
+                Animator animator = GetComponent<Animator>();
+                RuntimeAnimatorController ac;
 
-            switch (name)
+                switch (name)
+                {
+                    case "Blue Costume":
+                        ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Blue/BlueController");
+                        break;
+                    case "Red Costume":
+                        Debug.Log("Hello");
+                        ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Red/RedController");
+                        break;
+                    case "Green Costume":
+                        ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Green/GreenController");
+                        break;
+                    case "Yellow Costume":
+                        ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Yellow/YellowController");
+                        break;
+                    case "Pink Costume":
+                        ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Pink/PinkController");
+                        break;
+                    default:
+                        ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Blue/BlueController");
+                        break;
+                }
+                animator.runtimeAnimatorController = ac;
+            
+
+            if (collision.gameObject.name == "1stChat")
             {
-                case "Blue Costume":
-                    ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Blue/BlueController");
-                    break;
-                case "Red Costume":
-                    Debug.Log("Hello");
-                    ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Red/RedController");
-                    break;
-                case "Green Costume":
-                    ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Green/GreenController");
-                    break;
-                case "Yellow Costume":
-                    ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Yellow/YellowController");
-                    break;
-                case "Pink Costume":
-                    ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Pink/PinkController");
-                    break;
-                default:
-                    ac = Resources.Load<RuntimeAnimatorController>("PlayerAnimations/Blue/BlueController");
-                    break;
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "You're the the hospital obviously"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "But what happened? Why am I here?"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "Keep playing to find out ;)"));
             }
-            animator.runtimeAnimatorController = ac;
-        }
-
-        if (collision.gameObject.name == "1stChat")
-        {
-            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
-            ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "You're the the hospital obviously"));
-            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "But what happened? Why am I here?"));
-            ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "Keep playing to find out ;)"));
-        }
-        else if (collision.gameObject.name == "2ndChat")
-        {
-            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
-            ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "What the heck do you mean??? You're in my home you idiot. Stop playing dumb. I'll end you home boy"));
-            ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "lmao my bad dude."));
-            ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "fuck you"));
+            else if (collision.gameObject.name == "2ndChat")
+            {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Where am I...???"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "What the heck do you mean??? You're in my home you idiot. Stop playing dumb. I'll end you home boy"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "lmao my bad dude."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "fuck you"));
+            }
         }
     }
     IEnumerator StartBattleWhenReady()
