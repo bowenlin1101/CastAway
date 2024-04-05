@@ -8,19 +8,19 @@ public class KeyBoxScript : MonoBehaviour
     public void Start()
     {
         GameManager.Instance.instructionText.text = "";
+        if (GameManager.Instance.keyStatus > 0) {
+            Destroy(this.gameObject);
+        }
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
         if (GameManager.Instance.instructionText != null)
         {
-            GameManager.Instance.instructionText.text = "Key found! Go back to spawn!";
-
+            GameManager.Instance.setInstructionCanvasActive(true);
+            GameManager.Instance.instructionText.text = "Key found!\nGo back to spawn!";
+            GameManager.Instance.keyStatus++;
+            Destroy(gameObject);
         }
-
-        GameManager.Instance.gotKeyFromBox();
-        Debug.Log(GameManager.Instance.keyStatus);
-        Destroy(gameObject);
-
     }
 
 }

@@ -1,42 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EquipmentManager : MonoBehaviour
 {
+
+
+    [SerializeField] TextMeshProUGUI HealthText;
+    [SerializeField] TextMeshProUGUI StrengthText;
+    [SerializeField] TextMeshProUGUI DurabilityText;
+    [SerializeField] TextMeshProUGUI DamageText;
+    [SerializeField] Text KillText;
+    [SerializeField] Text SpareText;
+
+    [SerializeField] public EquippedSlot swordSlot;
+    [SerializeField] public EquippedSlot chestSlot;
+    [SerializeField] public EquippedSlot legsSlot;
+
     #region Singleton
 
     // Static instance of EquipmentManager allows it to be accessed by any other script.
-    public static EquipmentManager instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<EquipmentManager>();
-            }
-            return _instance;
-        }
-    }
-    static EquipmentManager _instance;
+    public static EquipmentManager instance;
 
+    
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
-        // Assign this script instance to the static instance variable to implement Singleton pattern.
-        _instance = this; 
-    }
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else if (instance != this)
+		{
+			Destroy(gameObject);
+		}
+	}
 
     #endregion
 
-    public EquippedSlot swordSlot, chestSlot, legsSlot;
 
     // Reference to the Inventory to interact with it.
     Inventory inventory;
 
     // Array to hold current equipped items.
     Equipment[] currentEquipment;
-
 
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public event OnEquipmentChanged onEquipmentChanged;
@@ -48,7 +58,7 @@ public class EquipmentManager : MonoBehaviour
         inventory = Inventory.instance;
 
         // Determine the number of slots based on the EquipmentSlot enum.
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlotType)).Length;
+        int numSlots = 3;
 
         // Initialize the currentEquipment array based on the number of equipment slots.
         currentEquipment = new Equipment[numSlots];
@@ -87,51 +97,19 @@ public class EquipmentManager : MonoBehaviour
 
         // Equip the new item in the specified slot.
         currentEquipment[slotIndex] = newItem;
-
+        Debug.Log("Equip the item");
         
     }
 
-    // Method to unequip an item from a specific slot.
-    public void Unequip (int slotIndex)
-    {
-        // Check if there is an item equipped in the specified slot.
-        if (currentEquipment[slotIndex] != null)
-        {
-            // Store the item that is to be unequipped.
-            Equipment pastItem = currentEquipment[slotIndex];
 
-            // Add the unequipped item back to the inventory.
-            inventory.Add(pastItem);
-
-            // Remove the item from the equipment slot.
-            currentEquipment[slotIndex] = null;
-
-            if (onEquipmentChanged != null)
-            {
-                onEquipmentChanged.Invoke(null, pastItem);
-            }
-        }
+    public void UpdateStatTexts() {
+        HealthText.text = GameManager.Instance.PlayerHealth.ToString();
+        DurabilityText.text = GameManager.Instance.PlayerDurability.ToString();
+        StrengthText.text = GameManager.Instance.PlayerStrength.ToString();
     }
 
-    // Method to unequip all items.
-    public void UnequipAll()
-    {
-        // Loop through all equipment slots.
-        for (int i = 0; i < currentEquipment.Length; i++)
-        {
-            // Unequip each item.
-            Unequip(i);
-        }
-    }
-
-    // Update is called once per frame.
-    void Update()
-    {
-        // Check if the 'Q' key is pressed.
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            // Unequip all items if 'Q' is pressed.
-            UnequipAll();
-        } 
+    public void UpdateKillSpare() {
+        KillText.text = GameManager.Instance.aliensKilled.ToString();
+        SpareText.text = GameManager.Instance.aliensSpared.ToString();
     }
 }

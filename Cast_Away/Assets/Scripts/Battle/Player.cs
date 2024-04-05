@@ -26,9 +26,12 @@ public class Player
         this.sprite = sprite;
         attacks = new List<Attack>();
         items = new List<Item>();
-        attacks.Add(new Attack("Punch", attackDamage*attack, "Physical"));
-        attacks.Add(new Attack("Kick", attackDamage*attack*2, "Physical"));
+        attacks.Add(new Attack("Punch", 20, "Physical"));
+        attacks.Add(new Attack("Kick", 25, "Physical"));
         attacks.Add(new Attack("Kiss", attackDamage*attack*10, "Emotional"));
+        if (GameManager.Instance.swordCollected) {
+            attacks.Add(new Attack("Slash", 70, "Emotional"));
+        }
 
         items.Add(new HealthPotion(50, "Small Potion", "Heals"));
         items.Add(new HealthPotion(50, "Small Potion", "Heals"));
@@ -36,18 +39,36 @@ public class Player
         items.Add(new HealthPotion(50, "Small Potion", "Heals"));
     }
 
-    public bool TakeDamage(float damage ) {
-        Health -= damage;
-        if (Health <= 0) {
+    public bool TakeDamage(float damage, bool heal)
+    {
+        if (heal)
+        {
+            Health -= damage;
+        }
+        else
+        {
+            float damageTaken = damage - GameManager.Instance.PlayerDurability;
+
+            if (damageTaken > 0)
+            {
+                Health -= damageTaken;
+            }
+        }
+
+
+        if (Health <= 0)
+        {
             Health = 0;
             return true;
-        } else if (Health > baseHealth) {
+        }
+        else if (Health > baseHealth)
+        {
             Health = baseHealth;
         }
         return false;
     }
 
- 
+
 
     public virtual double Attack()
     {

@@ -1,9 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class EmptyBoxScript : MonoBehaviour
 {
@@ -19,6 +15,7 @@ public class EmptyBoxScript : MonoBehaviour
     {
         if (GameManager.Instance.instructionText != null)
         {
+            GameManager.Instance.setInstructionCanvasActive(true);
             GameManager.Instance.instructionText.text = "That box was empty!";
             StartCoroutine(ClearTextAfterDelay(1));
         }
@@ -137,6 +134,7 @@ public class EmptyBoxScript : MonoBehaviour
         }
         yield return new WaitForSeconds(delay); // Wait for the specified delay
         GameManager.Instance.instructionText.text = ""; // Clear the text
+        GameManager.Instance.setInstructionCanvasActive(false);
         Destroy(gameObject);
 
     }
