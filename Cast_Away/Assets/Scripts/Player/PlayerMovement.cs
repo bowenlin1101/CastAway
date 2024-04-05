@@ -81,15 +81,15 @@ public class PlayerMovement : MonoBehaviour
         if (collision.tag == "TeleportSpawn")
         {
             instructionCanvas.gameObject.SetActive(false);
-            if (SceneManager.GetActiveScene().buildIndex == 1)
+            if (SceneManager.GetActiveScene().buildIndex == 2)
             {
                 transform.position = level1Entry;
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 2)
+            else if (SceneManager.GetActiveScene().buildIndex == 3)
             {
                 transform.position = level2Entry;
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 3)
+            else if (SceneManager.GetActiveScene().buildIndex == 4)
             {
                 transform.position = level3Entry;
             }
