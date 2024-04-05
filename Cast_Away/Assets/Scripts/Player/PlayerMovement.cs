@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
 
     public static PlayerMovement instance;
 
-
     void Awake()
     {
         instructionText.text = "";

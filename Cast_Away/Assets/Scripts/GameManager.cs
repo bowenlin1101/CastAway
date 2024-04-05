@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public bool SuperiorDialogHeard = false;
     public bool movementLocked = false;
     public int keyStatus = 0;
-
+    
     public int aliensInteracted = 0;
     public string alienName;
 

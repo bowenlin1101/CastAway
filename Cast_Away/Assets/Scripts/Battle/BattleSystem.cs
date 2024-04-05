@@ -314,7 +314,6 @@ public class BattleSystem : MonoBehaviour
             Debug.Log("Brosky");
             yield return new WaitForSeconds(2.5f);
             PlayerMovement.instance.Respawn(GameManager.Instance.currentScene);
-
         }
         else
         {
