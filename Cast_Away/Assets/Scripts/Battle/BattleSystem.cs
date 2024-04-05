@@ -310,9 +310,6 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
-
-            //TODO game over
-
         }
         else
         {

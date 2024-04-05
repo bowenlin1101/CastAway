@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
 
     public static PlayerMovement instance;
 
-
     void Awake()
     {
         instructionText.text = "";
@@ -265,7 +264,6 @@ public class PlayerMovement : MonoBehaviour
                     ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "You want to go home?"));
                     ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "TELL ME WHY I SHOULD LET YOU LIVE"));
                     StartCoroutine(StartBattleWhenReady());
-
                 }
                 else
                 {

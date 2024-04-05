@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Victory_Image_0: 4737513148898858201
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
