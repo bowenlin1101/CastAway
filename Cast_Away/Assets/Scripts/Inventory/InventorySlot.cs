@@ -13,14 +13,10 @@ public class InventorySlot : MonoBehaviour
     [SerializeField]
     public EquippedSlot sword, chest, legs;
 
-
-    [SerializeField]
-    public EquipmentSlotType equipmentType;
+    private EquipmentSlotType equipmentType;
 
     public void AddItem(Item newItem)
     {
-        item = newItem;
-
         if (newItem == null)
         {
             Debug.LogError("New item is null.");
@@ -59,9 +55,15 @@ public class InventorySlot : MonoBehaviour
     {
         if(item != null)
         {
-            EquipGear();
+            if (item is Equipment)
+            {
+                this.equipmentType = ((Equipment)item).equipmentType;
+                EquipGear();
+                
+            }else {
+                item.Use();
+            }
             item.Use();
-            
         }
     }
 
@@ -70,6 +72,7 @@ public class InventorySlot : MonoBehaviour
         if (equipmentType != null)
         {
             // Assuming you're trying to equip based on the type of equipment.
+            Debug.Log("Type: " + equipmentType);
             switch (equipmentType)
             {
                 case EquipmentSlotType.Sword:

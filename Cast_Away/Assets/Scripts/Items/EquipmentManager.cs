@@ -63,30 +63,6 @@ public class EquipmentManager : MonoBehaviour
         // Placeholder for an item that will be replaced.
         Equipment pastItem = null;
 
-        if (!(newItem is Equipment))
-        {
-            Debug.LogError("The item is not an Equipment type.");
-            return;
-        }
-
-        Equipment equipment = (Equipment)newItem;
-
-        switch (equipment.equipmentType)
-        {
-            case EquipmentSlotType.Sword:
-                swordSlot.EquipArmour(equipment);
-                break;
-            case EquipmentSlotType.Chest:
-                chestSlot.EquipArmour(equipment);
-                break;
-            case EquipmentSlotType.Legs:
-                legsSlot.EquipArmour(equipment);
-                break;
-            default:
-                Debug.LogError("Unhandled equipment type.");
-                break;
-        }
-
         if (slotIndex >= 0 && slotIndex < currentEquipment.Length)
         {
             // Check if there is already an item equipped in the slot.

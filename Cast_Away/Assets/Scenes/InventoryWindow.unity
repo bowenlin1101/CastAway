@@ -6152,6 +6152,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChestSlot
       objectReference: {fileID: 0}
+    - target: {fileID: 2829850388285385092, guid: 89e111a14ef0a49a6bc798b06f8969b2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153289709104534208, guid: 89e111a14ef0a49a6bc798b06f8969b2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6738968026916566360, guid: 89e111a14ef0a49a6bc798b06f8969b2, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
