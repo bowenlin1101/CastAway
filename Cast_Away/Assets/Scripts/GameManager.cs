@@ -9,6 +9,20 @@ public class GameManager : MonoBehaviour
     public bool legsTouched = false;
     public bool chestTouched = false;
 
+    public bool closedBox1Touched = false;
+    public bool closedBox2Touched = false;
+    public bool closedBox3Touched = false;
+    public bool closedBox4Touched = false;
+    public bool closedBox5Touched = false;
+    public bool closedBox6Touched = false;
+    public bool closedBox7Touched = false;
+    public bool closedBox8Touched = false;
+    public bool closedBox9Touched = false;
+    public bool closedBox10Touched = false;
+    public bool closedBox11Touched = false;
+    public bool KeyBoxTouched = false;
+
+
     public bool triggeredStartDialogue = false;
     public string currentColor = "blue";
     public int aliensKilled = 0;
