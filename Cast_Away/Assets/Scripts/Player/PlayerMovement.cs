@@ -76,20 +76,53 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer.sprite = newSprite;
     }
 
+    public void Respawn(string currentLevel)
+    {
+        SceneManager.LoadScene(currentLevel);
+        GameManager.Instance.movementLocked = false;
+        if (currentLevel == "Level 1")
+        {
+            GameManager.Instance.Citizen1Touched = false;
+            GameManager.Instance.keyStatus = 0;
+            transform.position = level1Exit;
+        } else if (currentLevel == "Level 2")
+        {
+            GameManager.Instance.Citizen2Touched = false;
+            GameManager.Instance.Citizen3Touched = false;
+            GameManager.Instance.Citizen4Touched = false;
+            GameManager.Instance.Citizen5Touched = false;
+            GameManager.Instance.Doctor1Touched = false;
+            GameManager.Instance.Doctor2Touched = false;
+            GameManager.Instance.Doctor3Touched = false;
+            GameManager.Instance.aliensInteracted = 0;
+            GameManager.Instance.keyStatus = 1;
+            instructionText.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
+
+            transform.position = level2Exit;
+        } else if (currentLevel == "Level 3"){
+            GameManager.Instance.Doctor4Touched = false;
+            GameManager.Instance.Doctor5Touched = false;
+            GameManager.Instance.SuperiorTouched = false;
+            transform.position = level3Exit;
+        }
+        
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "TeleportSpawn")
         {
             instructionCanvas.gameObject.SetActive(false);
-            if (SceneManager.GetActiveScene().buildIndex == 1)
+            if (SceneManager.GetActiveScene().name == "Level 1")
             {
                 transform.position = level1Entry;
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 2)
+            else if (SceneManager.GetActiveScene().name == "Level 2")
             {
                 transform.position = level2Entry;
             }
-            else if (SceneManager.GetActiveScene().buildIndex == 3)
+            else if (SceneManager.GetActiveScene().name == "Level 3")
             {
                 transform.position = level3Entry;
             }
@@ -227,54 +260,69 @@ public class PlayerMovement : MonoBehaviour
                 GameManager.Instance.alienName = "SuperiorAlien";
                 GameManager.Instance.SuperiorTouched = true;
                 GameManager.Instance.movementLocked = true;
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Well well. Look who it is..."));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Looks like someone has finally awoken from their slumber"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Who are you???"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Who am I? *chuckles* I'm only but the RULER of this planet and this civilization"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "How did I get here?"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "All in due time. But before we keep on chatting let us see if you have been on your best behaviour while occupying in my residence"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Prepare to be JUDGED for your actions!"));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Every alien you have encountered is a precious living being that has a job, a family; fears, dreams, ambitions."));
-                ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "..."));
+                if (!GameManager.Instance.SuperiorDialogHeard) {
+                    GameManager.Instance.SuperiorDialogHeard = true;
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Well well. Look who it is..."));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Looks like someone has finally awoken from their slumber"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Who are you???"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Who am I? *chuckles* I'm only but the RULER of this planet and this civilization"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "How did I get here?"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "All in due time. But before we keep on chatting let us see if you have been on your best behaviour while occupying in my residence"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Prepare to be JUDGED for your actions!"));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Every alien you have encountered is a precious living being that has a job, a family; fears, dreams, ambitions."));
+                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "..."));
 
-                if (GameManager.Instance.aliensKilled == 0)
-                {
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "And... you managed to respect each and every alien you encountered and to befriend them."));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "*chuckles*"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "I gotta hand it to you. You have surprised me and earned my respect"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "The reason that you are here is because your rocket ship got caught in our planet's gravity"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "You fell out of the sky and you managed to eject from your ship just in time to save yourself"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We have encountered humans before, and our experiences have been.... mixed"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Some are outright evil: Killing everything they see in their path"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Some are kind and helpful: Being patient and working through difficulties peacefully "));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Some are kind and helpful: Being patient and working through difficulties peacefully "));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We are glad you fall into the latter group, but we had our doubts when we discovered your battered body"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We decided to take a chance on you. The doctors on our planet nursed you and took care of you"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "But we did not expect you to get well so fast. You have been asleep for almost FIVE YEARS"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Your awakening has definitely startled us, but I'm glad no blood has been shed"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Now, it is time to say our fair wells"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We have a rocket outside that has been reserved to take you off our planet and back home"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Take care human. Stay patient and kind :)"));
-                    StartCoroutine(UnlockMovementWhenReady());
+                    if (GameManager.Instance.aliensKilled == 0)
+                    {
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "And... you managed to respect each and every alien you encountered and to befriend them."));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "*chuckles*"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "I gotta hand it to you. You have surprised me and earned my respect"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "The reason that you are here is because your rocket ship got caught in our planet's gravity"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "You fell out of the sky and you managed to eject from your ship just in time to save yourself"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We have encountered humans before, and our experiences have been.... mixed"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Some are outright evil: Killing everything they see in their path"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Some are kind and helpful: Being patient and working through difficulties peacefully "));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Some are kind and helpful: Being patient and working through difficulties peacefully "));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We are glad you fall into the latter group, but we had our doubts when we discovered your battered body"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We decided to take a chance on you. The doctors on our planet nursed you and took care of you"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "But we did not expect you to get well so fast. You have been asleep for almost FIVE YEARS"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Your awakening has definitely startled us, but I'm glad no blood has been shed"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Now, it is time to say our fair wells"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "We have a rocket outside that has been reserved to take you off our planet and back home"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Take care human. Stay patient and kind :)"));
+                        StartCoroutine(UnlockMovementWhenReady());
 
-                }
-                else if (GameManager.Instance.aliensKilled < 3)
-                {
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", $"And... you murdered {GameManager.Instance.aliensKilled} of these precious beings in cold blood..."));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "*chuckles*"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "You want to go home?"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "TELL ME WHY I SHOULD LET YOU LIVE"));
-                    StartCoroutine(StartBattleWhenReady());
+                    } else if (GameManager.Instance.aliensKilled < 3){
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", $"And... you murdered {GameManager.Instance.aliensKilled} of these precious beings in cold blood..."));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "*chuckles*"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "You want to go home?"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "TELL ME WHY I SHOULD LET YOU LIVE"));
+                        StartCoroutine(StartBattleWhenReady());
 
-                }
-                else
-                {
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", $"And... you MASSACRED {GameManager.Instance.aliensKilled} of MY PRECIOUS PEOPLE..."));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "*chuckles*"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "You want to know why you're here?"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Well what use will that do?"));
-                    ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "YOU'RE NOT LEAVING HERE ALIVE!!!"));
-                    StartCoroutine(StartBattleWhenReady());
+                    } else {
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", $"And... you MASSACRED {GameManager.Instance.aliensKilled} of MY PRECIOUS PEOPLE..."));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "*chuckles*"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "You want to know why you're here?"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Well what use will that do?"));
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "YOU'RE NOT LEAVING HERE ALIVE!!!"));
+                        StartCoroutine(StartBattleWhenReady());
+                    }
+                } else {
+                    if (GameManager.Instance.aliensKilled == 0)
+                    {
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "Take care human. Stay patient and kind :)"));
+                        StartCoroutine(UnlockMovementWhenReady());
+
+                    }
+                    else if (GameManager.Instance.aliensKilled < 3)
+                    {
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "TELL ME WHY I SHOULD LET YOU LIVE"));
+                        StartCoroutine(StartBattleWhenReady());
+
+                    } else {
+                        ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", "YOU'RE NOT LEAVING HERE ALIVE!!!"));
+                        StartCoroutine(StartBattleWhenReady());
+                    }
                 }
             }
         } else if (collision.CompareTag("Costume")) {

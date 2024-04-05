@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public bool Doctor4Touched = false;
     public bool Doctor5Touched = false;
     public bool SuperiorTouched = false;
+    public bool SuperiorDialogHeard = false;
     public bool movementLocked = false;
     public int keyStatus = 0;
 
