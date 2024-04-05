@@ -1,42 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class EquipmentManager : MonoBehaviour
 {
+
+
+    [SerializeField] TextMeshProUGUI HealthText;
+    [SerializeField] TextMeshProUGUI StrengthText;
+    [SerializeField] TextMeshProUGUI DurabilityText;
+    [SerializeField] TextMeshProUGUI DamageText;
+
+    [SerializeField] public EquippedSlot swordSlot;
+    [SerializeField] public EquippedSlot chestSlot;
+    [SerializeField] public EquippedSlot legsSlot;
+
     #region Singleton
 
     // Static instance of EquipmentManager allows it to be accessed by any other script.
-    public static EquipmentManager instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<EquipmentManager>();
-            }
-            return _instance;
-        }
-    }
-    static EquipmentManager _instance;
+    public static EquipmentManager instance;
 
+    
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
-        // Assign this script instance to the static instance variable to implement Singleton pattern.
-        _instance = this; 
-    }
+		if (instance == null)
+		{
+			instance = this;
+			DontDestroyOnLoad(gameObject);
+		}
+		else if (instance != this)
+		{
+			Destroy(gameObject);
+		}
+	}
 
     #endregion
 
-    public EquippedSlot swordSlot, chestSlot, legsSlot;
 
     // Reference to the Inventory to interact with it.
     Inventory inventory;
 
     // Array to hold current equipped items.
     Equipment[] currentEquipment;
-
 
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public event OnEquipmentChanged onEquipmentChanged;
@@ -48,7 +55,7 @@ public class EquipmentManager : MonoBehaviour
         inventory = Inventory.instance;
 
         // Determine the number of slots based on the EquipmentSlot enum.
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlotType)).Length;
+        int numSlots = 3;
 
         // Initialize the currentEquipment array based on the number of equipment slots.
         currentEquipment = new Equipment[numSlots];
@@ -87,7 +94,7 @@ public class EquipmentManager : MonoBehaviour
 
         // Equip the new item in the specified slot.
         currentEquipment[slotIndex] = newItem;
-
+        Debug.Log("Equip the item");
         
     }
 
@@ -133,5 +140,11 @@ public class EquipmentManager : MonoBehaviour
             // Unequip all items if 'Q' is pressed.
             UnequipAll();
         } 
+    }
+
+    public void UpdateStatTexts() {
+        HealthText.text = GameManager.Instance.PlayerHealth.ToString();
+        DurabilityText.text = GameManager.Instance.PlayerDurability.ToString();
+        StrengthText.text = GameManager.Instance.PlayerStrength.ToString();
     }
 }

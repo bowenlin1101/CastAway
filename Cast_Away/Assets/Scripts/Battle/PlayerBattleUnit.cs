@@ -51,6 +51,7 @@ public class PlayerBattleUnit : MonoBehaviour
             }
         }
         player = new Player("brosky", mySprite);
+        player.Health = GameManager.Instance.PlayerHealth;
         player.items = battleItems;
         Image image = GetComponent<Image>();
         image.sprite = player.sprite;

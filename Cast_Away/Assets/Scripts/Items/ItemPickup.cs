@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class ItemPickup : Interactable
 {
+
+    [SerializeField] Text instructionText;
 
     public Item item;
 
@@ -22,7 +26,11 @@ public class ItemPickup : Interactable
     void pickUp()
     {
         Debug.Log("Picking up item" + item.name);
+        GameManager.Instance.instructionText.text = $"Picked up: {item.name}\nPress 'I' to view\nUse left mouse click to equip/use";
+        GameManager.Instance.setInstructionCanvasActive(true);
         // add to inventory
+        Debug.Log(Inventory.instance);
+        // Inventory.instance.HelloWorld();
         Inventory.instance.Add(item);   // Add to inventory
 
         if (gameObject.name == "healthPotionTouched")

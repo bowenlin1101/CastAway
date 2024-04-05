@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Equipment")]
@@ -8,7 +9,7 @@ using UnityEngine;
 public class Equipment : Item
 {
     public int equipSlot;
-
+    public enum EquipmentSlotType { Sword, Chest, Legs };
     public int armorModifier;
     public int damageModifier;
 
@@ -17,12 +18,9 @@ public class Equipment : Item
 
     public override void Use()
     {
-        base.Use();
         // equip the item remove it from main inventory or holding slot
         Debug.Log("Using (Equipment)");
         EquipmentManager.instance.Equip(this);
         RemovesFromInventory();
     }
 }
-
-public enum EquipmentSlotType { Sword, Chest, Legs };

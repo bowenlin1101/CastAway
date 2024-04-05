@@ -11,12 +11,7 @@ public class InventorySlot : MonoBehaviour
 
     public Button removeBtn;
 
-    [SerializeField]
-    public EquippedSlot sword, chest, legs;
-
     private EquipmentSlotType equipmentType;
-
-
 
     public void AddItem(Item newItem)
     {
@@ -33,8 +28,6 @@ public class InventorySlot : MonoBehaviour
         }
 
         item = newItem;
-        icon.sprite = item.icon;
-
         icon.sprite = item.icon;
         icon.enabled = true;
         removeBtn.interactable = true;
@@ -60,11 +53,15 @@ public class InventorySlot : MonoBehaviour
         {
             if (item is Equipment)
             {
-                this.equipmentType = ((Equipment)item).equipmentType;
+                this.equipmentType = (EquipmentSlotType)((Equipment)item).equipmentType;
                 EquipGear();
-                
+                EquipmentManager.instance.UpdateStatTexts();
             }else if(item is HealthPotion){
                 GameManager.Instance.PlayerHealth += ((HealthPotion)item).hpHealed;
+                if (GameManager.Instance.PlayerHealth > GameManager.Instance.PlayerBaseHealth) {
+                    GameManager.Instance.PlayerHealth = GameManager.Instance.PlayerBaseHealth;
+                }
+                EquipmentManager.instance.UpdateStatTexts();
             }
             else if(item is SpeedPotion)
             {
@@ -88,17 +85,17 @@ public class InventorySlot : MonoBehaviour
             {
                 case EquipmentSlotType.Sword:
                     // Equip the sword here
-                    sword.EquipArmour(item);
+                    EquipmentManager.instance.swordSlot.EquipArmour(item);
                     Debug.Log($"equipmentType {equipmentType}");
                     break;
                 case EquipmentSlotType.Chest:
                     // Equip the chest gear here
-                    chest.EquipArmour(item);
+                    EquipmentManager.instance.chestSlot.EquipArmour(item);
                     Debug.Log($"equipmentType {equipmentType}");
                     break;
                 case EquipmentSlotType.Legs:
                     // Equip the legs gear here
-                    legs.EquipArmour(item);
+                    EquipmentManager.instance.legsSlot.EquipArmour(item);
                     Debug.Log($"equipmentType {equipmentType}");
                     break;
                 default:

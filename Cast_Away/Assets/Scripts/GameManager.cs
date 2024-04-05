@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,9 @@ public class GameManager : MonoBehaviour
     public bool movementLocked = false;
     public int keyStatus = 0;
     public int PlayerHealth = 100;
+    public int PlayerBaseHealth = 100;
+    public int PlayerStrength= 0;
+    public int PlayerDurability = 0;
     public Canvas inventoryCanvas;
     public int aliensInteracted = 0;
     public string alienName;
@@ -36,10 +40,55 @@ public class GameManager : MonoBehaviour
     public string currentScene;
     public GameObject projectile;
     public float projectileSpeed;
-    [SerializeField] public Canvas instructionCanvas;
+    [SerializeField] public CanvasGroup instructionCanvas;
     [SerializeField] public Text instructionText;
+    public bool isInstructionCanvasShowing = false;
 
     public static GameManager Instance;
+
+    public void setInstructionCanvasActive(bool fadeIn) {
+        Debug.Log($"fadeIn: {fadeIn}");
+        Debug.Log($"InstructionCanvasShowing: {isInstructionCanvasShowing}");
+        if (!isInstructionCanvasShowing && fadeIn) {
+            StartCoroutine(FadeInOutInstructions(fadeIn));
+
+        } else if (isInstructionCanvasShowing && !fadeIn) {
+            StartCoroutine(FadeInOutInstructions(fadeIn));
+        }
+    }
+
+    public IEnumerator FadeInOutInstructions(bool fadeIn)
+    {
+        float currentTime = 0f;
+
+        if (fadeIn) {
+            while (currentTime < 0.25f)
+            {
+                float alpha = Mathf.Lerp(0f, 1f, currentTime / 0.25f);
+                instructionCanvas.alpha = alpha;
+                currentTime += Time.deltaTime;
+                yield return null;
+            }
+            instructionCanvas.alpha = 1f; // Ensure it's fully visible
+            
+        } else {
+            while (currentTime < 0.25f)
+            {
+                float alpha = Mathf.Lerp(1f, 0f, currentTime / 0.25f);
+                instructionCanvas.alpha = alpha;
+                currentTime += Time.deltaTime;
+                yield return null;
+            }
+            instructionCanvas.alpha = 0f; // Ensure it's fully visible
+        }
+
+        if (fadeIn) {
+            isInstructionCanvasShowing = true;
+        } else {
+            isInstructionCanvasShowing = false;
+        }
+
+    }
 
     private void Awake()
     {
@@ -52,11 +101,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    public void gotKeyFromBox()
-    {
-        keyStatus++;
     }
 
     public void gotKeyFromAliens()

@@ -10,7 +10,7 @@ public class ChatManager : MonoBehaviour
     private Queue<ChatMessage> dialogQueue = new Queue<ChatMessage>();
     [SerializeField] Image chatImage;
     [SerializeField] Text chatText;
-    [SerializeField] Image chatBox;
+    [SerializeField] public Image chatBox;
     private Sprite playerImage;
     [SerializeField] Sprite blueImage;
     [SerializeField] Sprite redImage;

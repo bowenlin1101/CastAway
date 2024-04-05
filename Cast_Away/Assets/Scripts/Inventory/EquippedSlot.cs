@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class EquippedSlot : MonoBehaviour
 {
-    Item item;
+    private Item item;
 
     public Image icon;
 
@@ -26,8 +26,6 @@ public class EquippedSlot : MonoBehaviour
         }
 
         item = newItem;
-        icon.sprite = item.icon;
-
         icon.sprite = item.icon;
         icon.enabled = true;
     }
