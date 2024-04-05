@@ -143,7 +143,7 @@ public class BattleSystem : MonoBehaviour
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", $"You are free to go..."));
             }
 
-            HandleAlienDefeat();
+            HandleAlienDefeat(false);
         }
         else
         {
@@ -187,7 +187,7 @@ public class BattleSystem : MonoBehaviour
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", $"..."));
             }
             GameManager.Instance.aliensKilled++;
-            HandleAlienDefeat();
+            HandleAlienDefeat(true);
         }
         else
         {
@@ -311,8 +311,9 @@ public class BattleSystem : MonoBehaviour
         {
             yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
 
-            //TODO game over
-
+            Debug.Log("Brosky");
+            yield return new WaitForSeconds(2.5f);
+            PlayerMovement.instance.Respawn(GameManager.Instance.currentScene);
         }
         else
         {
@@ -587,8 +588,107 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public void HandleAlienDefeat()
+    public void HandleAlienDefeat(bool dead)
     {
+        if (dead) {
+            if (GameManager.Instance.alienName == "CitizenAlien1") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "*huff* *puff*"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "You... traitor..."));
+            } else if (GameManager.Instance.alienName == "CitizenAlien2") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "*cough* *cough*"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "this is how you repay us?..."));
+            } else if (GameManager.Instance.alienName == "CitizenAlien3") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "you... won't..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "get away.... with this...."));
+            } else if (GameManager.Instance.alienName == "CitizenAlien4") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "Forgive me Claire..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "take care of our child...."));
+            } else if (GameManager.Instance.alienName == "CitizenAlien5") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "we... shouldn't have..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "trusted... YOU..."));
+            } else if (GameManager.Instance.alienName == "DoctorAlien1") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "my *cough* diagnosis... *cough*"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "is *cough* *cough*"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "YOU WILL PERISH"));
+
+            } else if (GameManager.Instance.alienName == "DoctorAlien2") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "my *cough* diagnosis... *cough*"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "is *cough* *cough*"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "YOU WILL PERISH"));
+
+            } else if (GameManager.Instance.alienName == "DoctorAlien3") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "you dirty backstabber..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "you'll *huff* *cough*"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "get what's coming..."));
+
+            } else if (GameManager.Instance.alienName == "DoctorAlien4") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "my *cough friends will *puff* avenge me..."));
+            } else if (GameManager.Instance.alienName == "DoctorAlien5") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "you RASCAL... *pant*"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "you'll die to what's up ahead :)"));
+            }
+
+        } else {
+            if (GameManager.Instance.alienName == "CitizenAlien1") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "You're not so bad after all :)"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "...What's that supposed to mean?"));
+            } else if (GameManager.Instance.alienName == "CitizenAlien2") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "I love discussing hating taxes :P"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Same here!"));
+            } else if (GameManager.Instance.alienName == "CitizenAlien3") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "Sometimes you need a little tough love :D"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "That's what I mean"));
+            } else if (GameManager.Instance.alienName == "CitizenAlien4") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "We were right about humans!"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Right about what?"));
+            } else if (GameManager.Instance.alienName == "CitizenAlien5") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "Compliments make my heart flutter > w <"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Woah woah. I'm taken... sorry..."));
+            } else if (GameManager.Instance.alienName == "DoctorAlien1") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "A worthy opponent you are"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "As were you"));
+
+            } else if (GameManager.Instance.alienName == "DoctorAlien2") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "So... if I do 10 pushups a day, I'll have veins like those?"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", ".... Yeah... sure bud"));
+
+            } else if (GameManager.Instance.alienName == "DoctorAlien3") {
+                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "Is your leg better?"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Yeah"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "Cool! Catch ya later alligator ;)"));
+            } else if (GameManager.Instance.alienName == "DoctorAlien4") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "We do not regret this :)"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "...Regret what?"));
+
+            } else if (GameManager.Instance.alienName == "DoctorAlien5") {
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "..."));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "Our boss is up ahead!"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "I'm sure he'll like you"));
+                ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Boss...?"));
+
+            }
+        }
+        alienUnit.transform.eulerAngles = new Vector3(0, 0, 90);
         GameManager.Instance.movementLocked = false;
         SceneManager.LoadScene(GameManager.Instance.currentScene);
     }

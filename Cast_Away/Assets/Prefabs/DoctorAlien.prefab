@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2755145942336227766}
   - component: {fileID: 7153439010655180078}
   - component: {fileID: -669434520286233385}
+  - component: {fileID: 7892826441017925408}
   m_Layer: 0
   m_Name: DoctorAlien
   m_TagString: TeleportBattle
@@ -133,3 +134,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3.6, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &7892826441017925408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3470529141201308723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc7f525b35bccfa4e9b2f65aa50e05cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newMaterial: {fileID: 2100000, guid: e983c32746e8ca846811bcc11a0f4fb4, type: 2}
