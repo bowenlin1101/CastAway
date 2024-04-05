@@ -7,16 +7,29 @@ public class EquipmentManager : MonoBehaviour
     #region Singleton
 
     // Static instance of EquipmentManager allows it to be accessed by any other script.
-    public static EquipmentManager instance;
+    public static EquipmentManager instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<EquipmentManager>();
+            }
+            return _instance;
+        }
+    }
+    static EquipmentManager _instance;
 
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
         // Assign this script instance to the static instance variable to implement Singleton pattern.
-        instance = this; 
+        _instance = this; 
     }
 
     #endregion
+
+    public EquippedSlot swordSlot, chestSlot, legsSlot;
 
     // Reference to the Inventory to interact with it.
     Inventory inventory;
@@ -24,8 +37,9 @@ public class EquipmentManager : MonoBehaviour
     // Array to hold current equipped items.
     Equipment[] currentEquipment;
 
+
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
-    public OnEquipmentChanged onEquipmentChanged;
+    public event OnEquipmentChanged onEquipmentChanged;
 
     // intialize the bound of the array to have a fixed number of slot 
     void Start()
@@ -34,7 +48,7 @@ public class EquipmentManager : MonoBehaviour
         inventory = Inventory.instance;
 
         // Determine the number of slots based on the EquipmentSlot enum.
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
+        int numSlots = System.Enum.GetNames(typeof(EquipmentSlotType)).Length;
 
         // Initialize the currentEquipment array based on the number of equipment slots.
         currentEquipment = new Equipment[numSlots];
@@ -49,23 +63,32 @@ public class EquipmentManager : MonoBehaviour
         // Placeholder for an item that will be replaced.
         Equipment pastItem = null;
 
-        // Check if there is already an item equipped in the slot.
-        if (currentEquipment[slotIndex] != null)
+        if (slotIndex >= 0 && slotIndex < currentEquipment.Length)
         {
-            // If so, store the currently equipped item.
-            pastItem = currentEquipment[slotIndex];
+            // Check if there is already an item equipped in the slot.
+            if (currentEquipment[slotIndex] != null)
+            {
+                // If so, store the currently equipped item.
+                pastItem = currentEquipment[slotIndex];
 
-            // Add the replaced item back to the inventory.
-            inventory.Add(pastItem);
-        }
+                // Add the replaced item back to the inventory.
+                inventory.Add(pastItem);
+            }
 
-        if(onEquipmentChanged != null)
+            if (onEquipmentChanged != null)
+            {
+                onEquipmentChanged.Invoke(newItem, pastItem);
+            }
+
+        }else
         {
-            onEquipmentChanged.Invoke(newItem, pastItem);
+            Debug.LogError("SlotIndex is out of range. Provided index: " + slotIndex);
         }
 
         // Equip the new item in the specified slot.
         currentEquipment[slotIndex] = newItem;
+
+        
     }
 
     // Method to unequip an item from a specific slot.
@@ -105,7 +128,7 @@ public class EquipmentManager : MonoBehaviour
     void Update()
     {
         // Check if the 'Q' key is pressed.
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             // Unequip all items if 'Q' is pressed.
             UnequipAll();

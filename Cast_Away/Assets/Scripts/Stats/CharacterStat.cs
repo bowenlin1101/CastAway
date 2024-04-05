@@ -1,43 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+/* Contains all the stats for a character. */
 
 public class CharacterStat : MonoBehaviour
 {
-    public int maxHealth = 100;
 
-    public int currentHealth { get; private set; }
+	public Stat maxHealth;          // Maximum amount of health
+	public int currentHealth { get; protected set; }    // Current amount of health
 
-    // stat buffs/equipable items
-    public Stat damage;
-    public Stat armor;
+	public Stat damage;
+	public Stat armor;
 
-    void Awake()
-    {
-        currentHealth = maxHealth;
-    }
+	public event System.Action OnHealthReachedZero;
 
-    public void TakeDamage(int damage)
-    {
-        // get the damage done from the armour first 
-        damage -= armor.getValue();
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
+	public virtual void Awake()
+	{
+		currentHealth = maxHealth.GetValue();
+	}
 
-        // subtract the damage from the current health
-        currentHealth -= damage;
-        Debug.Log(transform.name + "takes" + damage + "damage");
+	// Start with max HP.
+	public virtual void Start()
+	{
+		maxHealth.AddModifier(100);
+	}
 
-        // if health is less than 0 then die
-        if(currentHealth <= 0)
-        {
-            Die();
-        }
-    }
+	// Damage the character
+	public void TakeDamage(int damage)
+	{
+		// Subtract the armor value - Make sure damage doesn't go below 0.
+		damage -= armor.GetValue();
+		damage = Mathf.Clamp(damage, 0, int.MaxValue);
 
-    public virtual void Die()
-    {
-        // die in some way will be unique to case
+		// Subtract damage from health
+		currentHealth -= damage;
+		Debug.Log(transform.name + " takes " + damage + " damage.");
 
-        Debug.Log(transform.name + "died");
-    }
+		// If we hit 0. Die.
+		if (currentHealth <= 0)
+		{
+			if (OnHealthReachedZero != null)
+			{
+				OnHealthReachedZero();
+			}
+		}
+	}
+
+	// Heal the character.
+	public void Heal(int amount)
+	{
+		currentHealth += amount;
+		currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth.GetValue());
+	}
+
+
+
 }
