@@ -39,23 +39,36 @@ public class Player
         items.Add(new HealthPotion(50, "Small Potion", "Heals"));
     }
 
-    public bool TakeDamage(float damage ) {
-        float damageTaken = damage - GameManager.Instance.PlayerDurability;
-        
-        if (damageTaken > 0) {
-            Health -= damageTaken;
+    public bool TakeDamage(float damage, bool heal)
+    {
+        if (heal)
+        {
+            Health -= damage;
         }
-        
-        if (Health <= 0) {
+        else
+        {
+            float damageTaken = damage - GameManager.Instance.PlayerDurability;
+
+            if (damageTaken > 0)
+            {
+                Health -= damageTaken;
+            }
+        }
+
+
+        if (Health <= 0)
+        {
             Health = 0;
             return true;
-        } else if (Health > baseHealth) {
+        }
+        else if (Health > baseHealth)
+        {
             Health = baseHealth;
         }
         return false;
     }
 
- 
+
 
     public virtual double Attack()
     {

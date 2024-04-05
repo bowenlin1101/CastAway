@@ -90,7 +90,10 @@ public class StartMenu : MonoBehaviour
             {
                 //Spawn
                 SceneManager.LoadScene("Spawn");
-                GameManager.Instance.movementLocked = false;
+                if (GameManager.Instance)
+                {
+                    GameManager.Instance.movementLocked = false;
+                }
             }
             else if (currentSelection == 1)
             {

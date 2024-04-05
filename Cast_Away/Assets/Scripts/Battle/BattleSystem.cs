@@ -229,7 +229,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
         yield return dialogBox.TypeDialog($"{playerUnit.player.Name} healed {((HealthPotion)item).hpHealed}");
 
-        playerUnit.player.TakeDamage(-((HealthPotion)item).hpHealed);
+        playerUnit.player.TakeDamage(-((HealthPotion)item).hpHealed, true);
         yield return new WaitForSeconds(1f);
 
         yield return playerHud.UpdateHP();
@@ -310,7 +310,7 @@ public class BattleSystem : MonoBehaviour
         int numberOfAttacks = defendSystem.numberOfAttacks;
         float damage = attack.Damage / numberOfAttacks * playerCollider.hits;
 
-        bool isDead = playerUnit.player.TakeDamage(damage);
+        bool isDead = playerUnit.player.TakeDamage(damage, false);
         yield return playerHud.UpdateHP();
         GameManager.Instance.PlayerHealth = (int) playerUnit.player.Health;
 
