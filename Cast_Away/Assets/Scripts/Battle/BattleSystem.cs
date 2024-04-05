@@ -138,7 +138,7 @@ public class BattleSystem : MonoBehaviour
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", $"Perhaps... There has been a mistake"));
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", $"You are free to go..."));
             }
-
+            GameManager.Instance.aliensSpared++;
             HandleAlienDefeat(false);
         }
         else
@@ -300,6 +300,10 @@ public class BattleSystem : MonoBehaviour
 
         StartCoroutine(dialogBox.TypeDialog($"You dodged {defendSystem.numberOfAttacks * (defendSystem.attackPattern + 1) - playerCollider.hits}/{defendSystem.numberOfAttacks * (defendSystem.attackPattern + 1)} hits"));
         yield return new WaitForSeconds(2f);
+        if (GameManager.Instance.PlayerDurability > 0) {
+            StartCoroutine(dialogBox.TypeDialog($"Your armor protects you..."));
+        }
+        yield return new WaitForSeconds(1f);
 
         Attack attack = defendSystem.attack;
 
@@ -594,7 +598,9 @@ public class BattleSystem : MonoBehaviour
 
     public void HandleAlienDefeat(bool dead)
     {
-        GameManager.Instance.setInstructionCanvasActive(true);
+        if (GameManager.Instance.currentScene == "Level 2") {
+            GameManager.Instance.setInstructionCanvasActive(true);
+        }
         ChatManager.Instance.chatBox.gameObject.SetActive(true);
 
         if (dead) {

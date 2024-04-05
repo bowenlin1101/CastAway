@@ -56,10 +56,6 @@ public class Inventory : MonoBehaviour
 		return true;
 	}
 
-	public void HelloWorld() {
-		Debug.Log("Hello World");
-	}
-
 	// Remove an item
 	public void Remove(Item item)
 	{

@@ -85,17 +85,26 @@ public class InventorySlot : MonoBehaviour
             {
                 case EquipmentSlotType.Sword:
                     // Equip the sword here
+                    GameManager.Instance.swordCollected = true;
+                    GameManager.Instance.PlayerStrength += 50;
                     EquipmentManager.instance.swordSlot.EquipArmour(item);
+                    EquipmentManager.instance.UpdateStatTexts();
                     Debug.Log($"equipmentType {equipmentType}");
                     break;
                 case EquipmentSlotType.Chest:
                     // Equip the chest gear here
+                    GameManager.Instance.PlayerDurability += 30;
                     EquipmentManager.instance.chestSlot.EquipArmour(item);
+                    EquipmentManager.instance.UpdateStatTexts();
+
                     Debug.Log($"equipmentType {equipmentType}");
                     break;
                 case EquipmentSlotType.Legs:
                     // Equip the legs gear here
+                    GameManager.Instance.PlayerDurability += 10;
                     EquipmentManager.instance.legsSlot.EquipArmour(item);
+                    EquipmentManager.instance.UpdateStatTexts();
+
                     Debug.Log($"equipmentType {equipmentType}");
                     break;
                 default:

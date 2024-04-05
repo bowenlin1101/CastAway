@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class EquipmentManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI StrengthText;
     [SerializeField] TextMeshProUGUI DurabilityText;
     [SerializeField] TextMeshProUGUI DamageText;
+    [SerializeField] Text KillText;
+    [SerializeField] Text SpareText;
 
     [SerializeField] public EquippedSlot swordSlot;
     [SerializeField] public EquippedSlot chestSlot;
@@ -146,5 +149,10 @@ public class EquipmentManager : MonoBehaviour
         HealthText.text = GameManager.Instance.PlayerHealth.ToString();
         DurabilityText.text = GameManager.Instance.PlayerDurability.ToString();
         StrengthText.text = GameManager.Instance.PlayerStrength.ToString();
+    }
+
+    public void UpdateKillSpare() {
+        KillText.text = GameManager.Instance.aliensKilled.ToString();
+        SpareText.text = GameManager.Instance.aliensSpared.ToString();
     }
 }

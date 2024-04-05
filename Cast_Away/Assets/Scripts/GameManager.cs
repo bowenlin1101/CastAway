@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public bool triggeredStartDialogue = false;
     public string currentColor = "blue";
     public int aliensKilled = 0;
+    public int aliensSpared = 0;
     public bool Citizen1Touched = false;
     public bool Citizen2Touched = false;
     public bool Citizen3Touched = false;
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
     public int aliensInteracted = 0;
     public string alienName;
     public bool isInventoryOpen = false;
-
+    public bool swordCollected = false;
     public BaseAlienScript alienToFight;
     public string currentScene;
     public GameObject projectile;
@@ -113,9 +114,15 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
+        healthPotionTouched = false;
+        SwordTouched = false;
+        speedPotionTouched = false;
+        legsTouched = false;
+        chestTouched = false;
         triggeredStartDialogue = false;
         currentColor = "blue";
         aliensKilled = 0;
+        aliensSpared = 0;
         Citizen1Touched = false;
         Citizen2Touched = false;
         Citizen3Touched = false;
@@ -130,11 +137,12 @@ public class GameManager : MonoBehaviour
         SuperiorDialogHeard = false;
         movementLocked = false;
         keyStatus = 0;
+        PlayerHealth = 100;
+        PlayerBaseHealth = 100;
+        PlayerStrength= 0;
+        PlayerDurability = 0;
         aliensInteracted = 0;
-        healthPotionTouched = false;
-        SwordTouched = false;
-        speedPotionTouched = false;
-        legsTouched = false;
-        chestTouched = false;
+        isInventoryOpen = false;
+        swordCollected = false;
     }
 }

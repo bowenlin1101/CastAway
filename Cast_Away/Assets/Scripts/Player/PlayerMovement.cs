@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I) && !GameManager.Instance.movementLocked)
         {
             EquipmentManager.instance.UpdateStatTexts();
+            EquipmentManager.instance.UpdateKillSpare();
             // Inventory.instance.
             if (GameManager.Instance.isInventoryOpen)
             {
