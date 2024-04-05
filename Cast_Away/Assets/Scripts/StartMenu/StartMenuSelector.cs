@@ -10,14 +10,9 @@ public class StartMenuSelector : MonoBehaviour
     [SerializeField] GameObject menuSelector;
     [SerializeField] List<Text> options;
     private Color highlightedColor;
-    private bool showedControls = false;
 
     void Start() {
         UnityEngine.ColorUtility.TryParseHtmlString("#925EF9", out highlightedColor);
-    }
-
-    void Update() {
-        
     }
 
     public void UpdateMenuSelection(int selectedAction) {
