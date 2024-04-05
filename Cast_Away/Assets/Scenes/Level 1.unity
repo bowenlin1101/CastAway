@@ -634,6 +634,10 @@ PrefabInstance:
       propertyPath: BoxText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.5782795
@@ -676,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0 (3)
+      value: closedBox4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1069,6 +1073,10 @@ PrefabInstance:
       propertyPath: BoxText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.8882797
@@ -1111,7 +1119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0 (7)
+      value: closedBox8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1946,6 +1954,10 @@ PrefabInstance:
       propertyPath: BoxText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.6515126
@@ -1988,7 +2000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0 (8)
+      value: closedBox9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2423,6 +2435,10 @@ PrefabInstance:
       propertyPath: BoxText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0008094
@@ -2465,7 +2481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0 (6)
+      value: closedBox7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2619,6 +2635,10 @@ PrefabInstance:
       propertyPath: BoxText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.040199
@@ -2661,7 +2681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0 (2)
+      value: closedBox3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2684,6 +2704,10 @@ PrefabInstance:
     - target: {fileID: -2874352038673354358, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: BoxText
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2727,7 +2751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0 (10)
+      value: closedBox11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2826,6 +2850,10 @@ PrefabInstance:
       propertyPath: BoxText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.148279
@@ -2868,7 +2896,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0 (9)
+      value: closedBox10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3187,6 +3215,10 @@ PrefabInstance:
       propertyPath: BoxText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.06
@@ -3229,7 +3261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0 (1)
+      value: closedBox2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3328,6 +3360,10 @@ PrefabInstance:
       propertyPath: BoxText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.9182796
@@ -3370,7 +3406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0 (5)
+      value: closedBox6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3533,6 +3569,10 @@ PrefabInstance:
       propertyPath: BoxText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.629601
@@ -3575,7 +3615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0
+      value: closedBox1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3888,6 +3928,10 @@ PrefabInstance:
     - target: {fileID: -2874352038673354358, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: BoxText
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4518,6 +4562,10 @@ PrefabInstance:
       propertyPath: BoxText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1875736965452926149, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3295010601490795971, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.070709
@@ -4560,7 +4608,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8857457746917806836, guid: abd7be806615a0e45a522d878f5c9a03, type: 3}
       propertyPath: m_Name
-      value: ClosedBoxNoBG_0 (4)
+      value: closedBox5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
