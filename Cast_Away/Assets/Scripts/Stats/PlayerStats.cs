@@ -1,44 +1,55 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+/*
+	This component is derived from CharacterStats. It adds two things:
+		- Gaining modifiers when equipping items
+		- Restarting the game when dying
+*/
 
 public class PlayerStats : CharacterStat
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        EquipmentManager.instance.onEquipmentChanged += onEquipmentChanged;
-        armor = new Stat();
-        damage = new Stat();
 
-    }
+	// Use this for initialization
+	public override void Start()
+	{
 
-    // add and remove modifier once the item is equipped 
+		base.Start();
+		if (EquipmentManager.instance != null)
+		{
+			EquipmentManager.instance.onEquipmentChanged += onEquipmentChanged;
+		}
+		else
+		{
+			Debug.LogError("EquipmentManager instance is null.");
+		}
+
+		armor = new Stat();
+		damage = new Stat();
+
+	}
+
+  
+
     void onEquipmentChanged(Equipment newItem, Equipment oldItem)
-    {
-        if (newItem != null)
-        {
-            if (armor != null)
-            {
-                armor.AddModifer(newItem.armorModifier);
-            }
-            if (damage != null)
-            {
-                damage.AddModifer(newItem.damageModifier);
-            }
-        }
+	{
+		if (newItem != null)
+		{
+			armor.AddModifier(newItem.armorModifier);
+			damage.AddModifier(newItem.damageModifier);
+		}
 
-        if (oldItem != null)
-        {
-            if (armor != null)
-            {
-                armor.RemoveModifier(oldItem.armorModifier);
-            }
-            if (damage != null)
-            {
-                damage.RemoveModifier(oldItem.damageModifier);
-            }
-        }
+		if (oldItem != null)
+		{
+			armor.RemoveModifier(oldItem.armorModifier);
+			damage.RemoveModifier(oldItem.armorModifier);
+		}
 
-    }
+	}
+
+
+
 }

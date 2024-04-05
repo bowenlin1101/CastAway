@@ -1560,7 +1560,7 @@ Transform:
   m_GameObject: {fileID: 618956137}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.76, y: 3.15, z: 0}
+  m_LocalPosition: {x: -6.74, y: 4.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1617,6 +1617,81 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3852080675205651493, guid: d6faac658d71d5a408a807023d532d7c, type: 3}
   m_PrefabInstance: {fileID: 1021048534}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &642059655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 642059658}
+  - component: {fileID: 642059657}
+  - component: {fileID: 642059656}
+  - component: {fileID: 642059659}
+  m_Layer: 0
+  m_Name: InventoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &642059656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642059655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5841df60a6f743768d43044dd88c841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  space: 20
+  items: []
+--- !u!114 &642059657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642059655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf63478839354de0a28b2c1c2fc7cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swordSlot: {fileID: 7726156285655671311, guid: 2a04eaec6f585436c8b7b3f25d82a630, type: 3}
+  chestSlot: {fileID: 2084052283452509342, guid: 89e111a14ef0a49a6bc798b06f8969b2, type: 3}
+  legsSlot: {fileID: 9045901000669247760, guid: 383f33df9c8bf463b990cd368926fe58, type: 3}
+--- !u!4 &642059658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642059655}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.2249382, y: 2.314095, z: -0.030733474}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &642059659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642059655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2941259a1b2ac45f08ae56a6c586e45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &651323131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3191,7 +3266,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4475896402421558152, guid: 4693d421c8685a04a81e41b5383971bb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1796682551}
   m_SourcePrefab: {fileID: 100100000, guid: 4693d421c8685a04a81e41b5383971bb, type: 3}
 --- !u!1001 &1577404470
 PrefabInstance:
@@ -3386,6 +3464,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4475896402421558152, guid: 4693d421c8685a04a81e41b5383971bb, type: 3}
   m_PrefabInstance: {fileID: 1574397517}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1796682551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796682544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40be8500ee58647b48d2e391a7857dbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth:
+    baseValue: 0
+  damage:
+    baseValue: 5
+  armor:
+    baseValue: 5
 --- !u!1001 &1877020884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3690,3 +3786,4 @@ SceneRoots:
   - {fileID: 452176230}
   - {fileID: 28231365}
   - {fileID: 618956140}
+  - {fileID: 642059658}

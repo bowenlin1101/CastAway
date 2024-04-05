@@ -7,13 +7,24 @@ public class EquipmentManager : MonoBehaviour
     #region Singleton
 
     // Static instance of EquipmentManager allows it to be accessed by any other script.
-    public static EquipmentManager instance;
+    public static EquipmentManager instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<EquipmentManager>();
+            }
+            return _instance;
+        }
+    }
+    static EquipmentManager _instance;
 
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
         // Assign this script instance to the static instance variable to implement Singleton pattern.
-        instance = this; 
+        _instance = this; 
     }
 
     #endregion
@@ -28,7 +39,7 @@ public class EquipmentManager : MonoBehaviour
 
 
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
-    public OnEquipmentChanged onEquipmentChanged;
+    public event OnEquipmentChanged onEquipmentChanged;
 
     // intialize the bound of the array to have a fixed number of slot 
     void Start()

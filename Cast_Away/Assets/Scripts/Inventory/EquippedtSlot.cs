@@ -8,9 +8,6 @@ public class EquippedSlot : MonoBehaviour
 
     public Image icon;
 
-    [SerializeField]
-    private EquipmentSlotType equipmentType;
-
 
     public void EquipArmour(Item newItem)
     {

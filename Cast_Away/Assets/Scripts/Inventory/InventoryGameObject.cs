@@ -21,4 +21,5 @@ public class InventoryGameObject : MonoBehaviour
 			Destroy(gameObject);
 		}
 	}
+
 }
