@@ -18,7 +18,6 @@ public class StartMenuSelector : MonoBehaviour
     public void UpdateMenuSelection(int selectedAction) {
         for (int i = 0; i < options.Count; ++i) {
             if (i == selectedAction) {
-                Debug.Log("set");
                 options[i].color = highlightedColor;
             } else {
                 options[i].color = Color.white;
