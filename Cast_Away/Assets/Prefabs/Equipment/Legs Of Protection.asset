@@ -18,4 +18,4 @@ MonoBehaviour:
   equipSlot: 2
   armorModifier: 23
   damageModifier: 0
-  equipmentType: 2
+  equipmentType: 0

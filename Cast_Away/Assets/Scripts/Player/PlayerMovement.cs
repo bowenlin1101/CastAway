@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,12 +20,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 level2Exit = new Vector2(-27.71f, -25.54f);
     private Vector2 level3Entry = new Vector2(8.19f, 0.59f);
     private Vector2 level3Exit = new Vector2(-3.08f, -9.06f);
-
     Vector2 movement;
 
     public static PlayerMovement instance;
 
     public Interactable focus;
+
+    void Start()
+    {
+        GameManager.Instance.inventoryCanvas.gameObject.SetActive(false);
+    }
 
     void Awake()
     {
@@ -41,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
         }
     }
- 
+
     void Update()
     {
         if (!GameManager.Instance.movementLocked)
@@ -69,19 +72,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            // Get the InventoryWindow scene
-            Scene inventoryScene = SceneManager.GetSceneByName("InventoryWindow");
-
-            // Check if the scene is already loaded
-            if (!inventoryScene.isLoaded)
+            if (GameManager.Instance.isInventoryOpen)
             {
-                Debug.Log("Loading InventoryWindow");
-                SceneManager.LoadScene("InventoryWindow", LoadSceneMode.Additive);
-            }
-            else
+                GameManager.Instance.inventoryCanvas.gameObject.SetActive(false);
+                GameManager.Instance.isInventoryOpen = false;
+            } else
             {
-                Debug.Log("InventoryWindow is already loaded.");
-                // Optional: You might want to bring the Inventory window to focus or perform some other action.
+                GameManager.Instance.inventoryCanvas.gameObject.SetActive(true);
+                GameManager.Instance.isInventoryOpen = true;
             }
         }
      
@@ -123,7 +121,8 @@ public class PlayerMovement : MonoBehaviour
             GameManager.Instance.Citizen1Touched = false;
             GameManager.Instance.keyStatus = 0;
             transform.position = level1Exit;
-        } else if (currentLevel == "Level 2")
+        }
+        else if (currentLevel == "Level 2")
         {
             GameManager.Instance.Citizen2Touched = false;
             GameManager.Instance.Citizen3Touched = false;
@@ -135,9 +134,9 @@ public class PlayerMovement : MonoBehaviour
             GameManager.Instance.aliensInteracted = 0;
             GameManager.Instance.keyStatus = 1;
             instructionText.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
-
             transform.position = level2Exit;
-        } else if (currentLevel == "Level 3"){
+        }
+        else if (currentLevel == "Level 3"){
             GameManager.Instance.Doctor4Touched = false;
             GameManager.Instance.Doctor5Touched = false;
             GameManager.Instance.SuperiorTouched = false;
@@ -186,7 +185,6 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.CompareTag("TeleportBattle"))
         {
-
             GameManager.Instance.currentScene = SceneManager.GetActiveScene().name;
 
             if (collision.gameObject.name == "CitizenAlien1" && !GameManager.Instance.Citizen1Touched)
@@ -196,7 +194,6 @@ public class PlayerMovement : MonoBehaviour
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen1Touched = true;
                 GameManager.Instance.movementLocked = true;
-
             }
             if (collision.gameObject.name == "CitizenAlien2" && !GameManager.Instance.Citizen2Touched)
             {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class InventoryGameObject : MonoBehaviour
 {
 
-	InventoryGameObject instance;
+	public static InventoryGameObject instance;
 
 	// Start is called before the first frame update
     void Awake()

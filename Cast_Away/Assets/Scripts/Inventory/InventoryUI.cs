@@ -7,10 +7,9 @@ public class InventoryUI : MonoBehaviour
 
 	public Transform itemsParentInventory;   // The parent object of all the items
 	public GameObject inventoryUI;  // The entire UI
-
 	Inventory inventory;    // Our current inventory
-
-	public InventorySlot[] slotsOfInventory;  // List of all the slots
+    public static InventoryUI instance;
+    public InventorySlot[] slotsOfInventory;  // List of all the slots
 
 	void Start()
 	{
@@ -20,10 +19,22 @@ public class InventoryUI : MonoBehaviour
 
 		// Populate our slots array
 		slotsOfInventory = itemsParentInventory.GetComponentsInChildren<InventorySlot>();
-		
-	}
+    }
 
-	void Update()
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Update()
 	{
 		// Check to see if we should open/close the inventory
 		if (Input.GetKeyDown(KeyCode.I))
@@ -59,9 +70,5 @@ public class InventoryUI : MonoBehaviour
 				slotsOfInventory[i].ClearSlot();
 			}
 		}
-
-	
-
-
 	}
 }

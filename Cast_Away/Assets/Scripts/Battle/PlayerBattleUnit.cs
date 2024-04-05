@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,8 +40,18 @@ public class PlayerBattleUnit : MonoBehaviour
         } else {
             Debug.LogError("Sprite not Loaded");
         }
-        
+        List <Item> items = Inventory.instance.items;
+        List <Item> battleItems = new List<Item> ();
+
+        foreach (var item in items)
+        {
+            if (item is HealthPotion && battleItems.Count < 4)
+            {
+                battleItems.Add(item);
+            }
+        }
         player = new Player("brosky", mySprite);
+        player.items = battleItems;
         Image image = GetComponent<Image>();
         image.sprite = player.sprite;
         image.rectTransform.localScale = new Vector3(-image.rectTransform.localScale.x, image.rectTransform.localScale.y, image.rectTransform.localScale.z);

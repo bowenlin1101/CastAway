@@ -1,11 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public bool healthPotionTouched = false;
+    public bool SwordTouched = false;
+    public bool speedPotionTouched = false;
+    public bool legsTouched = false;
+    public bool chestTouched = false;
+
     public bool triggeredStartDialogue = false;
     public string currentColor = "blue";
     public int aliensKilled = 0;
@@ -24,9 +27,10 @@ public class GameManager : MonoBehaviour
     public bool movementLocked = false;
     public int keyStatus = 0;
     public int PlayerHealth = 100;
-
+    public Canvas inventoryCanvas;
     public int aliensInteracted = 0;
     public string alienName;
+    public bool isInventoryOpen = false;
 
     public BaseAlienScript alienToFight;
     public string currentScene;
@@ -83,5 +87,10 @@ public class GameManager : MonoBehaviour
         movementLocked = false;
         keyStatus = 0;
         aliensInteracted = 0;
+        healthPotionTouched = false;
+        SwordTouched = false;
+        speedPotionTouched = false;
+        legsTouched = false;
+        chestTouched = false;
     }
 }
