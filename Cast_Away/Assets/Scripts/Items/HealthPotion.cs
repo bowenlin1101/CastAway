@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -12,7 +12,8 @@ public class HealthPotion : Item
 
     public string description;
 
-    public HealthPotion(int hpHealed, string name, string description) {
+    public HealthPotion(int hpHealed, string name, string description)
+    {
         this.name = name;
         this.hpHealed = hpHealed;
         this.description = description;

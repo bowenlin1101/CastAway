@@ -18,11 +18,16 @@ public class EquipmentManager : MonoBehaviour
 
     #endregion
 
+    public EquippedSlot swordSlot, chestSlot, legsSlot;
+
     // Reference to the Inventory to interact with it.
     Inventory inventory;
 
     // Array to hold current equipped items.
     Equipment[] currentEquipment;
+
+    [SerializeField]
+    private EquipmentSlotType equipmentType;
 
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
@@ -34,7 +39,7 @@ public class EquipmentManager : MonoBehaviour
         inventory = Inventory.instance;
 
         // Determine the number of slots based on the EquipmentSlot enum.
-        int numSlots = System.Enum.GetNames(typeof(EquipmentSlot)).Length;
+        int numSlots = System.Enum.GetNames(typeof(EquipmentSlotType)).Length;
 
         // Initialize the currentEquipment array based on the number of equipment slots.
         currentEquipment = new Equipment[numSlots];
@@ -49,23 +54,56 @@ public class EquipmentManager : MonoBehaviour
         // Placeholder for an item that will be replaced.
         Equipment pastItem = null;
 
-        // Check if there is already an item equipped in the slot.
-        if (currentEquipment[slotIndex] != null)
+        if (!(newItem is Equipment))
         {
-            // If so, store the currently equipped item.
-            pastItem = currentEquipment[slotIndex];
-
-            // Add the replaced item back to the inventory.
-            inventory.Add(pastItem);
+            Debug.LogError("The item is not an Equipment type.");
+            return;
         }
 
-        if(onEquipmentChanged != null)
+        Equipment equipment = (Equipment)newItem;
+
+        switch (equipment.equipmentType)
         {
-            onEquipmentChanged.Invoke(newItem, pastItem);
+            case EquipmentSlotType.Sword:
+                swordSlot.EquipArmour(equipment);
+                break;
+            case EquipmentSlotType.Chest:
+                chestSlot.EquipArmour(equipment);
+                break;
+            case EquipmentSlotType.Legs:
+                legsSlot.EquipArmour(equipment);
+                break;
+            default:
+                Debug.LogError("Unhandled equipment type.");
+                break;
+        }
+
+        if (slotIndex >= 0 && slotIndex < currentEquipment.Length)
+        {
+            // Check if there is already an item equipped in the slot.
+            if (currentEquipment[slotIndex] != null)
+            {
+                // If so, store the currently equipped item.
+                pastItem = currentEquipment[slotIndex];
+
+                // Add the replaced item back to the inventory.
+                inventory.Add(pastItem);
+            }
+
+            if (onEquipmentChanged != null)
+            {
+                onEquipmentChanged.Invoke(newItem, pastItem);
+            }
+
+        }else
+        {
+            Debug.LogError("SlotIndex is out of range. Provided index: " + slotIndex);
         }
 
         // Equip the new item in the specified slot.
         currentEquipment[slotIndex] = newItem;
+
+        
     }
 
     // Method to unequip an item from a specific slot.
@@ -105,7 +143,7 @@ public class EquipmentManager : MonoBehaviour
     void Update()
     {
         // Check if the 'Q' key is pressed.
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             // Unequip all items if 'Q' is pressed.
             UnequipAll();

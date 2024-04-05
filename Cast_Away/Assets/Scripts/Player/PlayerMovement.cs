@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public Canvas instructionCanvas;
     [SerializeField] Text instructionText;
 
+    public float interactionSphere = 3f;
+
     private Vector2 level1Entry = new Vector2(-8.35f, 0.62f);
     private Vector2 level1Exit = new Vector2(11.57f, -5.95f);
     private Vector2 level2Entry = new Vector2(0.04f, 9.09f);
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     public static PlayerMovement instance;
 
+    public Interactable focus;
 
     void Awake()
     {
@@ -64,6 +67,29 @@ public class PlayerMovement : MonoBehaviour
         {
             movement = Vector2.zero;
         }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Debug.Log("InventoryWindow");
+            SceneManager.LoadScene("InventoryWindow", LoadSceneMode.Additive);
+        }
+     
+
+        // interacting with objects
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(rb.position, interactionSphere);
+        foreach (var hitCollider in hitColliders)
+        {
+            Interactable interactable = hitCollider.GetComponent<Interactable>();
+            if (interactable != null)
+            {
+                SetFocus(interactable);
+                return; // Exit the loop once an interactable object is focused.
+            }
+        }
+
+        // If no interactable objects are found, remove focus.
+        RemoveFocus();
     }
 
     private void FixedUpdate()
@@ -76,6 +102,8 @@ public class PlayerMovement : MonoBehaviour
     {
         spriteRenderer.sprite = newSprite;
     }
+
+   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -115,6 +143,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.CompareTag("TeleportBattle"))
         {
+
             GameManager.Instance.currentScene = SceneManager.GetActiveScene().name;
 
             if (collision.gameObject.name == "CitizenAlien1" && !GameManager.Instance.Citizen1Touched)
@@ -252,7 +281,7 @@ public class PlayerMovement : MonoBehaviour
                     StartCoroutine(StartBattleWhenReady());
                 }
             }
-        }
+        } 
         else if (collision.CompareTag("Costume"))
         {
             string name = collision.gameObject.name;
@@ -325,4 +354,28 @@ public class PlayerMovement : MonoBehaviour
         // For example:
         return !ChatManager.Instance.getIsTyping(); // Wait for 5 seconds
     }
+
+    void SetFocus(Interactable newFocus)
+    {
+        if (newFocus != null)
+        {
+            if (focus != null)
+                focus.onDeFocused(null);
+
+            focus = newFocus;
+        }
+
+        newFocus.OnFocused(transform);
+    }
+
+    void RemoveFocus()
+    {
+        if (focus != null)
+        {
+            focus.onDeFocused(null);
+        }
+
+        focus = null;
+    }
 }
+
