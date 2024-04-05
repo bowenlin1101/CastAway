@@ -61,4 +61,26 @@ public class GameManager : MonoBehaviour
             keyStatus++;
         }
     }
+
+    public void ResetGame()
+    {
+        triggeredStartDialogue = false;
+        currentColor = "blue";
+        aliensKilled = 0;
+        Citizen1Touched = false;
+        Citizen2Touched = false;
+        Citizen3Touched = false;
+        Citizen4Touched = false;
+        Citizen5Touched = false;
+        Doctor1Touched = false;
+        Doctor2Touched = false;
+        Doctor3Touched = false;
+        Doctor4Touched = false;
+        Doctor5Touched = false;
+        SuperiorTouched = false;
+        SuperiorDialogHeard = false;
+        movementLocked = false;
+        keyStatus = 0;
+        aliensInteracted = 0;
+    }
 }

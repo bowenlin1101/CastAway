@@ -417,6 +417,18 @@ public class PlayerMovement : MonoBehaviour
             ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "You, MONSTER"));
             ChatManager.Instance.EnqueueDialogue(new ChatMessage("player", "Why did YOU do this?"));
         }
+        StartCoroutine(RestartGameWhenReady());
+    }
+
+    IEnumerator RestartGameWhenReady()
+    {
+        // Loop until the condition is met
+        yield return new WaitUntil(() => ChatStatus());
+
+        // Code here will execute after the condition is met
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.ResetGame();
+        SceneManager.LoadScene("StartMenu");
     }
 
     IEnumerator StartBattleWhenReady()
