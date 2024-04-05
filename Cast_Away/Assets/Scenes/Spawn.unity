@@ -691,7 +691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggeredStartDialogue: 0
   currentColor: blue
-  aliensKilled: 5
+  aliensKilled: 0
   Citizen1Touched: 0
   Citizen2Touched: 0
   Citizen3Touched: 0
@@ -703,8 +703,9 @@ MonoBehaviour:
   Doctor4Touched: 0
   Doctor5Touched: 0
   SuperiorTouched: 0
+  SuperiorDialogHeard: 0
   movementLocked: 0
-  keyStatus: 0
+  keyStatus: 2
   aliensInteracted: 0
   alienName: 
   currentScene: 
