@@ -8,8 +8,34 @@ public class PlayerBattleUnit : MonoBehaviour
     public Player player {get; set;}
 
     public void Setup() {
-        Sprite mySprite = Resources.Load<Sprite>("CharacterSprite/Comic Battle Royale/2D Character - Astronaut/Variant A/Sprites/Character/walk/side/01");
-        
+        Sprite mySprite;
+        Sprite blueSprite = Resources.Load<Sprite>("CharacterSprite/Comic Battle Royale/2D Character - Astronaut/Variant A/Sprites/Character/walk/side/01");
+        Sprite redSprite = Resources.Load<Sprite>("CharacterSprite/Comic Battle Royale/2D Character - Astronaut/Variant B/Sprites/Character/walk/side/01");
+        Sprite greenSprite = Resources.Load<Sprite>("CharacterSprite/Comic Battle Royale/2D Character - Astronaut/Variant C/Sprites/Character/walk/side/01");
+        Sprite yellowSprite = Resources.Load<Sprite>("CharacterSprite/Comic Battle Royale/2D Character - Astronaut/Variant D/Sprites/Character/walk/side/01");
+        Sprite pinkSprite = Resources.Load<Sprite>("CharacterSprite/Comic Battle Royale/2D Character - Astronaut/Variant E/Sprites/Character/walk/side/01");
+        string currentColor = GameManager.Instance.currentColor;
+
+        switch (currentColor) {
+            case "blue":
+                mySprite = blueSprite;
+                break;
+            case "red":
+                mySprite = redSprite;
+                break;
+            case "green":
+                mySprite = greenSprite;
+                break;
+            case "yellow":
+                mySprite = yellowSprite;
+                break;
+            case "pink":
+                mySprite = pinkSprite;
+                break;
+            default:
+                mySprite = blueSprite;
+                break;
+        }
         if (mySprite != null) {
 
         } else {

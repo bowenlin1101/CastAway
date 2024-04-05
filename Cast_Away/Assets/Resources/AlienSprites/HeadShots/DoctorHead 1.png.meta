@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 85ec7f043000fa3888d3476e128404ac
+guid: 62342ec662e00ccc1881533973a896f2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2276259661975475453
-    second: 05_0
+      213: 6604443319644064381
+    second: DoctorHead 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 05_0
+      name: DoctorHead 1_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 1
         y: 0
-        width: 113
-        height: 105
+        width: 115
+        height: 108
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 30ba667c5e91960e0800000000000000
-      internalID: -2276259661975475453
+      spriteID: d7a06961532b7ab50800000000000000
+      internalID: 6604443319644064381
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      05_0: -2276259661975475453
+      DoctorHead 1_0: 6604443319644064381
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

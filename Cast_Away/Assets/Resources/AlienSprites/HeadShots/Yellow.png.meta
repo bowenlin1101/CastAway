@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 37640b21507c796b8807240e8d452b64
+guid: 660e76b5d7e696967938bcb2a8177010
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1378427622693833608
-    second: BossHeadshot_0
+      213: 6358040702757662528
+    second: Yellow_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BossHeadshot_0
+      name: Yellow_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 114
-        height: 109
+        width: 116
+        height: 110
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8747fb06167dedce0800000000000000
-      internalID: -1378427622693833608
+      spriteID: 04f6853355c4c3850800000000000000
+      internalID: 6358040702757662528
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BossHeadshot_0: -1378427622693833608
+      Yellow_0: 6358040702757662528
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
