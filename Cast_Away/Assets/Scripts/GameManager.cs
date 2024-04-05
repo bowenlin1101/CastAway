@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public bool SuperiorTouched = false;
     public bool movementLocked = false;
     public int keyStatus = 0;
+    public int PlayerHealth = 100;
 
     public int aliensInteracted = 0;
 

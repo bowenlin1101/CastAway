@@ -15,6 +15,8 @@ public class InventorySlot : MonoBehaviour
 
     private EquipmentSlotType equipmentType;
 
+
+
     public void AddItem(Item newItem)
     {
         if (newItem == null)
@@ -61,8 +63,9 @@ public class InventorySlot : MonoBehaviour
                 EquipGear();
                 
             }else {
-                item.Use();
+                GameManager.Instance.PlayerHealth += ((HealthPotion)item).hpHealed;
             }
+
             item.Use();
         }
     }

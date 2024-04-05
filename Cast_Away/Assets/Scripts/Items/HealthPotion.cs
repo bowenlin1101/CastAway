@@ -6,13 +6,12 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Item/HealthPotion")]
 public class HealthPotion : Item
-
-{
-
+{ 
     public int hpHealed;
-    public string name;
 
     public string description;
+
+    string nameOfitem;
 
     public HealthPotion(int hpHealed, string name, string description)
     {

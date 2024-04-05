@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eacb2bb41c585458097fea00a35f5d41, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ffe3cd6a9ef945ec82ccae6b3e5b40d, type: 3}
   m_Name: SpeedPotion
   m_EditorClassIdentifier: 
-  name: SpeedPotion
-  icon: {fileID: 112508314, guid: 05e0567213a58c840a3ea79a4409bdfd, type: 3}
+  name: Speed Potion
+  icon: {fileID: 0}
   isDefaultItem: 0
+  speedOfPlayer: 0
+  description: 
+  nameOfitem: 

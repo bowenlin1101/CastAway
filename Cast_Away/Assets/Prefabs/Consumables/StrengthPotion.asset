@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eacb2bb41c585458097fea00a35f5d41, type: 3}
+  m_Script: {fileID: 11500000, guid: fc0b49963a6ac49118b80790a9225e51, type: 3}
   m_Name: StrengthPotion
   m_EditorClassIdentifier: 
   name: StrengthPotion
-  icon: {fileID: 798309987, guid: 132358e9bf26b60458b731bf001e31db, type: 3}
+  icon: {fileID: -579725436, guid: 05e0567213a58c840a3ea79a4409bdfd, type: 3}
   isDefaultItem: 0
+  strengthOfPlayer: 0
+  description: Do More Damage To Those Pesky Aliens
