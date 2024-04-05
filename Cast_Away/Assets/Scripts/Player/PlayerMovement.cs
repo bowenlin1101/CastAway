@@ -70,8 +70,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            Debug.Log("InventoryWindow");
-            SceneManager.LoadScene("InventoryWindow", LoadSceneMode.Additive);
+            // Get the InventoryWindow scene
+            Scene inventoryScene = SceneManager.GetSceneByName("InventoryWindow");
+
+            // Check if the scene is already loaded
+            if (!inventoryScene.isLoaded)
+            {
+                Debug.Log("Loading InventoryWindow");
+                SceneManager.LoadScene("InventoryWindow", LoadSceneMode.Additive);
+            }
+            else
+            {
+                Debug.Log("InventoryWindow is already loaded.");
+                // Optional: You might want to bring the Inventory window to focus or perform some other action.
+            }
         }
      
 
