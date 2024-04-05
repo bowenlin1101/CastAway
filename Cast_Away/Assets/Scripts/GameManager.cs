@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -149,5 +150,12 @@ public class GameManager : MonoBehaviour
         aliensInteracted = 0;
         isInventoryOpen = false;
         swordCollected = false;
+        Inventory.instance.items = new List<Item>();
+        Inventory.instance.inventoryUI.UpdateUI(Inventory.instance.items);
+        EquipmentManager.instance.swordSlot.ClearSlot();
+        EquipmentManager.instance.chestSlot.ClearSlot();
+        EquipmentManager.instance.legsSlot.ClearSlot();
+        movementLocked = true;
+       
     }
 }

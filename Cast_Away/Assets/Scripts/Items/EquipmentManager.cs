@@ -101,49 +101,6 @@ public class EquipmentManager : MonoBehaviour
         
     }
 
-    // Method to unequip an item from a specific slot.
-    public void Unequip (int slotIndex)
-    {
-        // Check if there is an item equipped in the specified slot.
-        if (currentEquipment[slotIndex] != null)
-        {
-            // Store the item that is to be unequipped.
-            Equipment pastItem = currentEquipment[slotIndex];
-
-            // Add the unequipped item back to the inventory.
-            inventory.Add(pastItem);
-
-            // Remove the item from the equipment slot.
-            currentEquipment[slotIndex] = null;
-
-            if (onEquipmentChanged != null)
-            {
-                onEquipmentChanged.Invoke(null, pastItem);
-            }
-        }
-    }
-
-    // Method to unequip all items.
-    public void UnequipAll()
-    {
-        // Loop through all equipment slots.
-        for (int i = 0; i < currentEquipment.Length; i++)
-        {
-            // Unequip each item.
-            Unequip(i);
-        }
-    }
-
-    // Update is called once per frame.
-    void Update()
-    {
-        // Check if the 'Q' key is pressed.
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            // Unequip all items if 'Q' is pressed.
-            UnequipAll();
-        } 
-    }
 
     public void UpdateStatTexts() {
         HealthText.text = GameManager.Instance.PlayerHealth.ToString();

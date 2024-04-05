@@ -1052,7 +1052,7 @@ MonoBehaviour:
   SuperiorTouched: 0
   SuperiorDialogHeard: 0
   movementLocked: 0
-  keyStatus: 1
+  keyStatus: 0
   PlayerHealth: 100
   PlayerBaseHealth: 100
   PlayerStrength: 0
@@ -4456,7 +4456,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -251.6, y: 169.61}
+  m_AnchoredPosition: {x: -340, y: 201}
   m_SizeDelta: {x: 416.64, y: 175.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &937513019

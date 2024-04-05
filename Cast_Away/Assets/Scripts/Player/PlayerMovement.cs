@@ -450,6 +450,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator EndGame()
     {
+        GameManager.Instance.movementLocked = true;
         // Wait for 1 second
         yield return new WaitForSeconds(2);
 
@@ -495,6 +496,7 @@ public class PlayerMovement : MonoBehaviour
         // Code here will execute after the condition is met
         yield return new WaitForSeconds(2f);
         GameManager.Instance.ResetGame();
+        resetPlayerPosition();
         SceneManager.LoadScene("StartMenu");
     }
 
@@ -547,6 +549,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         focus = null;
+    }
+
+    void resetPlayerPosition() {
+        transform.position = new Vector3(-0.05f, 0.86f, 0f);
     }
 }
 

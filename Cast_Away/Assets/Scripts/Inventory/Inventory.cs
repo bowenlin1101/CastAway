@@ -4,7 +4,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
 
-	[SerializeField] InventoryUI inventoryUI;
+	[SerializeField] public InventoryUI inventoryUI;
 
 
 	#region Singleton
