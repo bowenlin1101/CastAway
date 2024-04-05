@@ -26,8 +26,6 @@ public class EquipmentManager : MonoBehaviour
     // Array to hold current equipped items.
     Equipment[] currentEquipment;
 
-    [SerializeField]
-    private EquipmentSlotType equipmentType;
 
     public delegate void OnEquipmentChanged(Equipment newItem, Equipment oldItem);
     public OnEquipmentChanged onEquipmentChanged;
