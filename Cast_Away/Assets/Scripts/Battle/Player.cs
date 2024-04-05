@@ -21,7 +21,7 @@ public class Player
         this.Name = name;
         this.attackDamage = 10;
         this.baseHealth = 100;
-        this.Health = 100;
+        this.Health = 1;
         this.attack = 1;
         this.defense = 1;
         this.sprite = sprite;

@@ -310,6 +310,10 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
+
+            Debug.Log("Brosky");
+            yield return new WaitForSeconds(2.5f);
+            PlayerMovement.instance.Respawn(GameManager.Instance.currentScene);
         }
         else
         {
