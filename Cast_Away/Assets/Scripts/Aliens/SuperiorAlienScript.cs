@@ -22,7 +22,7 @@ public class SuperiorAlienScript : BaseAlienScript
         acts.Add(new Move("Plead", 10, "Emotional", "", "", ""));
         acts.Add(new Move("Appeal", 10, "Emotional", "", "", ""));
         acts.Add(new Move("Flex Muscles", 10, "Emotional", "", "", ""));
-        acts.Add(new Move("Challenge Authority", 20, "Emotional", "", "", ""));
+        acts.Add(new Move("Challenge", 20, "Emotional", "", "", ""));
     }
     public override double Attack()
     {

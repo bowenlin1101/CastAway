@@ -705,7 +705,7 @@ MonoBehaviour:
   SuperiorTouched: 0
   SuperiorDialogHeard: 0
   movementLocked: 0
-  keyStatus: 2
+  keyStatus: 0
   aliensInteracted: 0
   alienName: 
   currentScene: 
