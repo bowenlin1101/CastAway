@@ -6,11 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Item/StrengthPotion")]
 public class StrengthPotion : Item
 {
-    public int strengthOfPlayer;
+    public int strengthOfPlayer = 10;
 
     public string description;
-
-    
 
     public StrengthPotion(int stModifer, string name, string description)
     {

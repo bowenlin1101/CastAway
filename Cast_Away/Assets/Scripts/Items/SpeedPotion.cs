@@ -6,7 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Equipment", menuName = "Inventory/Item/SpeedPotion")]
 public class SpeedPotion : Item
 {
-    public int speedOfPlayer;
+    public float speedOfPlayer = 4f;
+    public float duration;
 
     public string description;
 

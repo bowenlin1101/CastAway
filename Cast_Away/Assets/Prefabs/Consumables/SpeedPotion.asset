@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: SpeedPotion
   m_EditorClassIdentifier: 
   name: Speed Potion
-  icon: {fileID: 0}
+  icon: {fileID: 112508314, guid: 05e0567213a58c840a3ea79a4409bdfd, type: 3}
   isDefaultItem: 0
-  speedOfPlayer: 0
-  description: 
-  nameOfitem: 
+  speedOfPlayer: 4
+  description: Gotta Go Vrommmmm

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,8 +63,15 @@ public class InventorySlot : MonoBehaviour
                 this.equipmentType = ((Equipment)item).equipmentType;
                 EquipGear();
                 
-            }else {
+            }else if(item is HealthPotion){
                 GameManager.Instance.PlayerHealth += ((HealthPotion)item).hpHealed;
+            }
+            else if(item is SpeedPotion)
+            {
+                PlayerMovement.instance.moveSpeed += ((SpeedPotion)item).speedOfPlayer;
+            }
+            else if(item is StrengthPotion){
+                StartCoroutine(ApplySpeedPotion(((SpeedPotion)item).speedOfPlayer, ((SpeedPotion)item).duration));
             }
 
             item.Use();
@@ -104,6 +112,18 @@ public class InventorySlot : MonoBehaviour
 
         }
 
+    }
+
+    private IEnumerator ApplySpeedPotion(float speedBoost, float duration)
+    {
+        // Increase player speed.
+        PlayerMovement.instance.moveSpeed += speedBoost;
+
+        // Wait for the duration of the speed boost.
+        yield return new WaitForSeconds(duration);
+
+        // After the duration, reduce the player speed back to normal.
+        PlayerMovement.instance.moveSpeed -= speedBoost;
     }
 }
 
