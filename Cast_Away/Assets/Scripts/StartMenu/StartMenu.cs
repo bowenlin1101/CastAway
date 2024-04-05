@@ -95,7 +95,6 @@ public class StartMenu : MonoBehaviour
             else if (currentSelection == 1)
             {
                 Application.Quit();
-                UnityEditor.EditorApplication.isPlaying = false;
             }
         }
     }

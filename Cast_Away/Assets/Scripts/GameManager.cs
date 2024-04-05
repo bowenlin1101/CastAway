@@ -5,31 +5,46 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public bool healthPotionTouched1 = false;
-    public bool healthPotionTouched2 = false;
-    public bool healthPotionTouched3 = false;
-    public bool healthPotionTouched4 = false;
-    public bool SwordTouched = false;
-    public bool speedPotionTouched = false;
-    public bool legsTouched = false;
-    public bool chestTouched = false;
-    public bool triggeredStartDialogue = false;
+     healthPotionTouched1 = false;
+     healthPotionTouched2 = false;
+     healthPotionTouched3 = false;
+     healthPotionTouched4 = false;
+     SwordTouched = false;
+     speedPotionTouched = false;
+     legsTouched = false;
+     chestTouched = false;
+
+     closedBox1Touched = false;
+     closedBox2Touched = false;
+     closedBox3Touched = false;
+     closedBox4Touched = false;
+     closedBox5Touched = false;
+     closedBox6Touched = false;
+     closedBox7Touched = false;
+     closedBox8Touched = false;
+     closedBox9Touched = false;
+     closedBox10Touched = false;
+     closedBox11Touched = false;
+     KeyBoxTouched = false;
+
+
+     triggeredStartDialogue = false;
     public string currentColor = "blue";
     public int aliensKilled = 0;
     public int aliensSpared = 0;
-    public bool Citizen1Touched = false;
-    public bool Citizen2Touched = false;
-    public bool Citizen3Touched = false;
-    public bool Citizen4Touched = false;
-    public bool Citizen5Touched = false;
-    public bool Doctor1Touched = false;
-    public bool Doctor2Touched = false;
-    public bool Doctor3Touched = false;
-    public bool Doctor4Touched = false;
-    public bool Doctor5Touched = false;
-    public bool SuperiorTouched = false;
-    public bool SuperiorDialogHeard = false;
-    public bool movementLocked = false;
+     Citizen1Touched = false;
+     Citizen2Touched = false;
+     Citizen3Touched = false;
+     Citizen4Touched = false;
+     Citizen5Touched = false;
+     Doctor1Touched = false;
+     Doctor2Touched = false;
+     Doctor3Touched = false;
+     Doctor4Touched = false;
+     Doctor5Touched = false;
+     SuperiorTouched = false;
+     SuperiorDialogHeard = false;
+     movementLocked = false;
     public int keyStatus = 0;
     public int PlayerHealth = 100;
     public int PlayerBaseHealth = 100;
@@ -38,15 +53,15 @@ public class GameManager : MonoBehaviour
     public Canvas inventoryCanvas;
     public int aliensInteracted = 0;
     public string alienName;
-    public bool isInventoryOpen = false;
-    public bool swordCollected = false;
+     isInventoryOpen = false;
+     swordCollected = false;
     public BaseAlienScript alienToFight;
     public string currentScene;
     public GameObject projectile;
     public float projectileSpeed;
     [SerializeField] public CanvasGroup instructionCanvas;
     [SerializeField] public Text instructionText;
-    public bool isInstructionCanvasShowing = false;
+     isInstructionCanvasShowing = false;
 
     public static GameManager Instance;
 
@@ -140,6 +155,18 @@ public class GameManager : MonoBehaviour
         Doctor4Touched = false;
         Doctor5Touched = false;
         SuperiorTouched = false;
+        closedBox1Touched = false;
+        closedBox2Touched = false;
+        closedBox3Touched = false;
+        closedBox4Touched = false;
+        closedBox5Touched = false;
+        closedBox6Touched = false;
+        closedBox7Touched = false;
+        closedBox8Touched = false;
+        closedBox9Touched = false;
+        closedBox10Touched = false;
+        closedBox11Touched = false;
+        KeyBoxTouched = false;
         SuperiorDialogHeard = false;
         movementLocked = false;
         keyStatus = 0;
