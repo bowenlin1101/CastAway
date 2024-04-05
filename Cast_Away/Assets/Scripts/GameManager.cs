@@ -4,12 +4,14 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public bool healthPotionTouched = false;
+    public bool healthPotionTouched1 = false;
+    public bool healthPotionTouched2 = false;
+    public bool healthPotionTouched3 = false;
+    public bool healthPotionTouched4 = false;
     public bool SwordTouched = false;
     public bool speedPotionTouched = false;
     public bool legsTouched = false;
     public bool chestTouched = false;
-
     public bool triggeredStartDialogue = false;
     public string currentColor = "blue";
     public int aliensKilled = 0;
@@ -114,7 +116,10 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        healthPotionTouched = false;
+        healthPotionTouched1 = false;
+        healthPotionTouched2 = false;
+        healthPotionTouched3 = false;
+        healthPotionTouched4 = false;
         SwordTouched = false;
         speedPotionTouched = false;
         legsTouched = false;

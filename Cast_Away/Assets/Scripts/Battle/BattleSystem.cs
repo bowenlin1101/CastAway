@@ -319,6 +319,7 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
 
             Debug.Log("Brosky");
+            GameManager.Instance.PlayerHealth = 100;
             yield return new WaitForSeconds(2.5f);
             PlayerMovement.instance.Respawn(GameManager.Instance.currentScene);
         }
