@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Xml.Serialization;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ChangeMaterial : MonoBehaviour
 {

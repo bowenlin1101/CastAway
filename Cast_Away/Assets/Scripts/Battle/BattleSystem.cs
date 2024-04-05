@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public enum BattleState
 {
@@ -249,6 +245,9 @@ public class BattleSystem : MonoBehaviour
         {
             StartCoroutine(AlienAttackPart1());
         }
+        Inventory.instance.items.Remove(item);
+        playerUnit.player.items.Remove(item);
+        dialogBox.SetItemNames(playerUnit.player.items);
     }
 
     IEnumerator AlienAttackPart1()
@@ -488,39 +487,40 @@ public class BattleSystem : MonoBehaviour
 
     void HandleItemSelection()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (playerUnit.player.items.Count > 0)
         {
-            if (currentItem < playerUnit.player.items.Count - 1)
-                ++currentItem;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (currentItem > 0)
-                --currentItem;
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (currentItem < playerUnit.player.items.Count - 2)
-                currentItem += 2;
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (currentItem > 1)
-                currentItem -= 2;
-        }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (currentItem < playerUnit.player.items.Count - 1)
+                    ++currentItem;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (currentItem > 0)
+                    --currentItem;
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (currentItem < playerUnit.player.items.Count - 2)
+                    currentItem += 2;
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (currentItem > 1)
+                    currentItem -= 2;
+            }
 
+            dialogBox.UpdateItemSelection(currentItem, playerUnit.player.items[currentItem]);
+            if (Input.GetKeyDown(ConfirmKey))
+            {
+                dialogBox.EnableItemSelector(false);
+                dialogBox.EnableDialogText(true);
+                StartCoroutine(PerformPlayerItem());
+            }
+        }
         if (Input.GetKeyDown(RejectKey))
         {
             PlayerAction();
-        }
-
-        dialogBox.UpdateItemSelection(currentItem, playerUnit.player.items[currentItem]);
-
-        if (Input.GetKeyDown(ConfirmKey))
-        {
-            dialogBox.EnableItemSelector(false);
-            dialogBox.EnableDialogText(true);
-            StartCoroutine(PerformPlayerItem());
         }
     }
 
