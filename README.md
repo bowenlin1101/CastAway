@@ -28,8 +28,9 @@ TODO a video run through of the game (The same one we will use for the Final Doc
 **If you are on Windows 64-Bit and would like to simply download the completed version of the game simply follow the following instructions:**
 
 ### 1. Download the ZIP file.
+[![Download Windows 64-Bit Build](https://custom-icon-badges.demolab.com/badge/-Download-blue?style=for-the-badge&logo=download&logoColor=white "Download Windows 64-Bit Build")](ReadMeAssets/Cast_Away_WindowsOS.zip)
+![Download Zip File](ReadMeAssets/Instructions/downloadZipFile.png)
 
-[Download Windows 64-Bit Build](ReadMeAssets/Cast_Away_WindowsOS.zip)
 
 ### 2. Extract the folder.
 ### 3. Run the Cast_Away.exe file shown below.
