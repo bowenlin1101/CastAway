@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,8 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
-    [SerializeField] public Canvas instructionCanvas;
     [SerializeField] Text instructionText;
+
+    public float interactionSphere = 3f;
 
     private Vector2 level1Entry = new Vector2(-8.35f, 0.62f);
     private Vector2 level1Exit = new Vector2(11.57f, -5.95f);
@@ -19,10 +19,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 level2Exit = new Vector2(-27.71f, -25.54f);
     private Vector2 level3Entry = new Vector2(8.19f, 0.59f);
     private Vector2 level3Exit = new Vector2(-3.08f, -9.06f);
-
     Vector2 movement;
 
     public static PlayerMovement instance;
+
+    public Interactable focus;
+
+    void Start()
+    {
+        GameManager.Instance.inventoryCanvas.gameObject.SetActive(false);
+    }
 
     void Awake()
     {
@@ -37,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(gameObject);
         }
     }
- 
+
     void Update()
     {
         if (!GameManager.Instance.movementLocked)
@@ -62,6 +68,41 @@ public class PlayerMovement : MonoBehaviour
         {
             movement = Vector2.zero;
         }
+
+        if (Input.GetKeyDown(KeyCode.I) && !GameManager.Instance.movementLocked)
+        {
+            EquipmentManager.instance.UpdateStatTexts();
+            EquipmentManager.instance.UpdateKillSpare();
+            // Inventory.instance.
+            if (GameManager.Instance.isInventoryOpen)
+            {
+                GameManager.Instance.inventoryCanvas.gameObject.SetActive(false);
+                GameManager.Instance.isInventoryOpen = false;
+            } else
+            {
+                GameManager.Instance.inventoryCanvas.gameObject.SetActive(true);
+                GameManager.Instance.isInventoryOpen = true;
+                GameManager.Instance.instructionCanvas.alpha = 0;
+                GameManager.Instance.isInstructionCanvasShowing = false;
+            }
+        }
+     
+
+        // interacting with objects
+
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(rb.position, interactionSphere);
+        foreach (var hitCollider in hitColliders)
+        {
+            Interactable interactable = hitCollider.GetComponent<Interactable>();
+            if (interactable != null)
+            {
+                SetFocus(interactable);
+                return; // Exit the loop once an interactable object is focused.
+            }
+        }
+
+        // If no interactable objects are found, remove focus.
+        RemoveFocus();
     }
 
     private void FixedUpdate()
@@ -84,7 +125,8 @@ public class PlayerMovement : MonoBehaviour
             GameManager.Instance.Citizen1Touched = false;
             GameManager.Instance.keyStatus = 0;
             transform.position = level1Exit;
-        } else if (currentLevel == "Level 2")
+        }
+        else if (currentLevel == "Level 2")
         {
             GameManager.Instance.Citizen2Touched = false;
             GameManager.Instance.Citizen3Touched = false;
@@ -96,9 +138,9 @@ public class PlayerMovement : MonoBehaviour
             GameManager.Instance.aliensInteracted = 0;
             GameManager.Instance.keyStatus = 1;
             instructionText.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
-
             transform.position = level2Exit;
-        } else if (currentLevel == "Level 3"){
+        }
+        else if (currentLevel == "Level 3"){
             GameManager.Instance.Doctor4Touched = false;
             GameManager.Instance.Doctor5Touched = false;
             GameManager.Instance.SuperiorTouched = false;
@@ -112,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.tag == "TeleportSpawn")
         {
-            instructionCanvas.gameObject.SetActive(false);
+            GameManager.Instance.instructionCanvas.gameObject.SetActive(false);
             if (SceneManager.GetActiveScene().name == "Level 1")
             {
                 transform.position = level1Entry;
@@ -129,13 +171,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.tag == "TeleportLevel1")
         {
-            instructionCanvas.gameObject.SetActive(true);
+            GameManager.Instance.instructionCanvas.gameObject.SetActive(true);
             transform.position = level1Exit;
             SceneManager.LoadScene("Level 1");
         }
         else if (collision.tag == "TeleportLevel2" && GameManager.Instance.keyStatus == 1)
         {
-            instructionCanvas.gameObject.SetActive(true);
+            GameManager.Instance.instructionCanvas.gameObject.SetActive(true);
+            GameManager.Instance.setInstructionCanvasActive(true);
             transform.position = level2Exit;
             SceneManager.LoadScene("Level 2");
             instructionText.text = $"{GameManager.Instance.aliensInteracted} Out of 7";
@@ -147,19 +190,20 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (collision.CompareTag("TeleportBattle"))
         {
-            GameManager.Instance.currentScene = SceneManager.GetActiveScene().name;
-
+           
             if (collision.gameObject.name == "CitizenAlien1" && !GameManager.Instance.Citizen1Touched)
             {
+                PrepareBattle();
                 GameManager.Instance.alienName = "CitizenAlien1";
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
                 GameManager.Instance.Citizen1Touched = true;
                 GameManager.Instance.movementLocked = true;
-
             }
             if (collision.gameObject.name == "CitizenAlien2" && !GameManager.Instance.Citizen2Touched)
             {
+                PrepareBattle();
+
                 GameManager.Instance.alienName = "CitizenAlien2";
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
@@ -171,6 +215,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "CitizenAlien3" && !GameManager.Instance.Citizen3Touched)
             {
+                PrepareBattle();
+
                 GameManager.Instance.alienName = "CitizenAlien3";
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
@@ -182,6 +228,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "CitizenAlien4" && !GameManager.Instance.Citizen4Touched)
             {
+                PrepareBattle();
+
                 GameManager.Instance.alienName = "CitizenAlien4";
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
@@ -193,6 +241,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "CitizenAlien5" && !GameManager.Instance.Citizen5Touched)
             {
+                PrepareBattle();
+
                 GameManager.Instance.alienName = "CitizenAlien5";
                 GameManager.Instance.alienToFight = new CitizenAlienScript();
                 SceneManager.LoadScene("BattleScene");
@@ -205,6 +255,8 @@ public class PlayerMovement : MonoBehaviour
 
             if (collision.gameObject.name == "DoctorAlien1" && !GameManager.Instance.Doctor1Touched)
             {
+                PrepareBattle();
+
                 GameManager.Instance.alienName = "DoctorAlien1";
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
@@ -216,6 +268,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "DoctorAlien2" && !GameManager.Instance.Doctor2Touched)
             {
+                PrepareBattle();
+
                 GameManager.Instance.alienName = "DoctorAlien2";
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
@@ -227,6 +281,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "DoctorAlien3" && !GameManager.Instance.Doctor3Touched)
             {
+                PrepareBattle();
+
                 GameManager.Instance.alienName = "DoctorAlien3";
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
@@ -238,6 +294,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "DoctorAlien4" && !GameManager.Instance.Doctor4Touched)
             {
+                PrepareBattle();
+
                 GameManager.Instance.alienName = "DoctorAlien4";
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
@@ -247,6 +305,8 @@ public class PlayerMovement : MonoBehaviour
             }
             if (collision.gameObject.name == "DoctorAlien5" && !GameManager.Instance.Doctor5Touched)
             {
+                PrepareBattle();
+
                 GameManager.Instance.alienName = "DoctorAlien5";
                 GameManager.Instance.alienToFight = new DoctorAlienScript();
                 SceneManager.LoadScene("BattleScene");
@@ -381,8 +441,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void PrepareBattle() {
+        ChatManager.Instance.chatBox.gameObject.SetActive(false);
+        GameManager.Instance.currentScene = SceneManager.GetActiveScene().name;
+        GameManager.Instance.isInstructionCanvasShowing = false;
+        GameManager.Instance.instructionCanvas.alpha = 0;
+    }
+
     IEnumerator EndGame()
     {
+        GameManager.Instance.movementLocked = true;
         // Wait for 1 second
         yield return new WaitForSeconds(2);
 
@@ -428,6 +496,7 @@ public class PlayerMovement : MonoBehaviour
         // Code here will execute after the condition is met
         yield return new WaitForSeconds(2f);
         GameManager.Instance.ResetGame();
+        resetPlayerPosition();
         SceneManager.LoadScene("StartMenu");
     }
 
@@ -437,6 +506,8 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitUntil(() => ChatStatus());
 
         // Code here will execute after the condition is met
+        PrepareBattle();
+
         GameManager.Instance.alienToFight = new SuperiorAlienScript();
         SceneManager.LoadScene("BattleScene");
     }
@@ -456,4 +527,32 @@ public class PlayerMovement : MonoBehaviour
         // For example:
         return !ChatManager.Instance.getIsTyping(); // Wait for 5 seconds
     }
+
+    void SetFocus(Interactable newFocus)
+    {
+        if (newFocus != null)
+        {
+            if (focus != null)
+                focus.onDeFocused(null);
+
+            focus = newFocus;
+        }
+
+        newFocus.OnFocused(transform);
+    }
+
+    void RemoveFocus()
+    {
+        if (focus != null)
+        {
+            focus.onDeFocused(null);
+        }
+
+        focus = null;
+    }
+
+    void resetPlayerPosition() {
+        transform.position = new Vector3(-0.05f, 0.86f, 0f);
+    }
 }
+

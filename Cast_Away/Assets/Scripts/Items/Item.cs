@@ -17,8 +17,10 @@ public class Item : ScriptableObject
     // Called when the Item is used from either inventory or picked up by player
     public virtual void Use()
     {
+        // use the item
+        // changes for different items
 
-        Debug.Log("Using " + name); 
+        Debug.Log("Using (from Item)" + name); 
     }
 
     public void RemovesFromInventory()
@@ -26,3 +28,5 @@ public class Item : ScriptableObject
         Inventory.instance.Remove(this);
     }
 }
+
+public enum ItemSlotType { regen, strength, speed }

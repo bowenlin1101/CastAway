@@ -6,8 +6,8 @@ public class SuperiorAlienScript : BaseAlienScript
 {
 
     public SuperiorAlienScript() {
-        this.Health = 200;
-        this.baseHealth = 200;
+        this.Health = 450;
+        this.baseHealth = 450;
         this.Species = "Superior Alien";
         this.Aggression = 150;
         this.baseAggression = 150;
@@ -22,7 +22,7 @@ public class SuperiorAlienScript : BaseAlienScript
         acts.Add(new Move("Plead", 10, "Emotional", "", "", ""));
         acts.Add(new Move("Appeal", 10, "Emotional", "", "", ""));
         acts.Add(new Move("Flex Muscles", 10, "Emotional", "", "", ""));
-        acts.Add(new Move("Challenge Authority", 20, "Emotional", "", "", ""));
+        acts.Add(new Move("Challenge", 20, "Emotional", "", "", ""));
     }
     public override double Attack()
     {

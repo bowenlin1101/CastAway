@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public enum BattleState
 {
@@ -142,7 +138,7 @@ public class BattleSystem : MonoBehaviour
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", $"Perhaps... There has been a mistake"));
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("boss", $"You are free to go..."));
             }
-
+            GameManager.Instance.aliensSpared++;
             HandleAlienDefeat(false);
         }
         else
@@ -233,10 +229,12 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
         yield return dialogBox.TypeDialog($"{playerUnit.player.Name} healed {((HealthPotion)item).hpHealed}");
 
-        playerUnit.player.TakeDamage(-((HealthPotion)item).hpHealed);
+        playerUnit.player.TakeDamage(-((HealthPotion)item).hpHealed, true);
         yield return new WaitForSeconds(1f);
 
         yield return playerHud.UpdateHP();
+        GameManager.Instance.PlayerHealth = (int) playerUnit.player.Health;
+
         if (alienUnit.alien.Aggression == 0)
         {
             yield return dialogBox.TypeDialog($"{alienUnit.alien.Species} no longer wants to fight and is ready to be spared");
@@ -249,6 +247,9 @@ public class BattleSystem : MonoBehaviour
         {
             StartCoroutine(AlienAttackPart1());
         }
+        Inventory.instance.items.Remove(item);
+        playerUnit.player.items.Remove(item);
+        dialogBox.SetItemNames(playerUnit.player.items);
     }
 
     IEnumerator AlienAttackPart1()
@@ -299,19 +300,26 @@ public class BattleSystem : MonoBehaviour
 
         StartCoroutine(dialogBox.TypeDialog($"You dodged {defendSystem.numberOfAttacks * (defendSystem.attackPattern + 1) - playerCollider.hits}/{defendSystem.numberOfAttacks * (defendSystem.attackPattern + 1)} hits"));
         yield return new WaitForSeconds(2f);
+        if (GameManager.Instance.PlayerDurability > 0) {
+            StartCoroutine(dialogBox.TypeDialog($"Your armor protects you..."));
+        }
+        yield return new WaitForSeconds(1f);
 
         Attack attack = defendSystem.attack;
 
         int numberOfAttacks = defendSystem.numberOfAttacks;
         float damage = attack.Damage / numberOfAttacks * playerCollider.hits;
 
-        bool isDead = playerUnit.player.TakeDamage(damage);
+        bool isDead = playerUnit.player.TakeDamage(damage, false);
         yield return playerHud.UpdateHP();
+        GameManager.Instance.PlayerHealth = (int) playerUnit.player.Health;
+
         if (isDead)
         {
             yield return dialogBox.TypeDialog($"{playerUnit.player.Name} Died");
 
             Debug.Log("Brosky");
+            GameManager.Instance.PlayerHealth = 100;
             yield return new WaitForSeconds(2.5f);
             PlayerMovement.instance.Respawn(GameManager.Instance.currentScene);
         }
@@ -488,39 +496,40 @@ public class BattleSystem : MonoBehaviour
 
     void HandleItemSelection()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (playerUnit.player.items.Count > 0)
         {
-            if (currentItem < playerUnit.player.items.Count - 1)
-                ++currentItem;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (currentItem > 0)
-                --currentItem;
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            if (currentItem < playerUnit.player.items.Count - 2)
-                currentItem += 2;
-        }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (currentItem > 1)
-                currentItem -= 2;
-        }
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (currentItem < playerUnit.player.items.Count - 1)
+                    ++currentItem;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (currentItem > 0)
+                    --currentItem;
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (currentItem < playerUnit.player.items.Count - 2)
+                    currentItem += 2;
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (currentItem > 1)
+                    currentItem -= 2;
+            }
 
+            dialogBox.UpdateItemSelection(currentItem, playerUnit.player.items[currentItem]);
+            if (Input.GetKeyDown(ConfirmKey))
+            {
+                dialogBox.EnableItemSelector(false);
+                dialogBox.EnableDialogText(true);
+                StartCoroutine(PerformPlayerItem());
+            }
+        }
         if (Input.GetKeyDown(RejectKey))
         {
             PlayerAction();
-        }
-
-        dialogBox.UpdateItemSelection(currentItem, playerUnit.player.items[currentItem]);
-
-        if (Input.GetKeyDown(ConfirmKey))
-        {
-            dialogBox.EnableItemSelector(false);
-            dialogBox.EnableDialogText(true);
-            StartCoroutine(PerformPlayerItem());
         }
     }
 
@@ -590,6 +599,11 @@ public class BattleSystem : MonoBehaviour
 
     public void HandleAlienDefeat(bool dead)
     {
+        if (GameManager.Instance.currentScene == "Level 2") {
+            GameManager.Instance.setInstructionCanvasActive(true);
+        }
+        ChatManager.Instance.chatBox.gameObject.SetActive(true);
+
         if (dead) {
             if (GameManager.Instance.alienName == "CitizenAlien1") {
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("citizen", "..."));
@@ -638,6 +652,7 @@ public class BattleSystem : MonoBehaviour
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "you RASCAL... *pant*"));
                 ChatManager.Instance.EnqueueDialogue(new ChatMessage("doctor", "you'll die to what's up ahead :)"));
             }
+            alienUnit.transform.eulerAngles = new Vector3(0, 0, 90);
 
         } else {
             if (GameManager.Instance.alienName == "CitizenAlien1") {
@@ -688,7 +703,6 @@ public class BattleSystem : MonoBehaviour
 
             }
         }
-        alienUnit.transform.eulerAngles = new Vector3(0, 0, 90);
         GameManager.Instance.movementLocked = false;
         SceneManager.LoadScene(GameManager.Instance.currentScene);
     }

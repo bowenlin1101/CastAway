@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,28 +10,36 @@ public class StartMenu : MonoBehaviour
 
     [SerializeField] CanvasGroup XAndZ;
     [SerializeField] CanvasGroup ArrowKeys;
+    [SerializeField] CanvasGroup Title;
+    [SerializeField] CanvasGroup Buttons;
+
     [SerializeField] KeyCode ConfirmKey;
     [SerializeField] KeyCode RejectKey;
-    public float fadeDuration = 1.0f; 
+    private float fadeDuration = 3f;
 
 
     // Start is called before the first frame update
-    void Start() {
+    void Start()
+    {
         XAndZ.alpha = 0;
         ArrowKeys.alpha = 0;
+        Title.alpha = 0;
+        Buttons.alpha = 0;
+        StartCoroutine(FadeInStartPage());
     }
 
     // Update is called once per frame
     void Update()
     {
         HandleSelection();
-        if (Input.anyKeyDown && !showedControls) {
+        if (Input.anyKeyDown && !showedControls)
+        {
             showedControls = true;
-            StartCoroutine(FadeIn());
+            StartCoroutine(FadeInKeys());
         }
     }
 
-     IEnumerator FadeIn()
+    IEnumerator FadeInKeys()
     {
         float currentTime = 0f;
         while (currentTime < fadeDuration)
@@ -48,7 +54,23 @@ public class StartMenu : MonoBehaviour
         ArrowKeys.alpha = 1f; // Ensure it's fully visible
     }
 
-    void HandleSelection() {
+    IEnumerator FadeInStartPage()
+    {
+        float currentTime = 0f;
+        while (currentTime < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(0f, 1f, currentTime / fadeDuration);
+            Title.alpha = alpha;
+            Buttons.alpha = alpha;
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        Title.alpha = 1f; // Ensure it's fully visible
+        Buttons.alpha = 1f; // Ensure it's fully visible
+    }
+
+    void HandleSelection()
+    {
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -68,11 +90,14 @@ public class StartMenu : MonoBehaviour
             {
                 //Spawn
                 SceneManager.LoadScene("Spawn");
+                if (GameManager.Instance)
+                {
+                    GameManager.Instance.movementLocked = false;
+                }
             }
             else if (currentSelection == 1)
             {
                 Application.Quit();
-                UnityEditor.EditorApplication.isPlaying = false;
             }
         }
     }
